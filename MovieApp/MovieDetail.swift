@@ -1,10 +1,4 @@
-//
-//  MovieDetail.swift
-//  TMDbDemo
-//
-//  Created by PhongLe on 5/13/17.
-//  Copyright © 2017 PhongLe. All rights reserved.
-//
+
 
 import Foundation
 class MovieDetail {

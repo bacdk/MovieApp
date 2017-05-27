@@ -1,10 +1,4 @@
-//
-//  Downloader.swift
-//  TMDbDemo
-//
-//  Created by PhongLe on 5/12/17.
-//  Copyright © 2017 PhongLe. All rights reserved.
-//
+
 
 import Foundation
 import UIKit

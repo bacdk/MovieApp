@@ -1,10 +1,4 @@
-//
-//  Struct.swift
-//  TMDbDemo
-//
-//  Created by PhongLe on 5/11/17.
-//  Copyright © 2017 PhongLe. All rights reserved.
-//
+
 
 import Foundation
 let apiKey = "api_key=bf144d99969c3e174c395faf9782475d"
