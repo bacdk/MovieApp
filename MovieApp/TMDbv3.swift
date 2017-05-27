@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import PKHUD
 
 class TMDb {
     
@@ -91,15 +90,4 @@ class TMDb {
         return listTrailer
     }
     
-    static func getListTrailer(by movieId: Int) -> [Trailer] {
-        let set = getTrailerSet(by: movieId)
-        var trailers = [Trailer]()
-        
-        for video in set {
-            let temp = video as! [String:Any]
-            trailers.append(Trailer(json: temp))
-        }
-        
-        return trailers
-    }
 }

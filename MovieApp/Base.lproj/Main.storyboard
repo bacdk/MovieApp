@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -110,33 +111,78 @@
         <!--Now Playing-->
         <scene sceneID="3xQ-fT-ZSM">
             <objects>
-                <viewController title="Now Playing" id="Kuq-ls-vJv" sceneMemberID="viewController">
+                <viewController title="Now Playing" id="Kuq-ls-vJv" customClass="NowPlayingTVController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="hW0-Lm-pOZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="AGt-WC-Kui">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="AGt-WC-Kui" customClass="NowPlayingTVCell" customModule="MovieApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AGt-WC-Kui" id="lgx-Hq-xbH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V3L-DG-wrk">
-                                            <rect key="frame" x="10" y="2" width="82" height="145.5"/>
+                                            <rect key="frame" x="10" y="2" width="82" height="146"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="V3L-DG-wrk" secondAttribute="height" multiplier="9:16" id="oIz-kY-y9w"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFq-cI-FMh">
+                                            <rect key="frame" x="100" y="-4" width="198" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-td-96n">
+                                            <rect key="frame" x="100" y="73" width="267" height="82"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📅 release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQ4-D3-DdD">
+                                            <rect key="frame" x="100" y="25" width="198" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️ vote average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-9q-6bE">
+                                            <rect key="frame" x="100" y="49" width="198" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="V3L-DG-wrk" firstAttribute="top" secondItem="lgx-Hq-xbH" secondAttribute="top" constant="2" id="2vb-9P-URi"/>
                                         <constraint firstAttribute="bottom" secondItem="V3L-DG-wrk" secondAttribute="bottom" constant="2" id="4jz-QN-oIN"/>
+                                        <constraint firstItem="sFq-cI-FMh" firstAttribute="leading" secondItem="V3L-DG-wrk" secondAttribute="trailing" constant="8" symbolic="YES" id="A6b-RC-nNn"/>
+                                        <constraint firstItem="LbI-td-96n" firstAttribute="top" secondItem="ig8-9q-6bE" secondAttribute="bottom" constant="8" id="BN9-Ic-30z"/>
+                                        <constraint firstItem="bQ4-D3-DdD" firstAttribute="leading" secondItem="ig8-9q-6bE" secondAttribute="leading" id="Nnp-iT-dWW"/>
+                                        <constraint firstItem="ig8-9q-6bE" firstAttribute="trailing" secondItem="LbI-td-96n" secondAttribute="trailing" constant="-69" id="WAU-Vn-Yzs"/>
+                                        <constraint firstItem="bQ4-D3-DdD" firstAttribute="top" secondItem="sFq-cI-FMh" secondAttribute="bottom" constant="8" id="WhR-eI-IJT"/>
+                                        <constraint firstItem="sFq-cI-FMh" firstAttribute="top" secondItem="lgx-Hq-xbH" secondAttribute="topMargin" constant="-12" id="a92-9B-nup"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="sFq-cI-FMh" secondAttribute="trailing" constant="69" id="jiO-Vv-qgC"/>
+                                        <constraint firstItem="sFq-cI-FMh" firstAttribute="trailing" secondItem="bQ4-D3-DdD" secondAttribute="trailing" id="md1-EY-RnY"/>
+                                        <constraint firstItem="sFq-cI-FMh" firstAttribute="leading" secondItem="bQ4-D3-DdD" secondAttribute="leading" id="onG-pD-AU0"/>
+                                        <constraint firstItem="bQ4-D3-DdD" firstAttribute="trailing" secondItem="ig8-9q-6bE" secondAttribute="trailing" id="qWV-Fa-zic"/>
+                                        <constraint firstItem="ig8-9q-6bE" firstAttribute="top" secondItem="bQ4-D3-DdD" secondAttribute="bottom" constant="8" id="r0T-xr-XOj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LbI-td-96n" secondAttribute="bottom" constant="-13.5" id="w1m-L6-E0b"/>
+                                        <constraint firstItem="ig8-9q-6bE" firstAttribute="leading" secondItem="LbI-td-96n" secondAttribute="leading" id="wJ8-Pa-9NG"/>
                                         <constraint firstItem="V3L-DG-wrk" firstAttribute="leading" secondItem="lgx-Hq-xbH" secondAttribute="leading" constant="10" id="zZL-Iy-IgK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="sFq-cI-FMh" id="GNd-qy-u4K"/>
+                                    <outlet property="overviewTextView" destination="LbI-td-96n" id="JLQ-rs-uRp"/>
+                                    <outlet property="posterImage" destination="V3L-DG-wrk" id="bAS-1T-axR"/>
+                                    <outlet property="releaseLabel" destination="bQ4-D3-DdD" id="S6r-GN-d1P"/>
+                                    <outlet property="voteLabel" destination="ig8-9q-6bE" id="uUz-5v-H5R"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

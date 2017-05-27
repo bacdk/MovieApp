@@ -18,6 +18,10 @@
 		BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51314E1ED980DF00457B1B /* TMDbv3.swift */; };
 		BB5131521ED980EA00457B1B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131501ED980EA00457B1B /* Movie.swift */; };
 		BB5131531ED980EA00457B1B /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131511ED980EA00457B1B /* MovieDetail.swift */; };
+		BB5131571ED9837900457B1B /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131561ED9837900457B1B /* Struct.swift */; };
+		BB51315A1ED9841F00457B1B /* NowPlayingTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131591ED9841F00457B1B /* NowPlayingTVController.swift */; };
+		BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */; };
+		BB51315E1ED986A700457B1B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315D1ED986A700457B1B /* Downloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		BB51314E1ED980DF00457B1B /* TMDbv3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbv3.swift; sourceTree = "<group>"; };
 		BB5131501ED980EA00457B1B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BB5131511ED980EA00457B1B /* MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		BB5131561ED9837900457B1B /* Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		BB5131591ED9841F00457B1B /* NowPlayingTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingTVController.swift; sourceTree = "<group>"; };
+		BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingTVCell.swift; sourceTree = "<group>"; };
+		BB51315D1ED986A700457B1B /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		3AF7D2D61ED96BF8001DF490 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB5131581ED9839600457B1B /* Controller */,
 				BB51314D1ED9803500457B1B /* API */,
 				BB51314C1ED97FEC00457B1B /* Model */,
 				3AF7D2D71ED96BF8001DF490 /* AppDelegate.swift */,
@@ -149,8 +158,19 @@
 			isa = PBXGroup;
 			children = (
 				BB51314E1ED980DF00457B1B /* TMDbv3.swift */,
+				BB51315D1ED986A700457B1B /* Downloader.swift */,
+				BB5131561ED9837900457B1B /* Struct.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		BB5131581ED9839600457B1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB5131591ED9841F00457B1B /* NowPlayingTVController.swift */,
+				BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,11 +307,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB51315E1ED986A700457B1B /* Downloader.swift in Sources */,
 				3AF7D2DA1ED96BF8001DF490 /* ViewController.swift in Sources */,
 				3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */,
 				3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */,
+				BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */,
 				BB5131531ED980EA00457B1B /* MovieDetail.swift in Sources */,
 				BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */,
+				BB51315A1ED9841F00457B1B /* NowPlayingTVController.swift in Sources */,
+				BB5131571ED9837900457B1B /* Struct.swift in Sources */,
 				BB5131521ED980EA00457B1B /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
