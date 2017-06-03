@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="02v-g9-THQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="02v-g9-THQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
         <!--User-->
         <scene sceneID="LqG-dQ-Fga">
             <objects>
-                <viewController title="User" id="YVi-zf-ZpH" sceneMemberID="viewController">
+                <viewController title="User" id="YVi-zf-ZpH" customClass="UserViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pv1-b7-pbO"/>
                         <viewControllerLayoutGuide type="bottom" id="2xs-Fx-aZS"/>
@@ -22,7 +22,20 @@
                     <view key="view" contentMode="scaleToFill" id="Svq-zd-uDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-Gb-fO7">
+                                <rect key="frame" x="16" y="72" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="Logout:" destination="YVi-zf-ZpH" eventType="touchUpInside" id="nZB-i5-DNS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bzO-Gb-fO7" firstAttribute="top" secondItem="Pv1-b7-pbO" secondAttribute="bottom" constant="8" id="8p3-5K-nCA"/>
+                            <constraint firstItem="bzO-Gb-fO7" firstAttribute="leading" secondItem="Svq-zd-uDh" secondAttribute="leadingMargin" id="abf-dZ-NNL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="user" id="T5J-Xu-aZ6"/>
                 </viewController>
@@ -97,7 +110,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLL-si-Wbv" id="wpd-40-xsL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-WE-Eaq">
@@ -226,7 +239,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="95U-hj-tY3" id="wds-xL-Yde">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-o8-E7y">
@@ -303,6 +316,7 @@
                                     <constraint firstItem="X2L-T1-QhG" firstAttribute="leading" secondItem="6vV-Sl-kHU" secondAttribute="leading" constant="8" id="cot-fv-wlT"/>
                                     <constraint firstItem="X2L-T1-QhG" firstAttribute="top" secondItem="6vV-Sl-kHU" secondAttribute="top" constant="8" id="cxd-3W-73X"/>
                                     <constraint firstItem="dqa-Kd-LqG" firstAttribute="leading" secondItem="6vV-Sl-kHU" secondAttribute="leading" constant="8" id="tDe-qx-mCD"/>
+                                    <constraint firstAttribute="bottom" secondItem="dqa-Kd-LqG" secondAttribute="bottom" constant="8" id="zMs-6O-bBD"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -354,7 +368,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UmL-yR-9Pr" id="RRT-BQ-U6O">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrL-Sh-hta">

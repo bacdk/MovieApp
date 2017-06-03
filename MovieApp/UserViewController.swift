@@ -1,30 +1,32 @@
 //
-//  ViewController.swift
-//  gameofchats
+//  UserViewController.swift
+//  MovieApp-master
 //
-//  Created by Brian Voong on 6/24/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by miceli on 6/4/17.
+//  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
 import UIKit
 import Firebase
-
-class ViewController: UITableViewController {
+class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         
-        if FIRAuth.auth()?.currentUser?.uid == nil {
+        if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
         }
     }
     
+    @IBAction func Logout(_ sender: UIButton) {
+        handleLogout()
+    }
     func handleLogout() {
         
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
         } catch let logoutError {
             print(logoutError)
         }
@@ -33,5 +35,5 @@ class ViewController: UITableViewController {
         present(loginController, animated: true, completion: nil)
     }
 
-}
 
+}
