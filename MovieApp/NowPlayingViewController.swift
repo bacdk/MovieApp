@@ -12,6 +12,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     var movies = [Movie]()
     var refreshPage = 0
     
@@ -21,7 +22,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
         //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-      loadMovie(page: p)
+        spinner.isHidden = false
+        
+        loadMovie(page: p)
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -70,14 +74,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         cell.voteLabel.text = "⭐️ \(movies[indexPath.row].vote_average!)"
         return cell
     }
+    //Load lai data
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == refreshPage - 1 {
+            spinner.isHidden = false
+            spinner.startAnimating()
             loadMovie(page: p)
-        }               // 
-        //loadMovie(page: p)
-        //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-        //for movie in jsonListMovie {
-        //    movies.append(Movie(json: movie as! [String:Any]))}
+        }
     }
     func loadMovie(page: Int)
     {
@@ -88,8 +91,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         DispatchQueue.main.async {
             self.refreshPage += 20
             self.tableView.reloadData()
-           // self.spinner.stopAnimating()
-           // self.spinner.isHidden = true
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
             //self.loadingData = false
             self.p += 1
         }
