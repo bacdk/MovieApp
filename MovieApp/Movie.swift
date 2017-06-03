@@ -28,7 +28,7 @@ class Movie {
         original_title          = json["original_title"]    as! String
         original_language       = json["original_language"] as! String
         title                   = json["title"]             as! String
-        backdrop_path           = json["backdrop_path"]     as! String
+        backdrop_path           = json["backdrop_path"]     as? String
         popularity              = json["popularity"]        as! Double
         vote_count              = json["vote_count"]        as! Int
         video                   = json["video"]             as! Bool
