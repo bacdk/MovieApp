@@ -1,17 +1,19 @@
 //
-//  NowPlayingViewController.swift
+//  PopularViewController.swift
 //  MovieApp-master
 //
-//  Created by miceli on 6/2/17.
+//  Created by Cntt20 on 6/3/17.
 //  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
 import UIKit
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var tableView: UITableView!
+class PopularViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    //
     var movies = [Movie]()
     
     var posterImage: [Int:UIImage] = [:]
@@ -19,12 +21,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
         //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-        let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
+        let jsonListMovie = TMDb.getPopularList(InPage: 1)
         for movie in jsonListMovie {
             movies.append(Movie(json: movie as! [String:Any]))
         }
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        print(scrollView.contentInset) 
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,9 +81,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         
         //  }
     }
-}
-
-
     /*
     // MARK: - Navigation
 
@@ -91,3 +91,4 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
     */
 
+}
