@@ -17,6 +17,7 @@
 		3AF7D2F01ED96BF8001DF490 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2EF1ED96BF8001DF490 /* MovieAppTests.swift */; };
 		3AF7D2FB1ED96BF8001DF490 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2FA1ED96BF8001DF490 /* MovieAppUITests.swift */; };
 		A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */; };
+		A735F04E1EE416BE00F399C5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04D1EE416BE00F399C5 /* DetailViewController.swift */; };
 		A75320971EE1B38900E75BE3 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75320961EE1B38900E75BE3 /* NowPlayingViewController.swift */; };
 		A76E72741EE30C390072B982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A76E72731EE30C390072B982 /* GoogleService-Info.plist */; };
 		A7A155C01EE3237B00E9492E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A155BF1EE3237B00E9492E /* UserViewController.swift */; };
@@ -69,6 +70,7 @@
 		588859E2B570D7070B722CC5 /* Pods_MovieAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7023C1CCF277A657E764882B /* Pods-MovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		A735F04D1EE416BE00F399C5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A75320961EE1B38900E75BE3 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		A76E72731EE30C390072B982 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7A155BF1EE3237B00E9492E /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				3AA6DACC1EE29DEC00ED53FB /* UpComingViewController.swift */,
 				3AA6DACE1EE2A38500ED53FB /* PopularViewController.swift */,
 				A7A155BF1EE3237B00E9492E /* UserViewController.swift */,
+				A735F04D1EE416BE00F399C5 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A735F04E1EE416BE00F399C5 /* DetailViewController.swift in Sources */,
 				A7A155C21EE323DC00E9492E /* LoginController.swift in Sources */,
 				BB51315E1ED986A700457B1B /* Downloader.swift in Sources */,
 				3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */,

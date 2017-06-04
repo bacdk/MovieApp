@@ -94,18 +94,26 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         }
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        //let post = json: movie as! [String:Any]
-       // ref.child("Movie").child("NowPlaying").child(jsonListMovie["id"]).setValue(jsonListMovie)
         for movie in jsonListMovie {
             var json = movie as! [String:Any]
             var id: Int!
             id = json["id"] as? Int
-            //print(id)
-            //print(movie)
-            //pi+=1
             ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
+            
+            // File located on disk
+            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
+            //print((json["poster_path"])!)
+            // Create a reference to the file you want to upload
+            let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
+            // Upload the file to the path "images/rivers.jpg"
+            if let uploadData = UIImagePNGRepresentation(img1!) {
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }})
+           }
         }
-        //print(jsonListMovie)
         DispatchQueue.main.async {
             self.refreshPage += 20
             self.tableView.reloadData()
