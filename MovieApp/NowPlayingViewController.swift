@@ -49,14 +49,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
-        //        var queue = OperationQueue()
-        //        let operation1 = BlockOperation(block: {
-        //            let img1 = Downloader.downloadImageWithURL("\(preImage)\(self.movies[indexPath.row].poster_path)")
-        //            OperationQueue.main.addOperation({
-        //                cell.posterImage.image = img1
-        //            })
-        //        })
-        
+        cell.posterImage.image = #imageLiteral(resourceName: "default")
         var queue = OperationQueue()
         if posterImage[movies[indexPath.row].id] != nil {
             cell.posterImage.image = posterImage[movies[indexPath.row].id]
@@ -124,11 +117,21 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     // MARK: - Segues
+    // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //if segue.identifier == "showDetail" {
-        
-        //  }
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                //data send to detail view
+                
+
+                let detailVC = segue.destination as! DetailViewController
+                detailVC.movie = movies[indexPath.row]
+                
+                
+            }
+        }
     }
+
 }
 
 
