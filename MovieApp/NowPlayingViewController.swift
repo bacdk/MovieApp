@@ -11,7 +11,6 @@ import UIKit
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     var movies = [Movie]()
     var refreshPage = 0
@@ -23,16 +22,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
         //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
         spinner.isHidden = false
-        
         loadMovie(page: p)
-        
+        self.tableView.separatorStyle = .none
         self.tableView.dataSource = self
         self.tableView.delegate = self
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
