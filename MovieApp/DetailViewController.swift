@@ -16,7 +16,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var poster: UIImageView!
     var movieId: Int!
     var movie: Movie!
+    
     var listVideos = [Trailer]()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,11 +52,7 @@ class DetailViewController: UIViewController {
         //}
     }
     //"\(prefixImage)w780\(self.movie.backdrop_path!)"
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     
     /*
     // MARK: - Navigation
