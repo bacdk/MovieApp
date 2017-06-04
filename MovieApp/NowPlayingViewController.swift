@@ -93,7 +93,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             movies.append(Movie(json: movie as! [String:Any]))
         }
         var ref: DatabaseReference!
-
         ref = Database.database().reference()
         //let post = json: movie as! [String:Any]
        // ref.child("Movie").child("NowPlaying").child(jsonListMovie["id"]).setValue(jsonListMovie)
@@ -101,9 +100,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             var json = movie as! [String:Any]
             var id: Int!
             id = json["id"] as? Int
-            print(id)
-            print(movie)
-            //ref.child("Movie").child("NowPlaying").child((id as? String)!).setValue(movie)
+            //print(id)
+            //print(movie)
+            //pi+=1
+            ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
         }
         //print(jsonListMovie)
         DispatchQueue.main.async {
