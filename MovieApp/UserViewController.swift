@@ -19,9 +19,6 @@ class UserViewController: UITableViewController {
         }
     }
     
-    @IBAction func Logout(_ sender: UIButton) {
-        handleLogout()
-    }
     func handleLogout() {
         
         do {
