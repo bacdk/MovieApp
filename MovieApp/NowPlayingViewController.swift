@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,13 +21,24 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
         //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-        spinner.isHidden = false
+        spinner.isHidden = true
         loadMovie(page: p)
         self.tableView.separatorStyle = .none
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        //load()
     }
-    
+    func load()
+    {
+        var ref: DatabaseReference!
+        let jsonListMovie = TMDb.getNowPlayList(InPage: p)
+        for movie in jsonListMovie {
+            movies.append(Movie(json: movie as! [String:Any]))
+        }
+        ref = Database.database().reference()
+        //let post = json: movie as! [String:Any]
+        ref.child("Movie").child("NowPlaying").setValue(jsonListMovie)
+    }
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,6 +92,20 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         for movie in jsonListMovie {
             movies.append(Movie(json: movie as! [String:Any]))
         }
+        var ref: DatabaseReference!
+
+        ref = Database.database().reference()
+        //let post = json: movie as! [String:Any]
+       // ref.child("Movie").child("NowPlaying").child(jsonListMovie["id"]).setValue(jsonListMovie)
+        for movie in jsonListMovie {
+            var json = movie as! [String:Any]
+            var id: Int!
+            id = json["id"] as? Int
+            print(id)
+            print(movie)
+            //ref.child("Movie").child("NowPlaying").child((id as? String)!).setValue(movie)
+        }
+        //print(jsonListMovie)
         DispatchQueue.main.async {
             self.refreshPage += 20
             self.tableView.reloadData()
