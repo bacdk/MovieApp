@@ -10,33 +10,37 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var videos: UIWebView!
     @IBOutlet weak var overview: UITextView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var poster: UIImageView!
     var movieId: Int!
     var movie: Movie!
-    
+    var listVideos = [Trailer]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        print("info of \(movieId)")
-        //        print("movie: \(movie.id)")
-        
-        //        let detail = TMDb.getDetail(ByMovieId: movieId!)
-        //        print(detail)
         
         overview.text = movie.overview
         name.text = movie.title
-        
-        //        let imageKey = detail["backdrop_path"] as! String
-        let queue = OperationQueue()
-        queue.addOperation { () -> Void in
-            let url = "\(prefixImage)w780\(String(describing: self.movie.backdrop_path ?? "nil"))"
-            if let img = Downloader.downloadImageWithURL(url) {
-                OperationQueue.main.addOperation({
-                    self.poster.image = img
-                })
-            }
+        print(listVideos)
+        if listVideos.count != 0
+        {
+            let video = listVideos[0]
+            //let url = URL(string: "\(prefixYoutube)\(video.key)")
+            let request = URLRequest(url: URL(string: "\(prefixYoutube)\(video.key!)")!)
+            videos.loadRequest(request)
         }
+        //video.loadRequest(request)
+        //        let imageKey = detail["backdrop_path"] as! String
+        //let queue = OperationQueue()
+        //queue.addOperation { () -> Void in
+        //    let url = "\(prefixImage)w780\(String(describing: self.movie.backdrop_path ?? "nil"))"
+        //    if let img = Downloader.downloadImageWithURL(url) {
+        //        OperationQueue.main.addOperation({
+        //            self.poster.image = img
+        //        })
+        //    }
+        //}
     }
     //"\(prefixImage)w780\(self.movie.backdrop_path!)"
     override func didReceiveMemoryWarning() {

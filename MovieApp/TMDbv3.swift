@@ -107,7 +107,6 @@ class TMDb {
         return json
         
     }
-    
     static func getTrailerSet(by movieId: Int) -> [Any] {
         var json = [String:Any]()
         var listTrailer = [Any]()
@@ -135,4 +134,15 @@ class TMDb {
         return listTrailer
     }
     
+    static func getListTrailer(by movieId: Int) -> [Trailer] {
+        let set = getTrailerSet(by: movieId)
+        var trailers = [Trailer]()
+        
+        for video in set {
+            let temp = video as! [String:Any]
+            trailers.append(Trailer(json: temp))
+        }
+        
+        return trailers
+    }
 }
