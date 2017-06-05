@@ -50,12 +50,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
         cell.posterImage.image = #imageLiteral(resourceName: "default")
-        var queue = OperationQueue()
+        let queue = OperationQueue()
         if posterImage[movies[indexPath.row].id] != nil {
             cell.posterImage.image = posterImage[movies[indexPath.row].id]
         }else{
             queue.addOperation { () -> Void in
                 let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
+               // NSLog(img1)
                 OperationQueue.main.addOperation({
                     self.posterImage[self.movies[indexPath.row].id] = img1
                     cell.posterImage.image = img1
