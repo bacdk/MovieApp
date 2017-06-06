@@ -39,7 +39,7 @@ class UserViewController: UITableViewController {
     
     func fetchUser() {
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-            
+            //dư
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = UserInfo(dictionary: dictionary)
                 self.users.append(user)

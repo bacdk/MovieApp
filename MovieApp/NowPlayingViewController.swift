@@ -22,12 +22,82 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
         //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
         spinner.isHidden = true
-        loadMovie(page: p)
+      //  loadMovie(page: p)
+        loadData()
         self.tableView.separatorStyle = .none
         self.tableView.dataSource = self
         self.tableView.delegate = self
         //load()
     }
+    func loadData()  {
+        var ref: DatabaseReference!
+        // var databaseHandle:DatabaseHandle?
+        ref = Database.database().reference()
+//        ref.child("Movie").child("NowPlaying").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Movie").child("NowPlaying").observe(.childAdded, with: {
+                (snapshot) in
+            // Get user value
+            //self.listMovie.append(snapshot.value) as! [String : AnyObject]
+            if let identities = snapshot.value! as? [String:AnyObject]{
+                self.movies.append(Movie(json: identities ))
+
+                DispatchQueue.main.async {
+                    self.refreshPage += 20
+                    self.tableView.reloadData()
+                    self.spinner.stopAnimating()
+                    self.spinner.isHidden = true
+                    //self.loadingData = false
+                    self.p += 1
+                }
+
+//                for each in identities as [String:AnyObject]{
+//                    listMovie.append(each)//will append medals
+//                }
+            }
+            
+            }) { (error) in
+            print(error.localizedDescription)
+        }
+
+    }
+    func loadMovie(page: Int)
+    {
+        let jsonListMovie = TMDb.getNowPlayList(InPage: p)
+        for movie in jsonListMovie {
+            movies.append(Movie(json: movie as! [String:Any]))
+        }
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        for movie in jsonListMovie {
+            var json = movie as! [String:Any]
+            var id: Int!
+            id = json["id"] as? Int
+            ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
+            
+            // File located on disk
+            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
+            //print((json["poster_path"])!)
+            // Create a reference to the file you want to upload
+            let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
+            // Upload the file to the path "images/rivers.jpg"
+            if let uploadData = UIImagePNGRepresentation(img1!) {
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }})
+            }
+        }
+        DispatchQueue.main.async {
+            self.refreshPage += 20
+            self.tableView.reloadData()
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
+            //self.loadingData = false
+            self.p += 1
+        }
+    }
+
     func load()
     {
         var ref: DatabaseReference!
@@ -80,44 +150,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             loadMovie(page: p)
         }
     }
-    func loadMovie(page: Int)
-    {
-        let jsonListMovie = TMDb.getNowPlayList(InPage: p)
-        for movie in jsonListMovie {
-            movies.append(Movie(json: movie as! [String:Any]))
-        }
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        for movie in jsonListMovie {
-            var json = movie as! [String:Any]
-            var id: Int!
-            id = json["id"] as? Int
-            ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
-            
-            // File located on disk
-            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
-            //print((json["poster_path"])!)
-            // Create a reference to the file you want to upload
-            let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
-            // Upload the file to the path "images/rivers.jpg"
-            if let uploadData = UIImagePNGRepresentation(img1!) {
-                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                    if let error = error {
-                        print(error)
-                        return
-                    }})
-           }
-        }
-        DispatchQueue.main.async {
-            self.refreshPage += 20
-            self.tableView.reloadData()
-            self.spinner.stopAnimating()
-            self.spinner.isHidden = true
-            //self.loadingData = false
-            self.p += 1
-        }
-    }
-    // MARK: - Segues
+        // MARK: - Segues
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
