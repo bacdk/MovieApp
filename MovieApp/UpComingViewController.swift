@@ -11,22 +11,23 @@ import UIKit
 class UpComingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    /*
+    
     //
     var movies = [Movie]()
     
     var posterImage: [Int:UIImage] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-        //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
-        //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-        let jsonListMovie = TMDb.getComingList(InPage: 1)
-        for movie in jsonListMovie {
-            movies.append(Movie(json: movie as! [String:Any]))
-        }
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+//        HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
+//        let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
+//        let jsonListMovie = TMDb.getComingList(InPage: 1)
+//        for movie in jsonListMovie {
+//            movies.append(Movie(json: movie as! [String:Any]))
+//        }
+//        self.tableView.dataSource = self
+//        self.tableView.delegate = self
     }
+    /*
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
