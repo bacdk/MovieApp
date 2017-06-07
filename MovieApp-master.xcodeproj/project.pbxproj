@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DD21402DA401646A9C47138 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0082642DD068163DDBB17928 /* Pods_MovieApp.framework */; };
 		322D2788D0BEA46D84C73489 /* Pods_MovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588859E2B570D7070B722CC5 /* Pods_MovieAppTests.framework */; };
+		3A66F8EC1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66F8EB1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift */; };
 		3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2D71ED96BF8001DF490 /* AppDelegate.swift */; };
 		3AF7D2DD1ED96BF8001DF490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7D2DB1ED96BF8001DF490 /* Main.storyboard */; };
 		3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2DE1ED96BF8001DF490 /* MovieApp.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		0082642DD068163DDBB17928 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		109BF467720F6DA2F36B4233 /* Pods-MovieAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A66F8EB1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		3AA6DACC1EE29DEC00ED53FB /* UpComingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpComingViewController.swift; sourceTree = "<group>"; };
 		3AA6DACE1EE2A38500ED53FB /* PopularViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		3AF7D2D41ED96BF8001DF490 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +217,7 @@
 				3AA6DACE1EE2A38500ED53FB /* PopularViewController.swift */,
 				A7A155BF1EE3237B00E9492E /* UserViewController.swift */,
 				A735F04D1EE416BE00F399C5 /* DetailViewController.swift */,
+				3A66F8EB1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				A735F04E1EE416BE00F399C5 /* DetailViewController.swift in Sources */,
 				A7A155C21EE323DC00E9492E /* LoginController.swift in Sources */,
 				BB51315E1ED986A700457B1B /* Downloader.swift in Sources */,
+				3A66F8EC1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift in Sources */,
 				3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */,
 				A7A155C01EE3237B00E9492E /* UserViewController.swift in Sources */,
 				A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */,

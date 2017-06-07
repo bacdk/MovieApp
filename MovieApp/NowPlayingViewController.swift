@@ -32,13 +32,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
     func loadData()  {
         var ref: DatabaseReference!
-        // var databaseHandle:DatabaseHandle?
         ref = Database.database().reference()
-//        ref.child("Movie").child("NowPlaying").observeSingleEvent(of: .value, with: { (snapshot) in
         ref.child("Movie").child("NowPlaying").observe(.childAdded, with: {
                 (snapshot) in
-            // Get user value
-            //self.listMovie.append(snapshot.value) as! [String : AnyObject]
             if let identities = snapshot.value! as? [String:AnyObject]{
                 self.movies.append(Movie(json: identities ))
                 
@@ -50,45 +46,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
                     //self.loadingData = false
                     self.p += 1
                 }
-
-//                for each in identities as [String:AnyObject]{
-//                    listMovie.append(each)//will append medals
-//                }
             }
-            /*
-             cell.posterImage.image = #imageLiteral(resourceName: "default")
-             let queue = OperationQueue()
-             if posterImage[movies[indexPath.row].id] != nil {
-             cell.posterImage.image = posterImage[movies[indexPath.row].id]
-             }else{
-             queue.addOperation { () -> Void in
-             let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
-             // NSLog(img1)
-             OperationQueue.main.addOperation({
-             self.posterImage[self.movies[indexPath.row].id] = img1
-             cell.posterImage.image = img1
-             })
-             }
-
-            */
-//            for i in 0..<self.movies.count{
-//                self.bannerBig.image = #imageLiteral(resourceName: "default")
-//                let queue = OperationQueue()
-//                if bannerBig[movies[indexPath.row].id] != nil {
-//                    cell.posterImage.image = posterImage[movies[indexPath.row].id]
-//                }else{
-//                    queue.addOperation { () -> Void in
-//                        let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
-//                        // NSLog(img1)
-//                        OperationQueue.main.addOperation({
-//                            self.posterImage[self.movies[indexPath.row].id] = img1
-//                            cell.posterImage.image = img1
-//                        })
-//                    }
-//
-//            }
-            
-            }) { (error) in
+             }) { (error) in
             print(error.localizedDescription)
         }
 

@@ -10,6 +10,19 @@ import UIKit
 import Firebase
 class UserViewController: UITableViewController {
 
+    @IBAction func updateButton(_ sender: Any) {
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as? ChangePasswordViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        
+        
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Storyboard", bundle:nil)
+//        
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
+//        self.present(nextViewController, animated:true, completion:nil)
+    }
     
     func handleLogout() {
         
