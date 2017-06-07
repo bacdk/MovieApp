@@ -6,6 +6,18 @@ import Firebase
 
 class LoginController: UIViewController {
     
+    lazy var labelStatus: UILabel = {
+        let status = UILabel()
+        //status.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        status.text = ""
+        status.translatesAutoresizingMaskIntoConstraints = false
+        //status.setTitleColor(UIColor.white, for: UIControlState())
+        status.font = status.font.withSize(11)
+        status.textColor=UIColor(r: 255, g: 255, b: 255)
+        return status
+    }()
+
+    
     let inputsContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -66,6 +78,7 @@ class LoginController: UIViewController {
             
             if let error = error {
                 print(error)
+                self.labelStatus.text = error.localizedDescription
                 return
             }
             
@@ -81,6 +94,7 @@ class LoginController: UIViewController {
                 
                 if let err = err {
                     print(err)
+                    self.labelStatus.text = err.localizedDescription
                     return
                 }
                 
@@ -164,7 +178,7 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         passwordTextFieldHeightAnchor?.isActive = true
     }
-
+//------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -174,13 +188,21 @@ class LoginController: UIViewController {
         view.addSubview(loginRegisterButton)
         view.addSubview(profileImageView)
         view.addSubview(loginRegisterSegmentedControl)
-        
+        view.addSubview(labelStatus)
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupProfileImageView()
         setupLoginRegisterSegmentedControl()
+        setupLabelStatus()
     }
-    
+    func setupLabelStatus() {
+        //need x, y, width, height constraints
+        labelStatus.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        labelStatus.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: 0).isActive = true
+        //labelStatus.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        labelStatus.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+
     func setupLoginRegisterSegmentedControl() {
         //need x, y, width, height constraints
         loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

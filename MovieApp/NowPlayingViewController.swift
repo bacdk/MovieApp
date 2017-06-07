@@ -26,18 +26,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.separatorStyle = .none
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        var myref: DatabaseReference!
-        myref = Database.database().reference()
-        var authClient = FirebaseSimpleLogin(ref:myref)
-        authClient.changePasswordForEmail("We@gmail.com", oldPassword: "123456",
-                                          newPassword: "666666", completionBlock: { error, success in
-                                            
-                                            if error {
-                                                // There was an error processing the request
-                                            } else if success {
-                                                // Password changed successfully
-                                            }
-        })
+ 
+        
     }
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
