@@ -30,6 +30,8 @@
 		BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */; };
 		BB51315E1ED986A700457B1B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315D1ED986A700457B1B /* Downloader.swift */; };
 		EBB925C61A1D4002E795BD53 /* Pods_MovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D1766A556C6A1CA1528AEA /* Pods_MovieAppUITests.framework */; };
+		FB8228DB1EE7F90D001491FD /* ChonXuatChieuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8228DA1EE7F90D001491FD /* ChonXuatChieuViewController.swift */; };
+		FB8228DD1EE7F922001491FD /* ChonChoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8228DC1EE7F922001491FD /* ChonChoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		CBFE154A94C88944B717EA7E /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D6430472D4E13D69D03DCA10 /* Pods-MovieAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F9C741137F75C4BB9C8D21D1 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
+		FB8228DA1EE7F90D001491FD /* ChonXuatChieuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChonXuatChieuViewController.swift; sourceTree = "<group>"; };
+		FB8228DC1EE7F922001491FD /* ChonChoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChonChoViewController.swift; sourceTree = "<group>"; };
 		FBCF76A68A3846936CC2CAC3 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +219,8 @@
 				3AA6DACE1EE2A38500ED53FB /* PopularViewController.swift */,
 				A7A155BF1EE3237B00E9492E /* UserViewController.swift */,
 				A735F04D1EE416BE00F399C5 /* DetailViewController.swift */,
+				FB8228DA1EE7F90D001491FD /* ChonXuatChieuViewController.swift */,
+				FB8228DC1EE7F922001491FD /* ChonChoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -521,10 +527,12 @@
 				A7A155C01EE3237B00E9492E /* UserViewController.swift in Sources */,
 				A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */,
 				3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */,
+				FB8228DD1EE7F922001491FD /* ChonChoViewController.swift in Sources */,
 				BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */,
 				BB5131531ED980EA00457B1B /* MovieDetail.swift in Sources */,
 				BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */,
 				A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */,
+				FB8228DB1EE7F90D001491FD /* ChonXuatChieuViewController.swift in Sources */,
 				A75320971EE1B38900E75BE3 /* NowPlayingViewController.swift in Sources */,
 				BB5131571ED9837900457B1B /* Struct.swift in Sources */,
 				BB5131521ED980EA00457B1B /* Movie.swift in Sources */,
