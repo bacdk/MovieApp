@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var bannerBig: UIImageView!
@@ -20,88 +21,36 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     var posterImage: [Int:UIImage] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-        //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
-        //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
         spinner.isHidden = true
-      //  loadMovie(page: p)
         loadData()
         self.tableView.separatorStyle = .none
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        //load()
+        var myref: DatabaseReference!
+        myref = Database.database().reference()
+        var authClient = FirebaseSimpleLogin(ref:myref)
+        authClient.changePasswordForEmail("We@gmail.com", oldPassword: "123456",
+                                          newPassword: "666666", completionBlock: { error, success in
+                                            
+                                            if error {
+                                                // There was an error processing the request
+                                            } else if success {
+                                                // Password changed successfully
+                                            }
+        })
     }
     func loadData()  {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("Movie").child("NowPlaying").observe(.childAdded, with: {
-                (snapshot) in
-            if let identities = snapshot.value! as? [String:AnyObject]{
-                self.movies.append(Movie(json: identities ))
-                
+        TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
+            if(error != nil) {
+                print(error!)
+            } else {
+                self.movies = movies!
                 DispatchQueue.main.async {
-                    self.refreshPage += 20
                     self.tableView.reloadData()
-                    self.spinner.stopAnimating()
-                    self.spinner.isHidden = true
-                    //self.loadingData = false
-                    self.p += 1
                 }
             }
-             }) { (error) in
-            print(error.localizedDescription)
-        }
-
+        })
     }
-//    func loadMovie(page: Int)
-//    {
-//        let jsonListMovie = TMDb.getNowPlayList(InPage: p)
-//        for movie in jsonListMovie {
-//            movies.append(Movie(json: movie as! [String:Any]))
-//        }
-//        var ref: DatabaseReference!
-//        ref = Database.database().reference()
-//        for movie in jsonListMovie {
-//            var json = movie as! [String:Any]
-//            var id: Int!
-//            id = json["id"] as? Int
-//            ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
-//            
-//            // File located on disk
-//            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
-//            //print((json["poster_path"])!)
-//            // Create a reference to the file you want to upload
-//            let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
-//            // Upload the file to the path "images/rivers.jpg"
-//            if let uploadData = UIImagePNGRepresentation(img1!) {
-//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-//                    if let error = error {
-//                        print(error)
-//                        return
-//                    }})
-//            }
-//        }
-//        DispatchQueue.main.async {
-//            self.refreshPage += 20
-//            self.tableView.reloadData()
-//            self.spinner.stopAnimating()
-//            self.spinner.isHidden = true
-//            //self.loadingData = false
-//            self.p += 1
-//        }
-//    }
-
-//    func load()
-//    {
-//        var ref: DatabaseReference!
-//        let jsonListMovie = TMDb.getNowPlayList(InPage: p)
-//        for movie in jsonListMovie {
-//            movies.append(Movie(json: movie as! [String:Any]))
-//        }
-//        ref = Database.database().reference()
-//        //let post = json: movie as! [String:Any]
-//        ref.child("Movie").child("NowPlaying").setValue(jsonListMovie)
-//    }
-    // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -128,8 +77,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         
         cell.nameLabel.text = movies[indexPath.row].title
         cell.overviewTextView.text = movies[indexPath.row].overview
-        //var segment = [ChartSegment]()
-        //segment.append(ChartSegment(value: movies[indexPath.row].vote_average, description: "%"))
         cell.releaseLabel.text = "📅 \(movies[indexPath.row].release_date!)"
         cell.voteLabel.text = "⭐️ \(movies[indexPath.row].vote_average!)"
         return cell
@@ -140,17 +87,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             spinner.isHidden = false
             spinner.startAnimating()
             loadData()
-           // loadMovie(page: p)
         }
     }
-        // MARK: - Segues
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
-                
-
                 let detailVC = segue.destination as! DetailViewController
                 detailVC.movie = movies[indexPath.row]
                 let queue = OperationQueue()
@@ -166,15 +109,3 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
 
 }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
