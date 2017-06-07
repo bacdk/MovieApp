@@ -21,7 +21,7 @@ import UIKit
             super.viewDidLoad()
             //HUD.flash(.labeledProgress(title: "Please wait", subtitle: "loading data"), delay: 3)
             //let jsonListMovie = TMDb.getNowPlayList(InPage: 1)
-            spinner.isHidden = true
+            //spinner.isHidden = true
             loadMovie(page: p)
             self.tableView.separatorStyle = .none
             self.tableView.dataSource = self
@@ -37,7 +37,7 @@ import UIKit
         
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UpCell", for: indexPath) as! UpComingTVCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
             cell.posterImage.image = #imageLiteral(resourceName: "default")
             let queue = OperationQueue()
             if posterImage[movies[indexPath.row].id] != nil {
@@ -64,14 +64,14 @@ import UIKit
         //Load lai data
         func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
             if indexPath.row == refreshPage - 1 {
-                spinner.isHidden = false
-                spinner.startAnimating()
+                //spinner.isHidden = false
+                //spinner.startAnimating()
                 loadMovie(page: p)
             }
         }
         func loadMovie(page: Int)
         {
-            let jsonListMovie = TMDb.getNowPlayList(InPage: p)
+            let jsonListMovie = TMDb.getComingList(InPage: p)
             for movie in jsonListMovie {
                 movies.append(Movie(json: movie as! [String:Any]))
             }
@@ -100,8 +100,8 @@ import UIKit
             DispatchQueue.main.async {
                 self.refreshPage += 20
                 self.tableView.reloadData()
-                self.spinner.stopAnimating()
-                self.spinner.isHidden = true
+                //'[[[[[[[[[[[[[[[[[[[[[[self.spinner.stopAnimating()
+                //self.spinner.isHidden = true
                 //self.loadingData = false
                 self.p += 1
             }

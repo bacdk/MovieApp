@@ -5,7 +5,7 @@ class Movie {
     
     var poster_path: String!
     var adult: Bool!
-    var overview: String!
+    var overview: String?
     var release_date: String!
     var genre_ids: [Int]!
     var id: Int!

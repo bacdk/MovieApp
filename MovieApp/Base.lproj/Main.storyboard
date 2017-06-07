@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="02v-g9-THQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="02v-g9-THQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EH3-vE-KoJ" id="TnP-Xj-Tzu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -108,11 +108,11 @@
                                         <rect key="frame" x="8" y="154" width="359" height="388"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vUF-td-jR1">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowTVCell" id="vUF-td-jR1" customClass="NowPlayingTVCell" customModule="MovieApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUF-td-jR1" id="ACQ-QH-TNi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuy-jx-7X4">
@@ -168,6 +168,13 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="nameLabel" destination="Vuy-jx-7X4" id="6kv-z3-1YA"/>
+                                                    <outlet property="overviewTextView" destination="ww2-ie-Nt1" id="g68-JY-I7F"/>
+                                                    <outlet property="posterImage" destination="lWL-FI-pli" id="mWa-On-PCq"/>
+                                                    <outlet property="releaseLabel" destination="U8L-H1-A8z" id="uhO-4g-p6b"/>
+                                                    <outlet property="voteLabel" destination="AsB-tE-9sP" id="fV2-ef-Td5"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
@@ -199,8 +206,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Popular" image="popular" id="0d3-Xq-P1X"/>
                     <connections>
-                        <outlet property="scrollView" destination="uWw-UT-xYX" id="yEQ-Xe-uDA"/>
-                        <outlet property="tableView" destination="vwg-MU-fO7" id="c7N-wu-H3r"/>
+                        <outlet property="tableView" destination="vwg-MU-fO7" id="hhg-iG-g7z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZ7-6J-fHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,7 +243,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="95U-hj-tY3" id="wds-xL-Yde">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6t-o8-E7y">
@@ -370,11 +376,11 @@
                                         <rect key="frame" x="8" y="154" width="359" height="387"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UpCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DtG-Sa-KdQ" customClass="UpComingTVCell" customModule="MovieApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UpCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowTVCell" id="DtG-Sa-KdQ" customClass="NowPlayingTVCell" customModule="MovieApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="359" height="205"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DtG-Sa-KdQ" id="i00-YY-rn8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="205"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvE-Dt-Vlw">
@@ -431,11 +437,11 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <outlet property="nameLabel" destination="gvE-Dt-Vlw" id="RNZ-hO-08x"/>
-                                                    <outlet property="overviewTextView" destination="tpJ-pQ-Gh7" id="nJg-6N-Ahn"/>
-                                                    <outlet property="posterImage" destination="0H2-vf-8Ig" id="Fhu-Rq-TWl"/>
-                                                    <outlet property="releaseLabel" destination="v17-Tp-A1o" id="fdL-Rw-sNb"/>
-                                                    <outlet property="voteLabel" destination="yFq-zN-P8l" id="XBE-QV-PO7"/>
+                                                    <outlet property="nameLabel" destination="gvE-Dt-Vlw" id="bgu-bb-sQ0"/>
+                                                    <outlet property="overviewTextView" destination="tpJ-pQ-Gh7" id="p58-lV-6Ki"/>
+                                                    <outlet property="posterImage" destination="0H2-vf-8Ig" id="KLG-hg-3M1"/>
+                                                    <outlet property="releaseLabel" destination="v17-Tp-A1o" id="k6c-Ob-l3x"/>
+                                                    <outlet property="voteLabel" destination="yFq-zN-P8l" id="x1E-MD-wdV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -468,8 +474,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Up Coming" image="upcoming1" id="dIc-R9-S1W"/>
                     <connections>
-                        <outlet property="scrollView" destination="FFW-VX-QBy" id="QqY-6n-HI3"/>
-                        <outlet property="tableView" destination="nHW-zc-r0X" id="Hgp-Eq-hB7"/>
+                        <outlet property="tableView" destination="nHW-zc-r0X" id="1lP-xh-fsM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1o-Ez-K6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
