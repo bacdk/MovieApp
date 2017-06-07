@@ -19,6 +19,8 @@
 		3AF7D2FB1ED96BF8001DF490 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2FA1ED96BF8001DF490 /* MovieAppUITests.swift */; };
 		A72D290A1EE869D300C48C94 /* ChonChoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D29081EE869D300C48C94 /* ChonChoViewController.swift */; };
 		A72D290B1EE869D300C48C94 /* ChonXuatChieuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D29091EE869D300C48C94 /* ChonXuatChieuViewController.swift */; };
+		A72D290E1EE86FDE00C48C94 /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */; };
+		A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */; };
 		A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */; };
 		A735F04E1EE416BE00F399C5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04D1EE416BE00F399C5 /* DetailViewController.swift */; };
 		A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04F1EE41E8100F399C5 /* Trailer.swift */; };
@@ -76,6 +78,8 @@
 		7023C1CCF277A657E764882B /* Pods-MovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A72D29081EE869D300C48C94 /* ChonChoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChonChoViewController.swift; sourceTree = "<group>"; };
 		A72D29091EE869D300C48C94 /* ChonXuatChieuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChonXuatChieuViewController.swift; sourceTree = "<group>"; };
+		A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
+		A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSeatSelector.swift; sourceTree = "<group>"; };
 		A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A735F04D1EE416BE00F399C5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A735F04F1EE41E8100F399C5 /* Trailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				A7A155C11EE323DC00E9492E /* LoginController.swift */,
 				BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */,
 				A75320961EE1B38900E75BE3 /* NowPlayingViewController.swift */,
+				A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */,
+				A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */,
 				A73E371B1EE8450F0063BBAE /* PopularViewController.swift */,
 				A73E371C1EE8450F0063BBAE /* UpComingViewController.swift */,
 				A72D29081EE869D300C48C94 /* ChonChoViewController.swift */,
@@ -533,11 +539,13 @@
 				3A66F8EC1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift in Sources */,
 				3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */,
 				A7A155C01EE3237B00E9492E /* UserViewController.swift in Sources */,
+				A72D290E1EE86FDE00C48C94 /* SeatViewController.swift in Sources */,
 				A72D290B1EE869D300C48C94 /* ChonXuatChieuViewController.swift in Sources */,
 				A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */,
 				3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */,
 				A73E371D1EE8450F0063BBAE /* PopularViewController.swift in Sources */,
 				BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */,
+				A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */,
 				BB5131531ED980EA00457B1B /* MovieDetail.swift in Sources */,
 				BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */,
 				A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */,
