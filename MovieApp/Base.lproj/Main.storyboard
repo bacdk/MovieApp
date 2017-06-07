@@ -178,6 +178,7 @@
                                                     <outlet property="posterImage" destination="hzz-ox-okn" id="Cev-Wv-EtR"/>
                                                     <outlet property="releaseLabel" destination="gYx-a9-V9M" id="14a-tj-dqu"/>
                                                     <outlet property="voteLabel" destination="Ev9-bS-uvO" id="BhY-sy-tzM"/>
+                                                    <segue destination="krq-Dl-efC" kind="show" identifier="showDetail" id="PNL-eI-AWf"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -456,6 +457,7 @@
                                                     <outlet property="posterImage" destination="u6K-UM-mEp" id="xGU-lC-SuK"/>
                                                     <outlet property="releaseLabel" destination="4pK-Sb-4n3" id="1TM-Un-tKW"/>
                                                     <outlet property="voteLabel" destination="Tvp-Oi-KRp" id="NJR-JZ-plc"/>
+                                                    <segue destination="krq-Dl-efC" kind="show" identifier="showDetail" id="qyo-N5-b06"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -711,4 +713,7 @@
         <image name="upcoming1" width="25" height="25"/>
         <image name="user" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qdp-fG-moD"/>
+    </inferredMetricsTieBreakers>
 </document>

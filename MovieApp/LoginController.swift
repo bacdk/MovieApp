@@ -50,6 +50,7 @@ class LoginController: UIViewController {
     
     func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else {
+            self.labelStatus.text = "Form is not valid"
             print("Form is not valid")
             return
         }
@@ -58,6 +59,7 @@ class LoginController: UIViewController {
             
             if let error = error {
                 print(error)
+                self.labelStatus.text = error.localizedDescription
                 return
             }
             
