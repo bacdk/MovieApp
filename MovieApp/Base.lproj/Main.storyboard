@@ -529,7 +529,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Vif-Wr-rk9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OB4-jH-NT7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucm-Mc-pP1">
@@ -603,7 +603,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OaZ-n8-Nes"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SjY-hf-KGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-bj-UEc">
@@ -761,7 +761,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Gy8-5X-Rj5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KAE-89-YzL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng chọn xuất chiếu..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPX-kN-BBh">
@@ -1193,6 +1193,6 @@
         <image name="user" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qdp-fG-moD"/>
+        <segue reference="PNL-eI-AWf"/>
     </inferredMetricsTieBreakers>
 </document>
