@@ -82,6 +82,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
     func loadMovie(page: Int)
     {
+        
         let jsonListMovie = TMDb.getNowPlayList(InPage: p)
         for movie in jsonListMovie {
             movies.append(Movie(json: movie as! [String:Any]))
@@ -93,6 +94,15 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             var id: Int!
             id = json["id"] as? Int
             ref.child("Movie").child("NowPlaying").child(String(id)).setValue(movie)
+            
+            
+            //Add ngay gio cho ngoi
+            for mm in gioChieu
+            {
+                ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
+            //ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
+            ref.child("Movie").child("NowPlaying").child(String(id)).child("Tomorow").child(mm).setValue(seatMap)
+            }
             
             // File located on disk
             let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")

@@ -83,6 +83,14 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
             id = json["id"] as? Int
             ref.child("Movie").child("Popular").child(String(id)).setValue(movie)
             
+            //Add ngay gio cho ngoi
+            for mm in gioChieu
+            {
+                ref.child("Movie").child("Popular").child(String(id)).child("Today").child(mm).setValue(seatMap)
+                ref.child("Movie").child("Popular").child(String(id)).child("Tomorow").child(mm).setValue(seatMap)
+            }
+            
+            
             // File located on disk
             let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
             //print((json["poster_path"])!)
