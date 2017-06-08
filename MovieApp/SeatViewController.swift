@@ -9,7 +9,8 @@
 import UIKit
 
 class SeatViewController: UIViewController, ZSeatSelectorDelegate {
-
+    var noi:String = ""
+    var seatUser : NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,7 +43,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                             "_AAAAAAAAAAAUUUUUUUAAAAA/" +
                             "_AAAAAAAAUAAAAUUUUAAAAAA/" +
                             "_AAAAAUUUAUAUAUAUUUAAAAA/"
-        
+        noi = map2
         let seats2 = ZSeatSelector()
         seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
@@ -72,16 +73,35 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let seat:ZSeat  = seats.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
             total += seat.price
-        }
+         }
+        seatUser = seats
+        //print(seats)
+        //print(noi)
         print("----- Total -----\n")
         print("----- \(total) -----\n")
     }
 
+    @IBAction func chooseSeat(_ sender: UIButton) {
+        handleBookSeat()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    func handleBookSeat() {
+        let range: Range<String.Index> = noi.range(of: "/")!
+        let numberofSeat:Int = noi.distance(from: noi.startIndex, to: range.lowerBound)
+        //print(numberofSeat)
+        for i in 0..<seatUser.count {
+            let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
+            print("Seat at row: \(seat.row) and column: \(seat.column)\n")
+            let pos = (seat.row-1)*(numberofSeat+1)+seat.column-1
+            let index = noi.index(noi.startIndex, offsetBy: pos)
+            noi.replaceSubrange(index...index, with: "U")
+        }
+        //print(seats)
+        print(noi)
+    }
+   
 }
 
