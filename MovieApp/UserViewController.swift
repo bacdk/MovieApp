@@ -16,13 +16,7 @@ class UserViewController: UITableViewController {
         }
         self.navigationController?.pushViewController(controller, animated: true)
         
-        
-        
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Storyboard", bundle:nil)
-//        
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
-//        self.present(nextViewController, animated:true, completion:nil)
-    }
+        }
     
     func handleLogout() {
         
@@ -47,9 +41,32 @@ class UserViewController: UITableViewController {
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-        fetchUser()
+        //fetchUser()
+        userCurrent()
     }
-    
+    //var userName
+    func userCurrent(){
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            // ...
+            if user != nil {
+                
+//                Database.database().reference().queryOrdered(byChild: "users" )
+//                    .queryEqual(toValue: (user?.email)!)
+//                    .observe(.value, with: { snapshot in
+//                        if let dictionary = snapshot.value as? [String: AnyObject] {
+//                            let user1 = UserInfo(dictionary: dictionary)
+//                            self.users.append(user1)
+//                        }
+//                        print("Log users")
+//                        print(self.users)
+//                })
+            }else {
+                // No user is signed in.
+                print("No user is signed in.")
+            }
+            //print(user?.email)
+        }
+    }
     func fetchUser() {
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             //dư
