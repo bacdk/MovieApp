@@ -86,14 +86,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
                 //data send to detail view
                 let detailVC = segue.destination as! DetailViewController
                 detailVC.movie = movies[indexPath.row]
-                let queue = OperationQueue()
-                queue.addOperation { () -> Void in
+
                     var listVideo: [Trailer]!
                     listVideo = TMDb.getListTrailer(by: self.movies[indexPath.row].id!)
                     detailVC.listVideos = listVideo
-                    //print(listVideo)
-                    //print(self.movies[indexPath.row].id)
-                }
+
             }
         }
     }
