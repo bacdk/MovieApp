@@ -10,6 +10,7 @@ import UIKit
 
 class ChonXuatChieuViewController: UIViewController {
     
+    @IBOutlet weak var buttonScrool: UIScrollView!
     //Outlet
     //Ngay
     @IBOutlet weak var homNay: UIButton!
@@ -28,7 +29,29 @@ class ChonXuatChieuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var ButtonList = ["Button 1", "Button 2", "Button 3"]
+        let buttonWidth = 100
+        let buttonSpace = 10
+        for (index,ButtonText) in ButtonList.enumerated(){
+            //calculate the x coordinate of each button
+            let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
+            let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 400, width: 100, height: 50))
+            codedButton.backgroundColor = UIColor.red
+            codedButton.setTitle(ButtonText, for: UIControlState.normal)
+            
+            codedButton.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+            codedButton.tag = index
+            
+            let button:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+            button.backgroundColor = .black
+            button.setTitle("Button", for: .normal)
+            button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+            
+            self.buttonScrool.addSubview(codedButton)
+            //self.buttonScrool.addSubview(button)
+            self.view.addSubview(codedButton)
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -37,7 +60,9 @@ class ChonXuatChieuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func buttonClicked(){
+       
+    }
     //Hom nay
     @IBAction func isHomNay(_ sender: Any) {
         
