@@ -10,6 +10,13 @@ import UIKit
 import Firebase
 class UserViewController: UITableViewController {
 
+    @IBAction func updateButton(_ sender: Any) {
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as? ChangePasswordViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        }
     
     func handleLogout() {
         
@@ -34,9 +41,32 @@ class UserViewController: UITableViewController {
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-        fetchUser()
+        //fetchUser()
+        userCurrent()
     }
-    
+    //var userName
+    func userCurrent(){
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            // ...
+            if user != nil {
+                
+//                Database.database().reference().queryOrdered(byChild: "users" )
+//                    .queryEqual(toValue: (user?.email)!)
+//                    .observe(.value, with: { snapshot in
+//                        if let dictionary = snapshot.value as? [String: AnyObject] {
+//                            let user1 = UserInfo(dictionary: dictionary)
+//                            self.users.append(user1)
+//                        }
+//                        print("Log users")
+//                        print(self.users)
+//                })
+            }else {
+                // No user is signed in.
+                print("No user is signed in.")
+            }
+            //print(user?.email)
+        }
+    }
     func fetchUser() {
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             //dư
