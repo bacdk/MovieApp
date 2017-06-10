@@ -87,7 +87,7 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
             for mm in gioChieu
             {
                 ref.child("Movie").child("Popular").child(String(id)).child("Today").child(mm).setValue(seatMap)
-                ref.child("Movie").child("Popular").child(String(id)).child("Tomorow").child(mm).setValue(seatMap)
+                ref.child("Movie").child("Popular").child(String(id)).child("Tomorrow").child(mm).setValue(seatMap)
             }
             
             

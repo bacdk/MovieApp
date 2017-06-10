@@ -101,7 +101,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             {
                 ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
             //ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
-            ref.child("Movie").child("NowPlaying").child(String(id)).child("Tomorow").child(mm).setValue(seatMap)
+            ref.child("Movie").child("NowPlaying").child(String(id)).child("Tomorrow").child(mm).setValue(seatMap)
             }
             
             // File located on disk
