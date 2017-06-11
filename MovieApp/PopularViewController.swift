@@ -8,11 +8,8 @@
 
 import UIKit
 import Firebase
-class PopularViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PopularViewController: UITableViewController{
     
-    @IBOutlet weak var bannerBig: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     var movies = [Movie]()
     var refreshPage = 0
     
@@ -23,8 +20,7 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
         //spinner.isHidden = true
         loadData()
         self.tableView.separatorStyle = .none
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+
     }
     func loadData()  {
         TMDb.getPopularListFireBase(completionHandler: { (movies, error) in
@@ -39,13 +35,13 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
         cell.posterImage.image = #imageLiteral(resourceName: "default")
         let queue = OperationQueue()
@@ -69,10 +65,10 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     //Load lai data
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == refreshPage - 1 {
             //spinner.isHidden = false
-            //spinner.startAnimating()
+           //Users/hntlk/MovieApp/MovieApp/PopularViewController.swift //spinner.startAnimating()
             loadData()
         }
     }
@@ -81,7 +77,8 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
-                let detailVC = segue.destination as! DetailViewController
+                let detailVC = segue.destination as! DetailController
+
                 detailVC.movie = movies[indexPath.row]
 
                     var listVideo: [Trailer]!

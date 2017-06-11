@@ -9,11 +9,9 @@
 import UIKit
 import Firebase
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NowPlayingViewController: UITableViewController{
     
-    @IBOutlet weak var bannerBig: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
     var movies = [Movie]()
     var refreshPage = 0
     
@@ -21,13 +19,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     var posterImage: [Int:UIImage] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.isHidden = true
         loadData()
         self.tableView.separatorStyle = .none
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
- 
-        
+       
     }
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
@@ -42,13 +36,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
         cell.posterImage.image = #imageLiteral(resourceName: "default")
         let queue = OperationQueue()
@@ -72,10 +66,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     //Load lai data
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == refreshPage - 1 {
-            spinner.isHidden = false
-            spinner.startAnimating()
             loadData()
         }
     }
@@ -84,7 +76,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
-                let detailVC = segue.destination as! DetailViewController
+                let detailVC = segue.destination as! DetailController
                 detailVC.movie = movies[indexPath.row]
 
                     var listVideo: [Trailer]!
