@@ -1,9 +1,9 @@
 //
-//  Trailer.swift
-//  TMDbDemo
+//  DetailController.swift
+//  MovieApp-master
 //
-//  Created by PhongLe on 5/13/17.
-//  Copyright © 2017 PhongLe. All rights reserved.
+//  Created by Tai Nhat Huynh on 6/10/17.
+//  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
 import Foundation

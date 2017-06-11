@@ -1,4 +1,10 @@
-
+//
+//  DetailController.swift
+//  MovieApp-master
+//
+//  Created by Tai Nhat Huynh on 6/10/17.
+//  Copyright © 2017 Dau Khac Bac. All rights reserved.
+//
 
 import Foundation
 let apiKey = "api_key=bf144d99969c3e174c395faf9782475d"

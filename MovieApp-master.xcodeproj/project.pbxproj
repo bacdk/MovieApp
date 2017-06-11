@@ -35,6 +35,7 @@
 		BB5131571ED9837900457B1B /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131561ED9837900457B1B /* Struct.swift */; };
 		BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */; };
 		BB51315E1ED986A700457B1B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315D1ED986A700457B1B /* Downloader.swift */; };
+		CF1984761EED52D900A29EEE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1984751EED52D900A29EEE /* Schedule.swift */; };
 		CF209D6D1EEC2A1400EE0098 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF209D6C1EEC2A1400EE0098 /* DetailController.swift */; };
 		CF209D6F1EEC438000EE0098 /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF209D6E1EEC438000EE0098 /* DesignButton.swift */; };
 		CF209D711EEC5AB600EE0098 /* XuatChieuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF209D701EEC5AB600EE0098 /* XuatChieuCell.swift */; };
@@ -97,6 +98,7 @@
 		BB51315B1ED9844000457B1B /* NowPlayingTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingTVCell.swift; sourceTree = "<group>"; };
 		BB51315D1ED986A700457B1B /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		CBFE154A94C88944B717EA7E /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CF1984751EED52D900A29EEE /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		CF209D6C1EEC2A1400EE0098 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		CF209D6E1EEC438000EE0098 /* DesignButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
 		CF209D701EEC5AB600EE0098 /* XuatChieuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XuatChieuCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */,
 				BB5131501ED980EA00457B1B /* Movie.swift */,
 				BB5131511ED980EA00457B1B /* MovieDetail.swift */,
+				CF1984751EED52D900A29EEE /* Schedule.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */,
 				3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */,
 				A73E371D1EE8450F0063BBAE /* PopularViewController.swift in Sources */,
+				CF1984761EED52D900A29EEE /* Schedule.swift in Sources */,
 				BB51315C1ED9844000457B1B /* NowPlayingTVCell.swift in Sources */,
 				A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */,
 				BB5131531ED980EA00457B1B /* MovieDetail.swift in Sources */,
