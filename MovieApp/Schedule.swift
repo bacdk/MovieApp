@@ -12,8 +12,8 @@ class Schedule {
     var hour: String?
     var seat: String?
     
-    init(json: [String:Any]) {
-        hour            = json["poster_path"]       as? String
-        seat            = json["adult"]             as? String
+    init(hour: String, seat: String) {
+        self.hour            = hour as String?
+        self.seat            = seat as String?
     }
 }

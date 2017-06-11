@@ -18,15 +18,17 @@ class DetailController: UITableViewController {
     var listVideos = [Trailer]()
     
     
-    var data = ["iPad", "iPhone", "iWatch", "iPod", "iMac"]
-    var buttonData = ["US","China","London","Canada","Japan"];
-    var Ngay = ["Today", "Tomorrow"]
+    var hourToday = [Schedule]()
+    var hourTomorrow = [Schedule]()
+    var Ngay=["Today", "Tomorrow"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         overview?.text = movie.overview
         nameMovie?.text = movie.title
+        hourToday = movie.today!
+        hourTomorrow = movie.tomorrow!
         
         if listVideos.count != 0
         {
@@ -71,7 +73,7 @@ class DetailController: UITableViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return data.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -86,7 +88,7 @@ class DetailController: UITableViewController {
         {
             let buttonWidth = 60
             let buttonSpace = 5
-            for (index,ButtonText) in data.enumerated(){
+            for (index,ButtonText) in hourToday.enumerated(){
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
@@ -97,13 +99,40 @@ class DetailController: UITableViewController {
                 codedButton.layer.cornerRadius = CGFloat.init(10)
                 codedButton.layer.borderColor = UIColor.clear.cgColor 
                 codedButton.backgroundColor = UIColor.black
-                codedButton.setTitle(ButtonText, for: UIControlState.normal)
+                codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
+                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
                 
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 codedButton.tag = index
                 
                 cell.contentView.addSubview(codedButton)
             }
+        }
+        else
+        {
+            let buttonWidth = 60
+            let buttonSpace = 5
+            for (index,ButtonText) in hourTomorrow.enumerated(){
+                
+                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
+                
+                let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
+                
+                
+                codedButton.layer.borderWidth = 1
+                codedButton.layer.cornerRadius = CGFloat.init(10)
+                codedButton.layer.borderColor = UIColor.clear.cgColor
+                codedButton.backgroundColor = UIColor.black
+                codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
+                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+
+                
+                codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
+                codedButton.tag = index
+                
+                cell.contentView.addSubview(codedButton)
+            }
+
         }
         return cell
     }
