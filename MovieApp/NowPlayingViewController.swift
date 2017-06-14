@@ -20,8 +20,7 @@ class NowPlayingViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        self.tableView.separatorStyle = .none
-       
+        self.tableView.separatorStyle = .none       
     }
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in

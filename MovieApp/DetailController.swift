@@ -80,10 +80,11 @@ class DetailController: UITableViewController {
         let day = Ngay[section]
         return day
     }
+    var chonNgay : Int!
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
-        var f=indexPath.section
+        var f = indexPath.section
         if (f == 0)
         {
             let buttonWidth = 60
@@ -102,7 +103,9 @@ class DetailController: UITableViewController {
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
                 codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
                 
+                chonNgay = f
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
+                
                 codedButton.tag = index
                 
                 cell.contentView.addSubview(codedButton)
@@ -126,9 +129,10 @@ class DetailController: UITableViewController {
                 codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
                 codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
-                
+                chonNgay = f
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 codedButton.tag = index
+                
                 
                 cell.contentView.addSubview(codedButton)
             }
@@ -143,6 +147,7 @@ class DetailController: UITableViewController {
         let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicket
         srcBuyTicket.movie = movie
         srcBuyTicket.time = (sender.titleLabel?.text)!
+        srcBuyTicket.ngay = Ngay[chonNgay]
         navigationController?.pushViewController(srcBuyTicket, animated: true)
         let buttonRow = sender.tag
         print("button is Pressed")

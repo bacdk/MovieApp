@@ -27,7 +27,7 @@ class BuyTicket: UIViewController {
     var mDatabase: DatabaseReference!
    // var progressDialog: MBProgressHUD!
     
-    //var filmInfo: FilmInfo!
+    var ngay: String!
     var time: String = ""
     var ticketNumber: Int64  = 0
     var priceFilm: Int64 = 55000
@@ -35,6 +35,8 @@ class BuyTicket: UIViewController {
     
     var userInfo: User!
     var movie: Movie!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +81,25 @@ class BuyTicket: UIViewController {
         txtFilmName.text = movie.title
         txtTime.text = time
         txtPrice.text = String(priceFilm)
-        //txtActor.text =
+        //get ngay
+
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        if(ngay == "Today")
+        {
+            ngay = String(day)+"/"+String(month)+"/"+String(year)
+            lblNgay.text = ngay
+        }
+        else
+        {
+            ngay = String(day+1)+"/"+String(month)+"/"+String(year)
+            lblNgay.text = ngay
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,6 +137,17 @@ class BuyTicket: UIViewController {
 //                        navigationController?.pushViewController(src, animated: true)
 //                    }
                     
+                    let date = Date()
+                    let calendar = Calendar.current
+                    let year = calendar.component(.year, from: date)
+                    let month = calendar.component(.month, from: date)
+                    let day = calendar.component(.day, from: date)
+                    
+                    let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
+                    srcSeat.movie = movie
+                    srcSeat.time = time
+                    srcSeat.ngay = ngay
+                    navigationController?.pushViewController(srcSeat, animated: true)
                 }
                 else {
                     mDatabase.child("users").child(getUid()).observeSingleEvent(of: .value, with: { (snapshot) in
