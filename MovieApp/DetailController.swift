@@ -80,6 +80,8 @@ class DetailController: UITableViewController {
         let day = Ngay[section]
         return day
     }
+    
+    var xCoord: CGFloat!
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
@@ -90,22 +92,11 @@ class DetailController: UITableViewController {
             let buttonSpace = 5
             for (index,ButtonText) in hourToday.enumerated(){
                 
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
-                
-                
-                codedButton.layer.borderWidth = 1
-                codedButton.layer.cornerRadius = CGFloat.init(10)
-                codedButton.layer.borderColor = UIColor.clear.cgColor 
-                codedButton.backgroundColor = UIColor.black
-                codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
-                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-                
-                codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
-                codedButton.tag = index
-                
-                cell.contentView.addSubview(codedButton)
+                xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
+                var codeButton = hourButton
+                codeButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
+                codeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+                cell.contentView.addSubview(codeButton)
             }
         }
         else
@@ -114,23 +105,11 @@ class DetailController: UITableViewController {
             let buttonSpace = 5
             for (index,ButtonText) in hourTomorrow.enumerated(){
                 
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
-                
-                
-                codedButton.layer.borderWidth = 1
-                codedButton.layer.cornerRadius = CGFloat.init(10)
-                codedButton.layer.borderColor = UIColor.clear.cgColor
-                codedButton.backgroundColor = UIColor.black
-                codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
-                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
-                
-                codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
-                codedButton.tag = index
-                
-                cell.contentView.addSubview(codedButton)
+                xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
+                var codeButton = hourButton
+                codeButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
+                codeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+                cell.contentView.addSubview(codeButton)
             }
 
         }
@@ -140,11 +119,30 @@ class DetailController: UITableViewController {
     //Button Action is
     func buttonPressed(sender:UIButton!)
     {
+        let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicket
+        srcBuyTicket.movie = movie
+        srcBuyTicket.time = (sender.titleLabel?.text)!
+        navigationController?.pushViewController(srcBuyTicket, animated: true)
         let buttonRow = sender.tag
         print("button is Pressed")
         print("Clicked Button Row is",buttonRow)
     }
     
+    lazy var hourButton: UIButton = {
+        var xc = xCoord
+        let codedButton = UIButton(frame: CGRect(x:xc, y: 5, width: 50, height: 20))
+        codedButton.layer.borderWidth = 1
+        codedButton.layer.cornerRadius = CGFloat.init(10)
+        codedButton.layer.borderColor = UIColor.clear.cgColor
+        codedButton.backgroundColor = UIColor.black
+        codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        
+        codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
+        //codedButton.tag = index
+        
+        return codedButton
+    }()
+
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

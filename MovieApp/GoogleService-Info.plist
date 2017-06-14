@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>863626526137-ubu9776midmfap2nrindpht09meson99.apps.googleusercontent.com</string>
+	<string>929056602948-s9i5be6km769pfa8hjkjbofsuvpj55f4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.863626526137-ubu9776midmfap2nrindpht09meson99</string>
+	<string>com.googleusercontent.apps.929056602948-s9i5be6km769pfa8hjkjbofsuvpj55f4</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB5nHOCxajc3--hD2r0WRi9BEhA6VCrydw</string>
+	<string>AIzaSyBl8AxzCp40CEeTtwtVA03bkKJMuZIzxgQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>863626526137</string>
+	<string>929056602948</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>bac.MovieApp</string>
 	<key>PROJECT_ID</key>
-	<string>movieapp-71c43</string>
+	<string>movieapp-12783</string>
 	<key>STORAGE_BUCKET</key>
-	<string>movieapp-71c43.appspot.com</string>
+	<string>movieapp-12783.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:863626526137:ios:14d2f9e26c74fc69</string>
+	<string>1:929056602948:ios:14d2f9e26c74fc69</string>
 	<key>DATABASE_URL</key>
-	<string>https://movieapp-71c43.firebaseio.com</string>
+	<string>https://movieapp-12783.firebaseio.com</string>
 </dict>
 </plist>

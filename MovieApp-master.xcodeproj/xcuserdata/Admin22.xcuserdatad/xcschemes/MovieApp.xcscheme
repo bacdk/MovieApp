@@ -55,7 +55,7 @@
             BlueprintIdentifier = "3AF7D2D31ED96BF8001DF490"
             BuildableName = "MovieApp.app"
             BlueprintName = "MovieApp"
-            ReferencedContainer = "container:MovieApp.xcodeproj">
+            ReferencedContainer = "container:MovieApp-master.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "3AF7D2D31ED96BF8001DF490"
             BuildableName = "MovieApp.app"
             BlueprintName = "MovieApp"
-            ReferencedContainer = "container:MovieApp.xcodeproj">
+            ReferencedContainer = "container:MovieApp-master.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

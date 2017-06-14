@@ -9,6 +9,7 @@ import UIKit
 
 class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var noi:String = ""
+    var movie: Movie!
     var seatUser : NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
