@@ -35,7 +35,7 @@ class BuyTicket: UIViewController {
     
     var userInfo: User!
     var movie: Movie!
-    
+    var ticket: Ticket!
 
     
     override func viewDidLoad() {
@@ -144,9 +144,14 @@ class BuyTicket: UIViewController {
                     let day = calendar.component(.day, from: date)
                     
                     let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
-                    srcSeat.movie = movie
-                    srcSeat.time = time
-                    srcSeat.ngay = ngay
+                    
+                    ticket.id = movie.id
+                    ticket.name = movie.title
+                    ticket.sove = ticketNumber
+                    ticket.tongtien = money
+                    
+                    //srcSeat.time = time
+                    //srcSeat.ngay = ngay
                     navigationController?.pushViewController(srcSeat, animated: true)
                 }
                 else {

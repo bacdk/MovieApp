@@ -8,8 +8,7 @@
 import UIKit
 
 class SeatViewController: UIViewController, ZSeatSelectorDelegate {
-    var ngay:String!
-    var time:String!
+    var ticket: Ticket!
     var noi:String = ""
     var movie: Movie!
     
