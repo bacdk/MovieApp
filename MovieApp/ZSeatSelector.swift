@@ -40,7 +40,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var initial_seat_x: Int = 0
             var initial_seat_y: Int = 0
             var final_width: Int = 0
-            var sttM: Int = 1
+            var sttM: Int = 0
             for i in 0..<map.characters.count {
                 let seat_at_position = map[i]
                 
@@ -89,6 +89,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
                 y: CGFloat(initial_seat_y) * seat_height,
                 width: CGFloat(seat_width),
                 height: CGFloat(seat_height)))
+        seatButton.stt = stt
         if available && disabled {
             self.setSeatAsDisabled(seatButton)
         }
@@ -105,8 +106,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         seatButton.row = initial_seat_y + 1
         seatButton.column = initial_seat_x + 1
         seatButton.price = seat_price
-        seatButton.stt = stt
-        seatButton.titleLabel?.text=String(stt)
+        //seatButton.titleLabel?.text=String(stt)
         seatButton.addTarget(self, action: #selector(ZSeatSelector.seatSelected(_:)), for: .touchDown)
         zoomable_view.addSubview(seatButton)
     }
@@ -160,30 +160,33 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     // MARK: - Seat Images & Availability
     
     func setAvailableImage(_ available_image: UIImage, andUnavailableImage unavailable_image: UIImage, andDisabledImage disabled_image: UIImage, andSelectedImage selected_image: UIImage) {
-        //self.label.text? = stt
         self.available_image = available_image
         self.unavailable_image = unavailable_image
         self.disabled_image = disabled_image
         self.selected_image = selected_image
     }
     func setSeatAsUnavaiable(_ sender: ZSeat) {
-        //sender.setImage(unavailable_image, for: UIControlState())
-        sender.titleLabel?.textColor=UIColor.black
-        sender.titleLabel?.text = "123"
+        var image = UIImage()
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: unavailable_image, atPoint: CGPoint(x:2,y:0))
+        sender.setImage(image, for: UIControlState())
         sender.selected_seat = true
     }
     func setSeatAsAvaiable(_ sender: ZSeat) {
-       // sender.setImage(available_image, for: UIControlState())
-        sender.titleLabel?.textColor=UIColor.black
-        sender.titleLabel?.text = "123"
+        var image = UIImage()
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: available_image, atPoint: CGPoint(x:2,y:0))
+        sender.setImage(image, for: UIControlState())
         sender.selected_seat = false
     }
     func setSeatAsDisabled(_ sender: ZSeat) {
-        sender.setImage(disabled_image, for: UIControlState())
+        var image = UIImage()
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: disabled_image, atPoint: CGPoint(x:2,y:0))
+        sender.setImage(image, for: UIControlState())
         sender.selected_seat = false
     }
     func setSeatAsSelected(_ sender: ZSeat) {
-        sender.setImage(selected_image, for: UIControlState())
+        var image = UIImage()
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: selected_image, atPoint: CGPoint(x:2,y:0))
+        sender.setImage(image, for: UIControlState())
         sender.selected_seat = true
     }
     
@@ -198,6 +201,30 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         print(scale)
     }
+    
+    
+    func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
+        
+        let textColor = UIColor.black
+        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
+        
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+        
+        let textFontAttributes = [
+            NSFontAttributeName: textFont,
+            NSForegroundColorAttributeName: textColor,
+            ] as [String : Any]
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        
+        let rect = CGRect(origin: point, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+        
+        }
 }
 
 
