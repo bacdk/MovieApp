@@ -34,9 +34,10 @@
                     <tabBarItem key="tabBarItem" title="User" image="user" id="U6s-yF-qRb"/>
                     <navigationItem key="navigationItem" id="mfc-GJ-Q42">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="2L4-f9-1QN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y14-lu-dEK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Y14-lu-dEK">
                                 <rect key="frame" x="231" y="7" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.53791588544845581" green="0.73029285669326782" blue="0.9133756160736084" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cập nhật thông tin"/>
                                 <connections>
                                     <action selector="updateButton:" destination="YVi-zf-ZpH" eventType="touchUpInside" id="jBI-5j-v16"/>

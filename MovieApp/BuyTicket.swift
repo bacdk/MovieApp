@@ -32,10 +32,11 @@ class BuyTicket: UIViewController {
     var ticketNumber: Int64  = 0
     var priceFilm: Int64 = 55000
     var money: Int64 = 0
-    
+    var indexTime:Int!
+    var indexNgay:Int!
     var userInfo: User!
     var movie: Movie!
-    var ticket: Ticket!
+    var ticket = Ticket()
 
     
     override func viewDidLoad() {
@@ -88,8 +89,8 @@ class BuyTicket: UIViewController {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
         let day = calendar.component(.day, from: date)
-        
-        if(ngay == "Today")
+        //print(ngay)
+        if(indexNgay == 0)
         {
             ngay = String(day)+"/"+String(month)+"/"+String(year)
             lblNgay.text = ngay
@@ -126,6 +127,26 @@ class BuyTicket: UIViewController {
     @IBAction func btnNext(_ sender: Any) {
         if (ticketNumber > 0) {
             if Auth.auth().currentUser != nil {
+                
+                
+                print(movie.id)
+                let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
+                print(ngay)
+            
+                ticket.day = ngay
+                ticket.id = movie.id
+                ticket.name = movie.title
+               ticket.sove = ticketNumber
+               ticket.tongtien = money
+               ticket.time = time
+                ticket.sove = ticketNumber
+               srcSeat.ticket = ticket
+               srcSeat.movie = movie
+               srcSeat.indexNgay = indexNgay
+               srcSeat.indexTime = indexTime
+               navigationController?.pushViewController(srcSeat, animated: true)
+
+                
                 if (userInfo != nil) {
 //                    if (Int64(userInfo.balance) < money) {
 //                        showAlertDialog(message: "Số tiền trong tài khoản của bạn không đủ")
@@ -136,22 +157,20 @@ class BuyTicket: UIViewController {
 //                        src.time = "850"
 //                        navigationController?.pushViewController(src, animated: true)
 //                    }
-                    
-                    let date = Date()
-                    let calendar = Calendar.current
-                    let year = calendar.component(.year, from: date)
-                    let month = calendar.component(.month, from: date)
-                    let day = calendar.component(.day, from: date)
-                    
+                    print("NextTune")
                     let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
+                    //print(ngay)
                     
+                    ticket.day = ngay
                     ticket.id = movie.id
                     ticket.name = movie.title
                     ticket.sove = ticketNumber
                     ticket.tongtien = money
-                    
-                    //srcSeat.time = time
-                    //srcSeat.ngay = ngay
+                    ticket.time = time
+                    srcSeat.ticket = ticket
+                    print(indexNgay)
+                    srcSeat.indexNgay = indexNgay
+                    srcSeat.indexTime = indexTime
                     navigationController?.pushViewController(srcSeat, animated: true)
                 }
                 else {

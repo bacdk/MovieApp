@@ -20,6 +20,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     var seat_height:    CGFloat = 20.0
     var selected_seats          = NSMutableArray()
     var seat_price:     Float   = 10.0
+    var label               = UILabel()
     var available_image     = UIImage()
     var unavailable_image   = UIImage()
     var disabled_image      = UIImage()
@@ -39,27 +40,32 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var initial_seat_x: Int = 0
             var initial_seat_y: Int = 0
             var final_width: Int = 0
-            
+            var sttM: Int = 1
             for i in 0..<map.characters.count {
                 let seat_at_position = map[i]
                 
                 if seat_at_position == "A" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: false)
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: false, stt: sttM)
                     initial_seat_x += 1
+                    sttM += 1
                 } else if seat_at_position == "D" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: true)
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: true, stt: sttM)
                     initial_seat_x += 1
+                    sttM += 1
                 } else if seat_at_position == "U" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: false, isDisabled: false)
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: false, isDisabled: false, stt: sttM)
                     initial_seat_x += 1
+                    sttM += 1
                 } else if seat_at_position == "_" {
                     initial_seat_x += 1
+                    sttM += 1
                 } else {
                     if initial_seat_x > final_width {
                         final_width = initial_seat_x
                     }
                     initial_seat_x = 0
                     initial_seat_y += 1
+                    sttM += 1
                 }
             }
             
@@ -76,7 +82,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         }
         
     }
-    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool) {
+    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool, stt:Int) {
     
         let seatButton = ZSeat(frame: CGRect(
                 x: CGFloat(initial_seat_x) * seat_width,
@@ -99,6 +105,8 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         seatButton.row = initial_seat_y + 1
         seatButton.column = initial_seat_x + 1
         seatButton.price = seat_price
+        seatButton.stt = stt
+        seatButton.titleLabel?.text=String(stt)
         seatButton.addTarget(self, action: #selector(ZSeatSelector.seatSelected(_:)), for: .touchDown)
         zoomable_view.addSubview(seatButton)
     }
@@ -152,17 +160,22 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     // MARK: - Seat Images & Availability
     
     func setAvailableImage(_ available_image: UIImage, andUnavailableImage unavailable_image: UIImage, andDisabledImage disabled_image: UIImage, andSelectedImage selected_image: UIImage) {
+        //self.label.text? = stt
         self.available_image = available_image
         self.unavailable_image = unavailable_image
         self.disabled_image = disabled_image
         self.selected_image = selected_image
     }
     func setSeatAsUnavaiable(_ sender: ZSeat) {
-        sender.setImage(unavailable_image, for: UIControlState())
+        //sender.setImage(unavailable_image, for: UIControlState())
+        sender.titleLabel?.textColor=UIColor.black
+        sender.titleLabel?.text = "123"
         sender.selected_seat = true
     }
     func setSeatAsAvaiable(_ sender: ZSeat) {
-        sender.setImage(available_image, for: UIControlState())
+       // sender.setImage(available_image, for: UIControlState())
+        sender.titleLabel?.textColor=UIColor.black
+        sender.titleLabel?.text = "123"
         sender.selected_seat = false
     }
     func setSeatAsDisabled(_ sender: ZSeat) {
@@ -195,6 +208,7 @@ class ZSeat: UIButton {
     var disabled:       Bool    = true;
     var selected_seat:  Bool    = true;
     var price:          Float   = 0.0
+    var stt :           Int     = 0;
 }
 
 extension String {

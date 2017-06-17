@@ -80,7 +80,7 @@ class DetailController: UITableViewController {
         let day = Ngay[section]
         return day
     }
-    var chonNgay : Int!
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
@@ -93,20 +93,18 @@ class DetailController: UITableViewController {
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
-                let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
-                
-                
+                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20)) 
+                codedButton.indexNgay=0
                 codedButton.layer.borderWidth = 1
                 codedButton.layer.cornerRadius = CGFloat.init(10)
                 codedButton.layer.borderColor = UIColor.clear.cgColor 
                 codedButton.backgroundColor = UIColor.black
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
                 codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-                
-                chonNgay = f
+                codedButton.tag = index
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 
-                codedButton.tag = index
+                
                 
                 cell.contentView.addSubview(codedButton)
             }
@@ -119,19 +117,17 @@ class DetailController: UITableViewController {
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
-                let codedButton:UIButton = UIButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
+                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
                 
-                
+                codedButton.indexNgay = 1
                 codedButton.layer.borderWidth = 1
                 codedButton.layer.cornerRadius = CGFloat.init(10)
                 codedButton.layer.borderColor = UIColor.clear.cgColor
                 codedButton.backgroundColor = UIColor.black
                 codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
                 codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
-                chonNgay = f
-                codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 codedButton.tag = index
+                codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 
                 
                 cell.contentView.addSubview(codedButton)
@@ -142,12 +138,13 @@ class DetailController: UITableViewController {
     }
     
     //Button Action is
-    func buttonPressed(sender:UIButton!)
+    func buttonPressed(sender:codeButton!)
     {
         let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicket
         srcBuyTicket.movie = movie
         srcBuyTicket.time = (sender.titleLabel?.text)!
-        srcBuyTicket.ngay = Ngay[chonNgay]
+        srcBuyTicket.indexNgay = sender.indexNgay
+        srcBuyTicket.indexTime = sender.tag
         navigationController?.pushViewController(srcBuyTicket, animated: true)
         let buttonRow = sender.tag
         print("button is Pressed")
@@ -199,4 +196,9 @@ class DetailController: UITableViewController {
      }
      */
     
+}
+
+
+class codeButton: UIButton {
+    var indexNgay:            Int     = 0
 }

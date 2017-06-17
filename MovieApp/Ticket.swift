@@ -8,11 +8,14 @@
 
 import Foundation
 class Ticket{
-    var id  :Int?
-    var name:String?
-    var day :String?
-    var time:String?
-    var seat:String?
-    var sove:Int64?
-    var tongtien: Int64?
+    var id  :Int!
+    var name:String!
+    var day :String!
+    var time:String!
+    var seat:String!
+    var sove:Int64!
+    var tongtien: Int64!
+    
+    init(){
+        }
 }

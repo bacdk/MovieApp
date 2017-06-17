@@ -17,7 +17,6 @@
 		3AF7D2E51ED96BF8001DF490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7D2E31ED96BF8001DF490 /* LaunchScreen.storyboard */; };
 		3AF7D2F01ED96BF8001DF490 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2EF1ED96BF8001DF490 /* MovieAppTests.swift */; };
 		3AF7D2FB1ED96BF8001DF490 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2FA1ED96BF8001DF490 /* MovieAppUITests.swift */; };
-		A72D290B1EE869D300C48C94 /* ChonXuatChieuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D29091EE869D300C48C94 /* ChonXuatChieuViewController.swift */; };
 		A72D290E1EE86FDE00C48C94 /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */; };
 		A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */; };
 		A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */; };
@@ -80,7 +79,6 @@
 		40D1766A556C6A1CA1528AEA /* Pods_MovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588859E2B570D7070B722CC5 /* Pods_MovieAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7023C1CCF277A657E764882B /* Pods-MovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A72D29091EE869D300C48C94 /* ChonXuatChieuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChonXuatChieuViewController.swift; sourceTree = "<group>"; };
 		A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSeatSelector.swift; sourceTree = "<group>"; };
 		A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */,
 				A73E371B1EE8450F0063BBAE /* PopularViewController.swift */,
 				A73E371C1EE8450F0063BBAE /* UpComingViewController.swift */,
-				A72D29091EE869D300C48C94 /* ChonXuatChieuViewController.swift */,
 				A7A155BF1EE3237B00E9492E /* UserViewController.swift */,
 				BB8C64CD1EF114330056B945 /* BuyTicket.swift */,
 				CF209D6C1EEC2A1400EE0098 /* DetailController.swift */,
@@ -553,7 +550,6 @@
 				3AF7D2D81ED96BF8001DF490 /* AppDelegate.swift in Sources */,
 				A7A155C01EE3237B00E9492E /* UserViewController.swift in Sources */,
 				A72D290E1EE86FDE00C48C94 /* SeatViewController.swift in Sources */,
-				A72D290B1EE869D300C48C94 /* ChonXuatChieuViewController.swift in Sources */,
 				A735F0501EE41E8100F399C5 /* Trailer.swift in Sources */,
 				3AF7D2E01ED96BF8001DF490 /* MovieApp.xcdatamodeld in Sources */,
 				A73E371D1EE8450F0063BBAE /* PopularViewController.swift in Sources */,

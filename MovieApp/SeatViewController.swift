@@ -11,40 +11,27 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var ticket: Ticket!
     var noi:String = ""
     var movie: Movie!
+    var indexNgay:Int!
+    var indexTime:Int!
     
     var seatUser : NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let map:String =    "AAAAA_DAAAA/" +
-            "UAAAA_DAAAA/" +
-            "UUUUU_DAAAA/" +
-            "UAAAA_AAAAA/" +
-        "AAAAA_AAAAA/";
         
-        let seats = ZSeatSelector()
-        seats.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: 150)
-        seats.setSeatSize(CGSize(width: 10, height: 10))
-        seats.setAvailableImage(UIImage(named: "A")!,
-                                andUnavailableImage:UIImage(named: "U")!,
-                                andDisabledImage:   UIImage(named: "D")!,
-                                andSelectedImage:   UIImage(named: "S")!)
-        seats.layout_type = "Normal"
-        seats.setMap(map)
-        seats.seat_price = 10.0
-        seats.selected_seat_limit = 3
-        seats.seatSelectorDelegate = self
+        var map2:String = ""
         //self.view.addSubview(seats)
-        
-        let map2:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
-            "_AAAAAA_AAAAAA_DUUUAAAA_/" +
-            "________________________/" +
-            "_AAAAAUUAAAUAAAAUAAAAAAA/" +
-            "_UAAUUUUUUUUUUUUUUUAAAAA/" +
-            "_AAAAAAAAAAAUUUUUUUAAAAA/" +
-            "_AAAAAAAAUAAAAUUUUAAAAAA/" +
-        "_AAAAAUUUAUAUAUAUUUAAAAA/"
+        print(indexNgay)
+        if(indexNgay == 0)
+        {
+            map2 = (movie.today?[indexTime].seat!)!
+        }
+        else
+        {
+            map2 = (movie.today?[indexTime].seat)!
+        }
+
         noi = map2
         let seats2 = ZSeatSelector()
         seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
@@ -56,7 +43,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         seats2.layout_type = "Normal"
         seats2.setMap(map2)
         seats2.seat_price           = 5.0
-        seats2.selected_seat_limit  = 5
+        seats2.selected_seat_limit  = Int(ticket.sove!)
         seats2.seatSelectorDelegate = self
         seats2.maximumZoomScale         = 5.0
         seats2.minimumZoomScale         = 0.05
