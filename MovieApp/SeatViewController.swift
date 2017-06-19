@@ -9,7 +9,8 @@ import UIKit
 
 class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var ticket: Ticket!
-    var noi:String = ""
+    var seatUserString:String = seatMap
+    var seatMovieString:String = ""
     var movie: Movie!
     var indexNgay:Int!
     var indexTime:Int!
@@ -22,7 +23,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         
         var map2:String = ""
         //self.view.addSubview(seats)
-        print(indexNgay)
+        //print(indexNgay)
         if(indexNgay == 0)
         {
             map2 = (movie.today?[indexTime].seat!)!
@@ -32,7 +33,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             map2 = (movie.today?[indexTime].seat)!
         }
 
-        noi = map2
+        seatMovieString = map2
         let seats2 = ZSeatSelector()
         seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
@@ -78,18 +79,35 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         // Dispose of any resources that can be recreated.
     }
     func handleBookSeat() {
-        let range: Range<String.Index> = noi.range(of: "/")!
-        let numberofSeat:Int = noi.distance(from: noi.startIndex, to: range.lowerBound)
+        let range: Range<String.Index> = seatMovieString.range(of: "/")!
+        let numberofSeat:Int = seatMovieString.distance(from: seatMovieString.startIndex, to: range.lowerBound)
         //print(numberofSeat)
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
             let pos = (seat.row-1)*(numberofSeat+1)+seat.column-1
-            let index = noi.index(noi.startIndex, offsetBy: pos)
-            noi.replaceSubrange(index...index, with: "U")
+            let index = seatMovieString.index(seatMovieString.startIndex, offsetBy: pos)
+            seatMovieString.replaceSubrange(index...index, with: "U")
+        }
+        //print(numberofSeat)
+        for i in 0..<seatUser.count {
+            let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
+            print("Seat at row: \(seat.row) and column: \(seat.column)\n")
+            let pos = (seat.row-1)*(numberofSeat+1)+seat.column-1
+            let index = seatUserString.index(seatUserString.startIndex, offsetBy: pos)
+            seatUserString.replaceSubrange(index...index, with: "U")
         }
         //print(seats)
-        print(noi)
+        print(seatMovieString)
+        ticket.seat=seatUserString;
+        TMDb.bookTicket(ticket: ticket)
+        if(indexNgay==0)
+        {
+          //  TMDb.updateSeat(id: movie.id, ngay: "Today", gio: ticket.time, seat: seatMovieString)
+        }
+        else{
+            //TMDb.updateSeat(id: movie.id, ngay: "Tomorrow", gio: ticket.time, seat: seatMovieString)
+        }
     }
     
 }

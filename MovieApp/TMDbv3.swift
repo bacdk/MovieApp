@@ -108,6 +108,25 @@ class TMDb {
         sleep(3)
         return listTrailer
     }
+    static func updateSeat(id: Int, ngay: String, gio: String, seat: String)
+    {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Movie").child("NowPlaying").child(String(id)).child(ngay).child(gio).updateChildValues([
+            "seat": seat])
+        ref.child("Movie").child("Popular").child(String(id)).child(ngay).child(gio).updateChildValues([
+            "seat": seat])
+
+    }
+    static func bookTicket(ticket: Ticket)
+    {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users").child(getUid()).child("Tickets").child(String(ticket.id)).setValue(ticket.dict)
+    }
+    static func getUid() -> String {
+        return (Auth.auth().currentUser?.uid)!
+    }
     static func getTrailerSet(by movieId: Int) -> [Any] {
         var json = [String:Any]()
         var listTrailer = [Any]()

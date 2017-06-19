@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class Ticket{
     var id  :Int!
     var name:String!
@@ -18,4 +19,15 @@ class Ticket{
     
     init(){
         }
+    var dict:[String:Any] {
+        return [
+            "id": id,
+            "name": name,
+            "day ":day,
+            "time":time,
+            "seat":seat,
+            "sove":sove,
+            "tongtien":tongtien
+        ]
+    }
 }

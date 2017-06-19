@@ -17,6 +17,7 @@
 		3AF7D2E51ED96BF8001DF490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7D2E31ED96BF8001DF490 /* LaunchScreen.storyboard */; };
 		3AF7D2F01ED96BF8001DF490 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2EF1ED96BF8001DF490 /* MovieAppTests.swift */; };
 		3AF7D2FB1ED96BF8001DF490 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7D2FA1ED96BF8001DF490 /* MovieAppUITests.swift */; };
+		623140311EF7002500250AF7 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623140301EF7002500250AF7 /* Login.swift */; };
 		A72D290E1EE86FDE00C48C94 /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */; };
 		A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */; };
 		A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */; };
@@ -78,6 +79,7 @@
 		3AF7D2FC1ED96BF8001DF490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40D1766A556C6A1CA1528AEA /* Pods_MovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588859E2B570D7070B722CC5 /* Pods_MovieAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		623140301EF7002500250AF7 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7023C1CCF277A657E764882B /* Pods-MovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A72D290C1EE86FDE00C48C94 /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		A72D290D1EE86FDE00C48C94 /* ZSeatSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSeatSelector.swift; sourceTree = "<group>"; };
@@ -207,9 +209,9 @@
 			children = (
 				A735F04F1EE41E8100F399C5 /* Trailer.swift */,
 				A735F04B1EE3F3CD00F399C5 /* UserInfo.swift */,
-				BB5131501ED980EA00457B1B /* Movie.swift */,
 				BB5131511ED980EA00457B1B /* MovieDetail.swift */,
 				CF1984751EED52D900A29EEE /* Schedule.swift */,
+				BB5131501ED980EA00457B1B /* Movie.swift */,
 				BB8C64CF1EF12AC40056B945 /* Ticket.swift */,
 			);
 			name = Model;
@@ -241,6 +243,7 @@
 				CF209D701EEC5AB600EE0098 /* XuatChieuCell.swift */,
 				CF209D6E1EEC438000EE0098 /* DesignButton.swift */,
 				3A66F8EB1EE7DB1A00FF3EFE /* ChangePasswordViewController.swift */,
+				623140301EF7002500250AF7 /* Login.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				A75320971EE1B38900E75BE3 /* NowPlayingViewController.swift in Sources */,
 				BB5131571ED9837900457B1B /* Struct.swift in Sources */,
 				A73E371E1EE8450F0063BBAE /* UpComingViewController.swift in Sources */,
+				623140311EF7002500250AF7 /* Login.swift in Sources */,
 				BB8C64D01EF12AC40056B945 /* Ticket.swift in Sources */,
 				CF209D711EEC5AB600EE0098 /* XuatChieuCell.swift in Sources */,
 				BB5131521ED980EA00457B1B /* Movie.swift in Sources */,
