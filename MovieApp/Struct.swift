@@ -15,4 +15,4 @@ let seatMap:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
                        "_AAAAAAAAAAAAAAAAAAAAAAA/" +
                        "_AAAAAAAAAAAAAAAAAAAAAAA/" +
                        "_AAAAAAAAAAAAAAAAAAAAAAA/"
-let gioChieu=["9h00AM", "11h30AM", "3h00PM", "6h00PM", "9h00PM", "11h00PM"]
+let gioChieu=["9h00", "11h30", "15h00", "18h00", "21h00", "23h00"]
