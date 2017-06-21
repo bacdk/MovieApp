@@ -8,20 +8,34 @@
 
 import UIKit
 import Firebase
-class PopularViewController: UITableViewController,UITabBarDelegate{
+class PopularViewController: UITableViewController, UISearchResultsUpdating{
     
     var movies = [Movie]()
     var refreshPage = 0
     
     var p = 1
     var posterImage: [Int:UIImage] = [:]
+    //Search
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredMovies = [Movie]()
+    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         //spinner.isHidden = true
         loadData()
         self.tableView.separatorStyle = .none
-
+        //Search
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        self.view.addSubview(searchController.searchBar)
+        definesPresentationContext = true
+        
     }
+    
+    //
     func loadData()  {
         TMDb.getPopularListFireBase(completionHandler: { (movies, error) in
             if(error != nil) {
@@ -35,8 +49,24 @@ class PopularViewController: UITableViewController,UITabBarDelegate{
         })
     }
     
+    //Search
+    //
+    func filterContentForSearchText(searchText: String) {
+        filteredMovies = movies.filter { movie in
+            return  movie.title.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+    //
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredMovies.count
+        }
         return movies.count
     }
     
@@ -45,31 +75,53 @@ class PopularViewController: UITableViewController,UITabBarDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
         cell.posterImage.image = #imageLiteral(resourceName: "default")
         let queue = OperationQueue()
-        //print(movies[indexPath.row].id)
-        if posterImage[movies[indexPath.row].id] != nil {
-            cell.posterImage.image = posterImage[movies[indexPath.row].id]
-        }else{
-            queue.addOperation { () -> Void in
-                let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
-                // NSLog(img1)
-                OperationQueue.main.addOperation({
-                    self.posterImage[self.movies[indexPath.row].id] = img1
-                    cell.posterImage.image = img1
-                })
+        //
+        if searchController.isActive && searchController.searchBar.text != "" {
+            if posterImage[filteredMovies[indexPath.row].id] != nil {
+                cell.posterImage.image = posterImage[filteredMovies[indexPath.row].id]
+            }else{
+                queue.addOperation { () -> Void in
+                    let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.filteredMovies[indexPath.row].poster_path!)")
+                    // NSLog(img1)
+                    OperationQueue.main.addOperation({
+                        self.posterImage[self.filteredMovies[indexPath.row].id] = img1
+                        cell.posterImage.image = img1
+                    })
+                }
             }
+            
+            cell.nameLabel.text = filteredMovies[indexPath.row].title
+            
+            cell.releaseLabel.text = "📅 \(filteredMovies[indexPath.row].release_date!)"
+            cell.voteLabel.text = "★ \(filteredMovies[indexPath.row].vote_average!)"
+            //
+        } else {
+            if posterImage[movies[indexPath.row].id] != nil {
+                cell.posterImage.image = posterImage[movies[indexPath.row].id]
+            }else{
+                queue.addOperation { () -> Void in
+                    let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
+                    // NSLog(img1)
+                    OperationQueue.main.addOperation({
+                        self.posterImage[self.movies[indexPath.row].id] = img1
+                        cell.posterImage.image = img1
+                    })
+                }
+            }
+            
+            cell.nameLabel.text = movies[indexPath.row].title
+            //cell.overviewTextView.text = movies[indexPath.row].overview
+            cell.releaseLabel.text = "📅 \(movies[indexPath.row].release_date!)"
+            cell.voteLabel.text = "★ \(movies[indexPath.row].vote_average!)"
         }
-        
-        cell.nameLabel.text = movies[indexPath.row].title
-        cell.overviewTextView.text = movies[indexPath.row].overview
-        cell.releaseLabel.text = "📅 \(movies[indexPath.row].release_date!)"
-        cell.voteLabel.text = "⭐️ \(movies[indexPath.row].vote_average!)"
+        //
         return cell
     }
     //Load lai data
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == refreshPage - 1 {
             //spinner.isHidden = false
-           //Users/hntlk/MovieApp/MovieApp/PopularViewController.swift //spinner.startAnimating()
+            //Users/hntlk/MovieApp/MovieApp/PopularViewController.swift //spinner.startAnimating()
             loadData()
         }
     }
@@ -79,18 +131,15 @@ class PopularViewController: UITableViewController,UITabBarDelegate{
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
                 let detailVC = segue.destination as! DetailController
-
+                
                 detailVC.movie = movies[indexPath.row]
-
-                    var listVideo: [Trailer]!
-                    listVideo = TMDb.getListTrailer(by: self.movies[indexPath.row].id!)
-                    detailVC.listVideos = listVideo
-
+                
+                var listVideo: [Trailer]!
+                listVideo = TMDb.getListTrailer(by: self.movies[indexPath.row].id!)
+                detailVC.listVideos = listVideo
+                
             }
         }
     }
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        //This method will be called when user changes tab.
-        tabName="Popular"
-    }
+    
 }

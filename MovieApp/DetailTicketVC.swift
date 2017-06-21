@@ -23,6 +23,13 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     var ticket: Ticket!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(view.frame.size)
+        UIImage(named: "03")!.draw(in: view.frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.view.backgroundColor = UIColor(patternImage: image!)
+        
         if screen == "History"
         {
             btnBack.isHidden = true
@@ -40,14 +47,16 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         lblSoghe.text = arraySeat
         let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(ticket.image!)")
         imagePoster.image = img1
+        imagePoster.layer.cornerRadius = CGFloat.init(05)
+        imagePoster.layer.masksToBounds = true
         let map2:String =   ticket.seat
         let seats2 = ZSeatSelector()
         seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
-        seats2.setAvailableImage(   UIImage(named: "A")!,
-                                    andUnavailableImage:    UIImage(named: "U")!,
-                                    andDisabledImage:       UIImage(named: "D")!,
-                                    andSelectedImage:       UIImage(named: "S")!)
+        seats2.setAvailableImage(   UIImage(named: "sT")!,
+                                    andUnavailableImage:    UIImage(named: "sE")!,
+                                    andDisabledImage:       UIImage(named: "sT")!,
+                                    andSelectedImage:       UIImage(named: "sT")!)
         seats2.layout_type = "Normal"
         seats2.setMap(map2)
         seats2.seat_price           = 5.0
@@ -70,9 +79,9 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     @IBAction func backAction(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
+//        self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
+        }
 }

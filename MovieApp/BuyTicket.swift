@@ -143,7 +143,7 @@ class BuyTicket: UIViewController {
             }
             else {
                 //showAlertDialog(message: "Hãy đăng nhập trước khi sử dụng tính năng này")
-                let alert = UIAlertController(title: "Success", message:   "Hãy đăng nhập trước khi sử dụng tính năng này", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Login require", message:   "Hãy đăng nhập trước khi sử dụng tính năng này", preferredStyle: .alert)
                 
                 let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
                     //                    let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController

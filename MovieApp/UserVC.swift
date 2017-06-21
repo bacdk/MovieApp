@@ -16,7 +16,7 @@ class UserVC: UITableViewController {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var imageUser: UIImageView!
     var mDatabase: DatabaseReference!
-    
+    var user = UserInfo()
     @IBOutlet weak var viewTB: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +26,11 @@ class UserVC: UITableViewController {
             self.buttonLogin.isHidden = true
         }
         UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "backUser")!.draw(in: viewTB.frame)
+        UIImage(named: "03")!.draw(in: viewTB.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
         self.viewTB.backgroundColor = UIColor(patternImage: image!)
-        
+        self.tableView.separatorStyle = .none
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -51,7 +51,16 @@ class UserVC: UITableViewController {
         if(Auth.auth().currentUser != nil)
         {
             self.buttonLogin.isHidden = true
-            self.lb_name.text = ""
+            
+            TMDb.fetchUser(completionHandler: { (user, error) in
+                if(error != nil) {
+                    print(error!)
+                } else {
+                    self.user = user
+                    self.lb_name.text = user.name
+                }
+            })
+        
             return 1
         }
         else

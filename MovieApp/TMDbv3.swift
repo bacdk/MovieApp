@@ -155,6 +155,14 @@ class TMDb {
         }, withCancel: nil)
     }
     
+    static func fetchUser(completionHandler: @escaping (_ user: UserInfo, _ error: Error?) -> Void){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users").child((Auth.auth().currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let user = UserInfo(json: snapshot.value as! [String : Any])
+            completionHandler(user, nil)
+        }, withCancel: nil)
+    }
     
     static func bookTicket(ticket: Ticket)
     {

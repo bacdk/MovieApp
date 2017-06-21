@@ -9,7 +9,8 @@
 import UIKit
 
 class TabBar: UITabBarController, UITabBarControllerDelegate {
-
+    @IBAction func unwindToLoginScreen(segue:UIStoryboardSegue) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
