@@ -173,19 +173,19 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     }
     func setSeatAsAvaiable(_ sender: ZSeat) {
         var image = UIImage()
-        image = textToImage(drawText: String(sender.stt) as NSString, inImage: available_image, atPoint: CGPoint(x:2,y:0))
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: available_image, atPoint: CGPoint(x:5,y:0))
         sender.setImage(image, for: UIControlState())
         sender.selected_seat = false
     }
     func setSeatAsDisabled(_ sender: ZSeat) {
         var image = UIImage()
-        image = textToImage(drawText: String(sender.stt) as NSString, inImage: disabled_image, atPoint: CGPoint(x:2,y:0))
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: disabled_image, atPoint: CGPoint(x:5,y:0))
         sender.setImage(image, for: UIControlState())
         sender.selected_seat = false
     }
     func setSeatAsSelected(_ sender: ZSeat) {
         var image = UIImage()
-        image = textToImage(drawText: String(sender.stt) as NSString, inImage: selected_image, atPoint: CGPoint(x:2,y:0))
+        image = textToImage(drawText: String(sender.stt) as NSString, inImage: selected_image, atPoint: CGPoint(x:5,y:0))
         sender.setImage(image, for: UIControlState())
         sender.selected_seat = true
     }

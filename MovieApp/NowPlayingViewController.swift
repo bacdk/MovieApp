@@ -9,9 +9,8 @@
 import UIKit
 import Firebase
 
-class NowPlayingViewController: UITableViewController{
+class NowPlayingViewController: UITableViewController {
     
-
     var movies = [Movie]()
     var refreshPage = 0
     
@@ -20,7 +19,8 @@ class NowPlayingViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        self.tableView.separatorStyle = .none       
+        self.tableView.separatorStyle = .none
+        tabName="NowPlaying"
     }
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
@@ -34,7 +34,6 @@ class NowPlayingViewController: UITableViewController{
             }
         })
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return movies.count

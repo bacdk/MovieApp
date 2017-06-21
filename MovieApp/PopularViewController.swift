@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class PopularViewController: UITableViewController{
+class PopularViewController: UITableViewController,UITabBarDelegate{
     
     var movies = [Movie]()
     var refreshPage = 0
@@ -45,6 +45,7 @@ class PopularViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! NowPlayingTVCell
         cell.posterImage.image = #imageLiteral(resourceName: "default")
         let queue = OperationQueue()
+        //print(movies[indexPath.row].id)
         if posterImage[movies[indexPath.row].id] != nil {
             cell.posterImage.image = posterImage[movies[indexPath.row].id]
         }else{
@@ -88,5 +89,8 @@ class PopularViewController: UITableViewController{
             }
         }
     }
-    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        //This method will be called when user changes tab.
+        tabName="Popular"
+    }
 }

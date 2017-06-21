@@ -95,16 +95,10 @@ class DetailController: UITableViewController {
                 
                 let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20)) 
                 codedButton.indexNgay=0
-                codedButton.layer.borderWidth = 1
-                codedButton.layer.cornerRadius = CGFloat.init(10)
-                codedButton.layer.borderColor = UIColor.clear.cgColor 
-                codedButton.backgroundColor = UIColor.black
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
-                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
                 codedButton.tag = index
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
-                
-                
+                codedButton.setFormat()
                 
                 cell.contentView.addSubview(codedButton)
             }
@@ -120,15 +114,10 @@ class DetailController: UITableViewController {
                 let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
                 
                 codedButton.indexNgay = 1
-                codedButton.layer.borderWidth = 1
-                codedButton.layer.cornerRadius = CGFloat.init(10)
-                codedButton.layer.borderColor = UIColor.clear.cgColor
-                codedButton.backgroundColor = UIColor.black
                 codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
-                codedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
                 codedButton.tag = index
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
-                
+                codedButton.setFormat()
                 
                 cell.contentView.addSubview(codedButton)
             }
@@ -196,6 +185,16 @@ class DetailController: UITableViewController {
      }
      */
     
+}
+extension UIButton {
+    
+    func setFormat() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = CGFloat.init(10)
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.backgroundColor = UIColor.black
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+    }
 }
 
 

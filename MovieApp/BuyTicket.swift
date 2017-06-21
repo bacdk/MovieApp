@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 class BuyTicket: UIViewController {
-
+    
     
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var txtFilmName: UILabel!
@@ -20,12 +20,12 @@ class BuyTicket: UIViewController {
     @IBOutlet weak var lblNgay: UILabel!
     @IBOutlet weak var lblMoney: UILabel!
     @IBOutlet weak var txtTime: UILabel!
-
+    
     @IBOutlet weak var lblnumberTicket: UILabel!
     
     @IBOutlet weak var txtPrice: UILabel!
     var mDatabase: DatabaseReference!
-   // var progressDialog: MBProgressHUD!
+    // var progressDialog: MBProgressHUD!
     
     var ngay: String!
     var time: String = ""
@@ -37,7 +37,6 @@ class BuyTicket: UIViewController {
     var userInfo: User!
     var movie: Movie!
     var ticket = Ticket()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,29 +50,29 @@ class BuyTicket: UIViewController {
     func loadDataFromDB() {
         //show progress
         showProgress()
-//        mDatabase.child("films").child(filmInfo.filmType).child(filmInfo.filmId).child("showTimes").child(time).child("showTimeInfo").observeSingleEvent(of: .value, with: { (snapshot) in
-//            self.hideProgress()
-//            if let showTimeInfo = snapshot.value as? [String: AnyObject] {
-//                let price = showTimeInfo["price"] as? Int64 ?? 0
-//                let type = showTimeInfo["type"] as? String ?? ""
-//                let timeShow = showTimeInfo["time"] as? String ?? ""
-//                //load data
-//                self.txtPrice.text = String(price) + "VND"
-//                self.txtTime.text = type + " - " + timeShow
-//                self.priceFilm = price
-//                
-//            }
-//        })
+        //        mDatabase.child("films").child(filmInfo.filmType).child(filmInfo.filmId).child("showTimes").child(time).child("showTimeInfo").observeSingleEvent(of: .value, with: { (snapshot) in
+        //            self.hideProgress()
+        //            if let showTimeInfo = snapshot.value as? [String: AnyObject] {
+        //                let price = showTimeInfo["price"] as? Int64 ?? 0
+        //                let type = showTimeInfo["type"] as? String ?? ""
+        //                let timeShow = showTimeInfo["time"] as? String ?? ""
+        //                //load data
+        //                self.txtPrice.text = String(price) + "VND"
+        //                self.txtTime.text = type + " - " + timeShow
+        //                self.priceFilm = price
+        //
+        //            }
+        //        })
     }
     
     func showProgress() {
-//        progressDialog = MBProgressHUD.showAdded(to: self.view, animated: true)
-//        progressDialog.mode = MBProgressHUDMode.indeterminate
-//        progressDialog.label.text = "Đang tải..."
+        //        progressDialog = MBProgressHUD.showAdded(to: self.view, animated: true)
+        //        progressDialog.mode = MBProgressHUDMode.indeterminate
+        //        progressDialog.label.text = "Đang tải..."
     }
     
     func hideProgress() {
-       // progressDialog.hide(animated: true)
+        // progressDialog.hide(animated: true)
     }
     
     func loadData() {
@@ -83,7 +82,7 @@ class BuyTicket: UIViewController {
         txtTime.text = time
         txtPrice.text = String(priceFilm)
         //get ngay
-
+        
         let date = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
@@ -92,17 +91,17 @@ class BuyTicket: UIViewController {
         //print(ngay)
         if(indexNgay == 0)
         {
-            ngay = String(day)+"/"+String(month)+"/"+String(year)
+            ngay = String(day)+"-"+String(month)+"-"+String(year)
             lblNgay.text = ngay
         }
         else
         {
-            ngay = String(day+1)+"/"+String(month)+"/"+String(year)
+            ngay = String(day+1)+"-"+String(month)+"-"+String(year)
             lblNgay.text = ngay
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -116,7 +115,7 @@ class BuyTicket: UIViewController {
             lblMoney.text = String(money) + "VND"
         }
     }
-
+    
     @IBAction func btnAdd(_ sender: Any) {
         ticketNumber = ticketNumber + 1;
         lblnumberTicket.text = String(ticketNumber)
@@ -127,80 +126,34 @@ class BuyTicket: UIViewController {
     @IBAction func btnNext(_ sender: Any) {
         if (ticketNumber > 0) {
             if Auth.auth().currentUser != nil {
-                
-                
-                print(movie.id)
                 let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
-                print(ngay)
-            
                 ticket.day = ngay
                 ticket.id = movie.id
                 ticket.name = movie.title
-               ticket.sove = ticketNumber
-               ticket.tongtien = money
-               ticket.time = time
+                ticket.image = movie.poster_path
                 ticket.sove = ticketNumber
-               srcSeat.ticket = ticket
-               srcSeat.movie = movie
-               srcSeat.indexNgay = indexNgay
-               srcSeat.indexTime = indexTime
-               navigationController?.pushViewController(srcSeat, animated: true)
-
-                
-                if (userInfo != nil) {
-//                    if (Int64(userInfo.balance) < money) {
-//                        showAlertDialog(message: "Số tiền trong tài khoản của bạn không đủ")
-//                    }
-//                    else {
-//                        let src = self.storyboard?.instantiateViewController(withIdentifier: "choosePlacesId") as! ChoosePlacesViewController
-//                        src.filmInfo = filmInfo
-//                        src.time = "850"
-//                        navigationController?.pushViewController(src, animated: true)
-//                    }
-                    print("NextTune")
-                    let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
-                    //print(ngay)
-                    
-                    ticket.day = ngay
-                    ticket.id = movie.id
-                    ticket.name = movie.title
-                    ticket.sove = ticketNumber
-                    ticket.tongtien = money
-                    ticket.time = time
-                    srcSeat.ticket = ticket
-                    print(indexNgay)
-                    srcSeat.indexNgay = indexNgay
-                    srcSeat.indexTime = indexTime
-                    navigationController?.pushViewController(srcSeat, animated: true)
-                }
-                else {
-                    mDatabase.child("users").child(getUid()).observeSingleEvent(of: .value, with: { (snapshot) in
-                        if let user = snapshot.value as? [String: AnyObject] {
-                            let fullName = user["fullName"] as? String ?? ""
-                            let email = user["email"] as? String ?? ""
-                            let address = user["address"] as? String ?? ""
-                            let phone = user["phone"] as? String ?? ""
-                            let balance = user["balance"] as? Double ?? 0
-                            let password = user["password"] as? String ?? ""
-                            
-//                            self.userInfo = User.init(fullName: fullName, email: email, address: address, balance: balance, password: password, phone: phone, uid: self.getUid())
-//                            
-//                            if (Int64(self.userInfo.balance) < self.money) {
-//                                self.showAlertDialog(message: "Số tiền trong tài khoản của bạn không đủ")
-//                            }
-//                            else {
-//                                let src = self.storyboard?.instantiateViewController(withIdentifier: "choosePlacesId") as! ChoosePlacesViewController
-//                                src.filmInfo = self.filmInfo
-//                                src.time = "850"
-//                                self.navigationController?.pushViewController(src, animated: true)
-//                            }
-                            
-                        }
-                    })
-                }
+                ticket.tongtien = money
+                ticket.time = time
+                ticket.sove = ticketNumber
+                srcSeat.ticket = ticket
+                srcSeat.movie = movie
+                srcSeat.indexNgay = indexNgay
+                srcSeat.indexTime = indexTime
+                navigationController?.pushViewController(srcSeat, animated: true)
             }
             else {
-                showAlertDialog(message: "Hãy đăng nhập trước khi sử dụng tính năng này")
+                //showAlertDialog(message: "Hãy đăng nhập trước khi sử dụng tính năng này")
+                let alert = UIAlertController(title: "Success", message:   "Hãy đăng nhập trước khi sử dụng tính năng này", preferredStyle: .alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
+                    //                    let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
+                    //                    self.navigationController?.pushViewController(nextViewController, animated: true)
+                    let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
+                    self.present(viewControllerYouWantToPresent, animated: true, completion: nil)
+                })
+                
+                alert.addAction(OKAction)
+                self.present(alert, animated: true){}
             }
         }
         else {
@@ -220,3 +173,12 @@ class BuyTicket: UIViewController {
     }
     
 }
+
+
+//let alert = UIAlertController(title: "Success", message: "Logged In", preferredStyle: .Alert)
+//let action = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+//    let viewControllerYouWantToPresent = self.storyboard?.instantiateViewControllerWithIdentifier("SomeViewControllerIdentifier")
+//    self.presentViewController(viewControllerYouWantToPresent!, animated: true, completion: nil)
+//}
+//alert.addAction(action)
+//self.presentViewController(alert, animated: true, completion: nil)

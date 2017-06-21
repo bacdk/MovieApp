@@ -19,21 +19,40 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        var map2:String = ""
+        //var map2:String = ""
         //self.view.addSubview(seats)
         //print(indexNgay)
         if(indexNgay == 0)
         {
-            map2 = (movie.today?[indexTime].seat!)!
+            TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
+                if(error != nil) {
+                    print(error!)
+                } else {
+                    self.seatMovieString = seat!
+                    self.draw()
+                }
+            })
+            print(self.seatMovieString)
+//            map2 = (movie.today?[indexTime].seat!)!
         }
         else
         {
-            map2 = (movie.today?[indexTime].seat)!
+            TMDb.getSeatMap(id: movie.id, ngay: "Tomorrow", gio: ticket.time, completionHandler: { (seat, error) in
+                if(error != nil) {
+                    print(error!)
+                } else {
+                    self.seatMovieString = seat!
+                    self.draw()
+                }
+            })
+//            map2 = (movie.tomorrow?[indexTime].seat)!
         }
 
-        seatMovieString = map2
+        //seatMovieString = map2
+
+    }
+    
+    func draw(){
         let seats2 = ZSeatSelector()
         seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
@@ -42,15 +61,13 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                                     andDisabledImage:       UIImage(named: "D")!,
                                     andSelectedImage:       UIImage(named: "S")!)
         seats2.layout_type = "Normal"
-        seats2.setMap(map2)
+        seats2.setMap(seatMovieString)
         seats2.seat_price           = 5.0
         seats2.selected_seat_limit  = Int(ticket.sove!)
         seats2.seatSelectorDelegate = self
         seats2.maximumZoomScale         = 5.0
         seats2.minimumZoomScale         = 0.05
         self.view.addSubview(seats2)
-        
-        
     }
     
     func seatSelected(_ seat: ZSeat) {
@@ -98,16 +115,26 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             seatUserString.replaceSubrange(index...index, with: "U")
         }
         //print(seats)
-        print(seatMovieString)
+        //print(seatMovieString)
+        ticket.soghe = [Int]()
+        for seat in seatUser
+        {
+            ticket.soghe.append((seat as! ZSeat).stt)
+        }
+        //print(ticket.)
         ticket.seat=seatUserString;
         TMDb.bookTicket(ticket: ticket)
         if(indexNgay==0)
         {
-          //  TMDb.updateSeat(id: movie.id, ngay: "Today", gio: ticket.time, seat: seatMovieString)
+            TMDb.updateSeat(id: movie.id, ngay: "Today", gio: ticket.time, seat: seatMovieString)
         }
         else{
-            //TMDb.updateSeat(id: movie.id, ngay: "Tomorrow", gio: ticket.time, seat: seatMovieString)
+            TMDb.updateSeat(id: movie.id, ngay: "Tomorrow", gio: ticket.time, seat: seatMovieString)
         }
+        let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "detailTicket") as! DetailTicketVC
+        detailTicket.screen = "bookTicket"
+        detailTicket.ticket = ticket
+        self.present(detailTicket, animated: true, completion: nil)
     }
     
 }

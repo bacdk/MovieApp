@@ -5,7 +5,11 @@ import UIKit
 import Firebase
 
 class LoginController: UIViewController {
+    @IBOutlet weak var btnBack: UIButton!
     
+    @IBAction func backAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     lazy var labelStatus: UILabel = {
         let status = UILabel()
         //status.backgroundColor = UIColor(r: 80, g: 101, b: 161)
@@ -29,11 +33,9 @@ class LoginController: UIViewController {
     
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        button.setUpLayer(sampleButton: button)
         button.setTitle("Register", for: UIControlState())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         
@@ -154,9 +156,10 @@ class LoginController: UIViewController {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = UIColor.white
-        sc.selectedSegmentIndex = 1
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
-        return sc
+        sc.selectedSegmentIndex = 0
+        
+       return sc
     }()
     
     func handleLoginRegisterChange() {
@@ -196,6 +199,14 @@ class LoginController: UIViewController {
         setupProfileImageView()
         setupLoginRegisterSegmentedControl()
         setupLabelStatus()
+        handleLoginRegisterChange()
+        
+        UIGraphicsBeginImageContext(view.frame.size)
+        UIImage(named: "Unknown")!.draw(in: view.frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.view.backgroundColor = UIColor(patternImage: image!)
+
     }
     func setupLabelStatus() {
         //need x, y, width, height constraints
@@ -299,7 +310,22 @@ extension UIColor {
     }
     
 }
-
+//Format fir button
+extension UIButton
+{
+    func setUpLayer(sampleButton: UIButton?) {
+        sampleButton?.tintColor =  UIColor.white
+        sampleButton!.frame = CGRect(x:50, y:500, width:170, height:40)
+        sampleButton!.layer.borderWidth = 1.0
+        sampleButton!.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        sampleButton!.layer.cornerRadius = 5.0
+        
+        sampleButton!.layer.shadowRadius =  3.0
+        sampleButton!.layer.shadowColor =  UIColor.white.cgColor
+        sampleButton!.layer.shadowOpacity =  0.3
+    }
+    
+}
 
 
 
