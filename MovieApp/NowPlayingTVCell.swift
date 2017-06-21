@@ -12,7 +12,7 @@ class NowPlayingTVCell: UITableViewCell {
 
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var overviewTextView: UITextView!
+    //@IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
 

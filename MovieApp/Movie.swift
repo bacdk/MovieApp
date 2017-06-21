@@ -1,4 +1,10 @@
-
+//
+//  DetailController.swift
+//  MovieApp-master
+//
+//  Created by Tai Nhat Huynh on 6/10/17.
+//  Copyright © 2017 Dau Khac Bac. All rights reserved.
+//
 
 import Foundation
 class Movie {
@@ -17,7 +23,8 @@ class Movie {
     var vote_count: Int!
     var video: Bool!
     var vote_average: Double!
-    
+    var today: [Schedule]?
+    var tomorrow: [Schedule]?
     init(json: [String:Any]) {
         poster_path             = json["poster_path"]       as? String
         adult                   = json["adult"]             as? Bool
@@ -33,5 +40,7 @@ class Movie {
         vote_count              = json["vote_count"]        as? Int
         video                   = json["video"]             as? Bool
         vote_average            = json["vote_average"]      as? Double
+
     }
+    
 }
