@@ -91,20 +91,13 @@ import UIKit
                     ref.child("Movie").child("UpComing").child(String(id)).child("Tomorrow").child(mm).setValue(seatMap)
                 }
                 
-                
-                // File located on disk
-                let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
-                //print((json["poster_path"])!)
-                // Create a reference to the file you want to upload
-                let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
-                // Upload the file to the path "images/rivers.jpg"
-                if let uploadData = UIImagePNGRepresentation(img1!) {
-                    storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                        if let error = error {
-                            print(error)
-                            return
-                        }})
-                }
+                let MovieDetails = TMDb.getDetail(ByMovieId: id)
+                var MovieDetailcutDown = MovieDetail(json: MovieDetails)
+                ref.child("Movie").child("UpComing").child(String(id)).updateChildValues(MovieDetailcutDown.dict)
+                let trailers = TMDb.getListTrailer(by: id)
+                ref.child("Movie").child("UpComing").child(String(id)).updateChildValues(trailers[0].dict)
+                ref.child("Movie").child("UpComing").child(String(id)).updateChildValues(["tabname":"UC"])
+
             }
             DispatchQueue.main.async {
                 self.refreshPage += 20

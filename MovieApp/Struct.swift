@@ -1,7 +1,7 @@
 
 
 import Foundation
-let apiKey = "api_key=bf144d99969c3e174c395faf9782475d"
+let apiKey = "api_key=6e88037f047d81ae9f50587d0d0c41e2"
 let prefixLink = "https://api.themoviedb.org/3/movie/"
 let language = "language=en-US"
 let prefixImage = "https://image.tmdb.org/t/p/"

@@ -56,7 +56,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         }else{
             queue.addOperation { () -> Void in
                 let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movies[indexPath.row].poster_path!)")
-               // NSLog(img1)
+                // NSLog(img1)
                 OperationQueue.main.addOperation({
                     self.posterImage[self.movies[indexPath.row].id] = img1
                     cell.posterImage.image = img1
@@ -100,23 +100,32 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             for mm in gioChieu
             {
                 ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
-            //ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
-            ref.child("Movie").child("NowPlaying").child(String(id)).child("Tomorrow").child(mm).setValue(seatMap)
+                //ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
+                ref.child("Movie").child("NowPlaying").child(String(id)).child("Tomorrow").child(mm).setValue(seatMap)
             }
             
             // File located on disk
-            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
+            //let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(json["poster_path"]!)")
+            let MovieDetails = TMDb.getDetail(ByMovieId: id)
+            var MovieDetailcutDown = MovieDetail(json: MovieDetails)
+            ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(MovieDetailcutDown.dict)
+            let trailers = TMDb.getListTrailer(by: id)
+            ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(trailers[0].dict)
+            ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(["tabname":"NP"])
+            //let trailer = TMDb.getTrailerSet(by: id)
+            //ref.child("Movie").child("NowPlaying").child(String(id)).setValue(trailer)
+            
             //print((json["poster_path"])!)
             // Create a reference to the file you want to upload
-            let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
+            //let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
             // Upload the file to the path "images/rivers.jpg"
-            if let uploadData = UIImagePNGRepresentation(img1!) {
-                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                    if let error = error {
-                        print(error)
-                        return
-                    }})
-           }
+//            if let uploadData = UIImagePNGRepresentation(img1!) {
+//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+//                    if let error = error {
+//                        print(error)
+//                        return
+//                    }})
+//            }
         }
         DispatchQueue.main.async {
             self.refreshPage += 20
@@ -134,7 +143,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
                 
-
+                
                 let detailVC = segue.destination as! DetailViewController
                 detailVC.movie = movies[indexPath.row]
                 let queue = OperationQueue()
@@ -148,17 +157,17 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-
+    
 }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
