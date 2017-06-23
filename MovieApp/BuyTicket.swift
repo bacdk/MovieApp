@@ -43,41 +43,12 @@ class BuyTicket: UIViewController {
         mDatabase = Database.database().reference()
         // Do any additional setup after loading the view.
         loadData()
-        //print(movie.poster_path)
-        loadDataFromDB()
     }
-    
-    func loadDataFromDB() {
-        //show progress
-        showProgress()
-        //        mDatabase.child("films").child(filmInfo.filmType).child(filmInfo.filmId).child("showTimes").child(time).child("showTimeInfo").observeSingleEvent(of: .value, with: { (snapshot) in
-        //            self.hideProgress()
-        //            if let showTimeInfo = snapshot.value as? [String: AnyObject] {
-        //                let price = showTimeInfo["price"] as? Int64 ?? 0
-        //                let type = showTimeInfo["type"] as? String ?? ""
-        //                let timeShow = showTimeInfo["time"] as? String ?? ""
-        //                //load data
-        //                self.txtPrice.text = String(price) + "VND"
-        //                self.txtTime.text = type + " - " + timeShow
-        //                self.priceFilm = price
-        //
-        //            }
-        //        })
-    }
-    
-    func showProgress() {
-        //        progressDialog = MBProgressHUD.showAdded(to: self.view, animated: true)
-        //        progressDialog.mode = MBProgressHUDMode.indeterminate
-        //        progressDialog.label.text = "Đang tải..."
-    }
-    
-    func hideProgress() {
-        // progressDialog.hide(animated: true)
-    }
-    
+
     func loadData() {
         let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(movie.poster_path!)")
         imgPoster.image = img1
+        imgPoster.layer.cornerRadius = CGFloat.init(05)
         txtFilmName.text = movie.title
         txtTime.text = time
         txtPrice.text = String(priceFilm)

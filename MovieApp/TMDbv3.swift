@@ -175,40 +175,4 @@ class TMDb {
     static func getUid() -> String {
         return (Auth.auth().currentUser?.uid)!
     }
-    static func getTrailerSet(by movieId: Int) -> [Any] {
-        var json = [String:Any]()
-        var listTrailer = [Any]()
-        let url = NSURL(string: "\(prefixLink)\(movieId)/videos?\(apiKey)&\(language)")
-        
-        let request = NSMutableURLRequest(url: url! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 3)
-        
-        request.httpMethod = "GET"
-        
-        _ = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (Data, URLResponse, Error) in
-            
-            if (Error != nil) {
-                print(Error!)
-            } else {
-                
-                do {
-                    json = try JSONSerialization.jsonObject(with: Data!, options: .allowFragments) as! [String:Any]
-                    listTrailer = json["results"] as! [Any]
-                } catch let error as NSError {
-                    print(error)
-                }
-            }
-        }).resume()
-        return listTrailer
-    }
-    static func getListTrailer(by movieId: Int) -> [Trailer] {
-        let set = getTrailerSet(by: movieId)
-        var trailers = [Trailer]()
-        
-        for video in set {
-            let temp = video as! [String:Any]
-            trailers.append(Trailer(json: temp))
-        }
-        
-        return trailers
-    }
 }

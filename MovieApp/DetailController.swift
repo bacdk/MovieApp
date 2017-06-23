@@ -10,41 +10,38 @@ import UIKit
 
 class DetailController: UITableViewController {
     
+    @IBOutlet weak var rate: UILabel!
     @IBOutlet weak var video: UIWebView!
     @IBOutlet weak var nameMovie: UILabel!
     @IBOutlet weak var overview: UITextView!
-    var movieId: Int!
+    
     var movie: Movie!
-    var listVideos = [Trailer]()
-    
-    
     var hourToday = [Schedule]()
     var hourTomorrow = [Schedule]()
     var Ngay=["Today", "Tomorrow"]
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        overview?.text = movie.overview
-        nameMovie?.text = movie.title
-        hourToday = movie.today!
-        hourTomorrow = movie.tomorrow!
-        
-        if listVideos.count != 0
-        {
-            let vide = listVideos[0]
-            let request = URLRequest(url: URL(string: "\(prefixYoutube)\(vide.key!)")!)
-            video.loadRequest(request)
-        }
         loadData();
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    func check()->Bool
+    {
+        if movie.today == nil
+        {
+           // return
+        }
+        return false
+    }
+    
     func loadData()
     {
+        overview?.text = movie.overview
+        nameMovie?.text = movie.title
+        rate?.text = "★ \(movie.vote_average!)"
+        let request = URLRequest(url: URL(string: "\(prefixYoutube)\(movie.trailer!)")!)
+        video.loadRequest(request)
         
     }
     override func didReceiveMemoryWarning() {
@@ -57,19 +54,14 @@ class DetailController: UITableViewController {
         return 1
     }
     
-    override  func numberOfSections(in tableView: UITableView) -> Int {
+    override  func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 2
     }
     
-//    func tableView (tableView: UITableView, number indexPath: NSIndexPath) -> CGFloat
-//    {
-//        return 80
-//    }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-//    {
-//        return 80
-//    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -83,13 +75,13 @@ class DetailController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
-        var f = indexPath.section
+        let cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
+        let f = indexPath.section
         if (f == 0)
         {
             let buttonWidth = 60
             let buttonSpace = 5
-            for (index,ButtonText) in hourToday.enumerated(){
+            for (index,_) in hourToday.enumerated(){
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
@@ -107,7 +99,7 @@ class DetailController: UITableViewController {
         {
             let buttonWidth = 60
             let buttonSpace = 5
-            for (index,ButtonText) in hourTomorrow.enumerated(){
+            for (index,_) in hourTomorrow.enumerated(){
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
@@ -139,51 +131,6 @@ class DetailController: UITableViewController {
         print("button is Pressed")
         print("Clicked Button Row is",buttonRow)
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 extension UIButton {

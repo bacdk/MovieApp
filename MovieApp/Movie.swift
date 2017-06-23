@@ -23,6 +23,7 @@ class Movie {
     var vote_count: Int!
     var video: Bool!
     var vote_average: Double!
+    var trailer : String?
     var today: [Schedule]?
     var tomorrow: [Schedule]?
     init(json: [String:Any]) {
@@ -40,7 +41,7 @@ class Movie {
         vote_count              = json["vote_count"]        as? Int
         video                   = json["video"]             as? Bool
         vote_average            = json["vote_average"]      as? Double
-
+        trailer                 = json["trailer"] as? String ?? ""
     }
     
 }
