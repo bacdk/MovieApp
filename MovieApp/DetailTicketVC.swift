@@ -10,6 +10,7 @@ import UIKit
 
 class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     
+    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var imagePoster: UIImageView!
     @IBOutlet weak var lblSoghe: UILabel!
     @IBOutlet weak var lblTongtien: UILabel!
@@ -34,6 +35,10 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         {
             btnBack.isHidden = true
         }
+        else
+        {
+                status.text="Success!"
+        }
         lblName.text = ticket.name
         lblNgay.text = "Ngày: \(ticket.day!)"
         lblTime.text = "Time: \(ticket.time!)"
@@ -43,7 +48,6 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         for seat in ticket.soghe{
             arraySeat = arraySeat + String(seat) + " "
         }
-        
         lblSoghe.text = arraySeat
         let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(ticket.image!)")
         imagePoster.image = img1

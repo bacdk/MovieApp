@@ -21,6 +21,7 @@ class BuyTicket: UIViewController {
     @IBOutlet weak var lblMoney: UILabel!
     @IBOutlet weak var txtTime: UILabel!
     
+    @IBOutlet weak var viewAbove: UIView!
     @IBOutlet weak var lblnumberTicket: UILabel!
     
     @IBOutlet weak var txtPrice: UILabel!
@@ -44,7 +45,7 @@ class BuyTicket: UIViewController {
         // Do any additional setup after loading the view.
         loadData()
     }
-
+    
     func loadData() {
         let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(movie.poster_path!)")
         imgPoster.image = img1
@@ -70,7 +71,13 @@ class BuyTicket: UIViewController {
             ngay = String(day+1)+"-"+String(month)+"-"+String(year)
             lblNgay.text = ngay
         }
-        
+        //image view
+        UIGraphicsBeginImageContext(viewAbove.frame.size)
+        UIImage(named: "03")!.draw(in: viewAbove.frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.viewAbove.backgroundColor = UIColor(patternImage: image!)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,6 +104,7 @@ class BuyTicket: UIViewController {
     @IBAction func btnNext(_ sender: Any) {
         if (ticketNumber > 0) {
             if Auth.auth().currentUser != nil {
+                
                 let srcSeat = self.storyboard?.instantiateViewController(withIdentifier: "ChonCho") as! SeatViewController
                 ticket.day = ngay
                 ticket.id = movie.id
@@ -117,8 +125,6 @@ class BuyTicket: UIViewController {
                 let alert = UIAlertController(title: "Login require", message:   "Hãy đăng nhập trước khi sử dụng tính năng này", preferredStyle: .alert)
                 
                 let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
-                    //                    let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
-                    //                    self.navigationController?.pushViewController(nextViewController, animated: true)
                     let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
                     self.present(viewControllerYouWantToPresent, animated: true, completion: nil)
                 })
@@ -153,3 +159,5 @@ class BuyTicket: UIViewController {
 //}
 //alert.addAction(action)
 //self.presentViewController(alert, animated: true, completion: nil)
+//                    let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
+//                    self.navigationController?.pushViewController(nextViewController, animated: true)

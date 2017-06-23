@@ -31,6 +31,11 @@ class UserVC: UITableViewController {
         UIGraphicsGetCurrentContext();
         self.viewTB.backgroundColor = UIColor(patternImage: image!)
         self.tableView.separatorStyle = .none
+        UIImage(named: "03")!.draw(in: view.frame)
+        let image1 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.view.backgroundColor = UIColor(patternImage: image1!)
+        self.tableView.separatorStyle = .none
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -58,6 +63,10 @@ class UserVC: UITableViewController {
                 } else {
                     self.user = user
                     self.lb_name.text = user.name
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+
                 }
             })
         
@@ -82,6 +91,12 @@ class UserVC: UITableViewController {
         self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1
+        {
+            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChangePassword") as! ChangePasswordViewController
+            //nextViewController.userName.text = user.name
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
         if indexPath.row == 4
         {
             handleLogout()
@@ -131,11 +146,4 @@ class UserVC: UITableViewController {
         
     }
 }
-extension UIImageView {
-    
-    func setRounded() {
-        let radius = self.frame.width / 2
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
-    }
-}
+

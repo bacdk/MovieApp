@@ -13,7 +13,7 @@ class History: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        
+        self.tableView.separatorStyle = .none
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

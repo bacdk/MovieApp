@@ -10,6 +10,11 @@ import UIKit
 
 class DetailController: UITableViewController {
     
+
+    @IBOutlet weak var viewInTable: UIView!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var genris: UILabel!
+    @IBOutlet weak var posterImage: DesignImage!
     @IBOutlet weak var rate: UILabel!
     @IBOutlet weak var video: UIWebView!
     @IBOutlet weak var nameMovie: UILabel!
@@ -37,19 +42,40 @@ class DetailController: UITableViewController {
     
     func loadData()
     {
+        hourToday = movie.today!
+        hourTomorrow = movie.tomorrow!
         overview?.text = movie.overview
         nameMovie?.text = movie.title
         rate?.text = "★ \(movie.vote_average!)"
         let request = URLRequest(url: URL(string: "\(prefixYoutube)\(movie.trailer!)")!)
         video.loadRequest(request)
+        print(movie.runtime)
+        time?.text = "\(movie.runtime!) min"
+        //genris?.text = movie.genres?.rawValue
+        let img = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movie.poster_path!)")
+            posterImage.image = img
+        UIGraphicsBeginImageContext(view.frame.size)
+        UIImage(named: "04")!.draw(in: view.frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.view.backgroundColor = UIColor(patternImage: image!)
+        UIGraphicsBeginImageContext(view.frame.size)
+        UIImage(named: "03")!.draw(in: view.frame)
+        let image1 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.viewInTable.backgroundColor = UIColor(patternImage: image1!)
+        self.tableView.separatorStyle = .none
         
+        
+        posterImage.layer.shadowOpacity = 0.4
+        posterImage.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     // Dispose of any resources that can be recreated.
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
@@ -138,8 +164,8 @@ extension UIButton {
     func setFormat() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = CGFloat.init(10)
-        self.layer.borderColor = UIColor.clear.cgColor
-        self.backgroundColor = UIColor.black
+        //self.layer.borderColor = UIColor.white as! CGColor
+        self.backgroundColor = UIColor.clear
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
     }
 }

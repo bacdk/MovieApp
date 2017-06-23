@@ -19,8 +19,14 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var lberror: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lberror.isHidden = true
         userCurrent()
+        UIGraphicsBeginImageContext(view.frame.size)
+        UIImage(named: "BlueClouds")!.draw(in: view.frame)
+        let image1 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetCurrentContext();
+        self.view.backgroundColor = UIColor(patternImage: image1!)
         // Do any additional setup after loading the view.
     }
 

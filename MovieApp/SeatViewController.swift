@@ -89,7 +89,19 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     }
     
     @IBAction func chooseSeat(_ sender: UIButton) {
-        handleBookSeat()
+        let alert = UIAlertController(title: "Book ticket", message:   "Gửi yêu cầu đặt vé?", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
+            self.handleBookSeat()
+        })
+        // Create Cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            //print("Cancel button tapped");
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(OKAction)
+        
+        self.present(alert, animated: true){}
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
