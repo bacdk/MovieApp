@@ -25,7 +25,7 @@ class SearchCell: UITableViewCell {
                 //print(unwrappedMovie.filmschedule)
                 if unwrappedMovie.filmschedule != "UC"{
                     ticket.image = UIImage(named: "ticket1")
-                }
+                } else {ticket.isHidden = true}
             }
         }
     }

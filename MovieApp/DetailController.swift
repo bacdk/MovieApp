@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DetailController: UITableViewController {
+class DetailController: UITableViewController,UIWebViewDelegate  {
     
-
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     @IBOutlet weak var viewInTable: UIView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var genris: UILabel!
@@ -35,7 +36,7 @@ class DetailController: UITableViewController {
     {
         if movie.today == nil
         {
-           // return
+            // return
         }
         return false
     }
@@ -49,11 +50,11 @@ class DetailController: UITableViewController {
         rate?.text = "★ \(movie.vote_average!)"
         let request = URLRequest(url: URL(string: "\(prefixYoutube)\(movie.trailer!)")!)
         video.loadRequest(request)
-        print(movie.runtime)
+        video.delegate = self
         time?.text = "\(movie.runtime!) min"
         //genris?.text = movie.genres?.rawValue
         let img = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movie.poster_path!)")
-            posterImage.image = img
+        posterImage.image = img
         UIGraphicsBeginImageContext(view.frame.size)
         UIImage(named: "04")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -65,10 +66,13 @@ class DetailController: UITableViewController {
         UIGraphicsGetCurrentContext();
         self.viewInTable.backgroundColor = UIColor(patternImage: image1!)
         self.tableView.separatorStyle = .none
-        
-        
         posterImage.layer.shadowOpacity = 0.4
         posterImage.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+    }
+    func webViewDidFinishLoad(_ video: UIWebView) // here hide it
+    {
+        spinner.stopAnimating()
+        //spinner.isHidden = true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -82,6 +86,10 @@ class DetailController: UITableViewController {
     
     override  func numberOfSections(in tableView: UITableView) -> Int
     {
+        if(hourToday.count == 0 && hourTomorrow.count==0)
+        {
+            return 0
+        }
         return 2
     }
     
@@ -98,7 +106,7 @@ class DetailController: UITableViewController {
         let day = Ngay[section]
         return day
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
@@ -111,13 +119,12 @@ class DetailController: UITableViewController {
                 
                 let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
                 
-                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20)) 
+                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
                 codedButton.indexNgay=0
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
                 codedButton.tag = index
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 codedButton.setFormat()
-                
                 cell.contentView.addSubview(codedButton)
             }
         }
@@ -139,7 +146,7 @@ class DetailController: UITableViewController {
                 
                 cell.contentView.addSubview(codedButton)
             }
-
+            
         }
         return cell
     }

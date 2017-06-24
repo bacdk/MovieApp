@@ -28,8 +28,8 @@ class TMDb {
                 {
                     tomorrow.append(Schedule(hour: (child as! DataSnapshot).key, seat: (child as! DataSnapshot).value as! String))
                 }
-                movie.today=today
-                movie.tomorrow=tomorrow
+                movie.today = today 
+                movie.tomorrow = tomorrow
                 listMovie.append(movie)
                 completionHandler(listMovie, nil)
             }
@@ -84,11 +84,13 @@ class TMDb {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("Movie").child("UpComing").observe(.childAdded, with: { (snapshot) in
-            
+            let today = [Schedule]()
+            let tomorrow = [Schedule]()
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let movie = Movie(json: dictionary)
                 listMovie.append(movie)
-                
+                movie.today=today
+                movie.tomorrow=tomorrow
                 completionHandler(listMovie, nil)
             }
             

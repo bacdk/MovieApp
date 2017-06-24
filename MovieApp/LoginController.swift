@@ -150,6 +150,10 @@ class LoginController: UIViewController {
         imageView.image = UIImage(named: "corn")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        //image picker
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        imageView.isUserInteractionEnabled = true
+        imageView.isMultipleTouchEnabled = true
         return imageView
     }()
     

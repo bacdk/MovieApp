@@ -656,6 +656,10 @@
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zj0-Je-7rn">
+                                                <rect key="frame" x="177" y="95" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="oPJ-xh-dsu" firstAttribute="top" secondItem="XDO-J2-Doz" secondAttribute="bottom" constant="1" id="21x-tw-bke"/>
@@ -726,6 +730,7 @@
                         <outlet property="overview" destination="pD6-8v-CCL" id="fqv-jg-l0Q"/>
                         <outlet property="posterImage" destination="dER-Na-ybJ" id="fJS-S8-zGh"/>
                         <outlet property="rate" destination="oPJ-xh-dsu" id="2eS-dX-BIi"/>
+                        <outlet property="spinner" destination="zj0-Je-7rn" id="BBY-gy-gFl"/>
                         <outlet property="time" destination="8FS-4Q-m7d" id="h5y-mS-Siz"/>
                         <outlet property="video" destination="VVF-TQ-b5K" id="NR2-lC-Ser"/>
                         <outlet property="viewInTable" destination="DBv-A5-Znh" id="MOk-cX-SNi"/>
