@@ -25,6 +25,7 @@ class Movie {
     var vote_average: Double!
     var trailer : String?
     var runtime : Int!
+    var filmschedule : String!
     //var genres:     Genres?
     var today: [Schedule]?
     var tomorrow: [Schedule]?
@@ -45,6 +46,7 @@ class Movie {
         vote_average            = json["vote_average"]      as? Double
         runtime                 = json["runtime"] as? Int ?? 0
         trailer                 = json["trailer"] as? String ?? ""
+        filmschedule                 = json["tabname"] as? String ?? ""
        // genres      = (json["genres"]       as? Genres.RawValue).map { Genres(rawValue: $0) }!
     }
     

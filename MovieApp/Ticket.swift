@@ -30,7 +30,7 @@ class Ticket{
         seat           = json["seat"]     as? String
         sove           = json["sove"]     as? Int64!
         tongtien       = json["tongtien"] as? Int64!
-        soghe          = json["soghe"]   as? [Int]!
+        soghe          = json["soghe"]   as? [Int]! ?? []
     }
     
     var dict:[String:Any] {

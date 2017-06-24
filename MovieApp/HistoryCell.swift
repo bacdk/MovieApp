@@ -9,6 +9,7 @@
 import UIKit
 
 class HistoryCell: UITableViewCell {
+   
     @IBOutlet weak var name: UILabel!
 
     @IBOutlet weak var time: UILabel!
@@ -23,6 +24,12 @@ class HistoryCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBOutlet weak var viewCell: UIView!{
+        didSet {
+            viewCell.layer.shadowOpacity = 0.4
+            viewCell.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        }
     }
 
 }

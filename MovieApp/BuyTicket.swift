@@ -50,6 +50,7 @@ class BuyTicket: UIViewController {
         let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(movie.poster_path!)")
         imgPoster.image = img1
         imgPoster.layer.cornerRadius = CGFloat.init(05)
+        imgPoster.dropShadow()
         txtFilmName.text = movie.title
         txtTime.text = time
         txtPrice.text = String(priceFilm)

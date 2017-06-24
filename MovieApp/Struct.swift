@@ -23,3 +23,7 @@ let seatMap:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
 "_AAAAAAAAAAAAAAAAAAAAAAA/"
 var seatMapFireBase:String =   ""
 var tabName = ""
+var listmovieNP = [Movie]()
+var listmoviePP = [Movie]()
+var listmovieUC = [Movie]()
+var listmovieTotal = [Movie]()

@@ -38,6 +38,7 @@ class NowPlayingViewController: UITableViewController{
                 print(error!)
             } else {
                 self.movies = movies!
+                listmovieNP = movies!
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -56,12 +57,6 @@ class NowPlayingViewController: UITableViewController{
         let movie = self.movies[indexPath.row]
         cell.configWithCell(movie: movie)
         return cell
-    }
-    //Load lai data
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == refreshPage - 1 {
-            loadData()
-        }
     }
     
     //Handel event click cell
