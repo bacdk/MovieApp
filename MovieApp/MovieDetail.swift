@@ -3,16 +3,24 @@
 import Foundation
 class MovieDetail {
 
-    var genres: [NSArray]!
+    var genres: [AnyObject]!
     var runtime: Int!
-    
+    var genresarray : String!
     init(json: [String:Any]) {
-        genres = json["genres"] as! [NSArray]
+        genresarray = ""
+        genres = json["genres"] as! [AnyObject]
         runtime = json["runtime"] as! Int
+        for i in genres
+        {
+            var dd = i as? [String:Any]
+            let ddd = dd?["name"] as! String
+            genresarray = genresarray + ddd + ", "
+            //print(genresarray)
+        }
     }
     var dict:[String:Any] {
         return [
-            "genres": genres,
+            "genres": genresarray,
             "runtime": runtime,
         ]
     }

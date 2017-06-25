@@ -13,12 +13,12 @@ class Trailer {
     var key: String?
     
     init(json: [String:Any]) {
-        key         = json["key"]           as? String
+        key         = json["key"]           as? String ?? ""
 
     }
     var dict:[String:Any] {
         return [
-            "trailer": key
+            "trailer": "/\(key!)"
         ]
     }
 }

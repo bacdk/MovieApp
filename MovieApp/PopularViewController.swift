@@ -94,7 +94,15 @@ class PopularViewController: UIViewController, UITableViewDataSource, UITableVie
             var MovieDetailcutDown = MovieDetail(json: MovieDetails)
             ref.child("Movie").child("Popular").child(String(id)).updateChildValues(MovieDetailcutDown.dict)
             let trailers = TMDb.getListTrailer(by: id)
-            ref.child("Movie").child("Popular").child(String(id)).updateChildValues(trailers[0].dict)
+            if (trailers.count != 0)
+            {
+                ref.child("Movie").child("Popular").child(String(id)).updateChildValues(trailers[0].dict)
+            }
+            else
+            {
+                ref.child("Movie").child("Popular").child(String(id)).updateChildValues([
+                    "trailer": ""])
+            }
             ref.child("Movie").child("Popular").child(String(id)).updateChildValues(["tabname":"PP"])
             // File located on disk
             

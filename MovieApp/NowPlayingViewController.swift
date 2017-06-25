@@ -97,6 +97,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             
             
             //Add ngay gio cho ngoi
+            
             for mm in gioChieu
             {
                 ref.child("Movie").child("NowPlaying").child(String(id)).child("Today").child(mm).setValue(seatMap)
@@ -110,22 +111,17 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             var MovieDetailcutDown = MovieDetail(json: MovieDetails)
             ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(MovieDetailcutDown.dict)
             let trailers = TMDb.getListTrailer(by: id)
-            ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(trailers[0].dict)
+            if (trailers.count != 0)
+            {
+                ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(trailers[0].dict)
+            }
+            else
+            {
+                ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues([
+                    "trailer": ""])
+            }
             ref.child("Movie").child("NowPlaying").child(String(id)).updateChildValues(["tabname":"NP"])
-            //let trailer = TMDb.getTrailerSet(by: id)
-            //ref.child("Movie").child("NowPlaying").child(String(id)).setValue(trailer)
             
-            //print((json["poster_path"])!)
-            // Create a reference to the file you want to upload
-            //let storageRef = Storage.storage().reference().child("movie_images").child(json["poster_path"] as! String)
-            // Upload the file to the path "images/rivers.jpg"
-//            if let uploadData = UIImagePNGRepresentation(img1!) {
-//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-//                    if let error = error {
-//                        print(error)
-//                        return
-//                    }})
-//            }
         }
         DispatchQueue.main.async {
             self.refreshPage += 20
