@@ -18,7 +18,7 @@ class Ticket{
     var sove:Int64!
     var tongtien: Int64!
     var soghe :   [Int]!
-    var realtime :String!
+    //var realtime :String!
     init() {
 
     }
@@ -32,7 +32,7 @@ class Ticket{
         sove           = json["sove"]     as? Int64!
         tongtien       = json["tongtien"] as? Int64!
         soghe          = json["soghe"]   as? [Int]! ?? []
-        realtime      = json["realtime"] as? String
+        //realtime      = json["realtime"] as? String
     }
     
     var dict:[String:Any] {
@@ -46,7 +46,7 @@ class Ticket{
             "sove":sove,
             "tongtien":tongtien,
             "soghe" : soghe,
-            "realtime" : realtime
+            //"realtime" : realtime
         ]
     }
 }
