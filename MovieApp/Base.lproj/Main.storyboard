@@ -1157,36 +1157,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPa-xR-wwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ok8-tm-HLc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2093.5999999999999" y="-27.436281859070466"/>
+            <point key="canvasLocation" x="2238" y="-27"/>
         </scene>
         <!--User-->
         <scene sceneID="jsR-yg-SdT">
             <objects>
                 <tableViewController id="z9U-Q8-kst" customClass="UserVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZW4-a2-0we">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZW4-a2-0we">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Mg6-hk-e13">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corn" translatesAutoresizingMaskIntoConstraints="NO" id="U6k-5e-8Ky">
-                                    <rect key="frame" x="124.5" y="8" width="126" height="128"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="128" id="Hrq-kc-hIf"/>
-                                        <constraint firstAttribute="width" constant="126" id="OKd-WW-hE1"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjX-qM-cwA">
-                                    <rect key="frame" x="0.0" y="137" width="376" height="21"/>
+                                    <rect key="frame" x="165.5" y="189" width="45" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8f-eP-D03" customClass="DesignButton" customModule="MovieApp" customModuleProvider="target">
                                     <rect key="frame" x="128" y="218" width="118" height="29"/>
-                                    <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.80495505136986301" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                     <state key="normal" title="Login">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1206,17 +1199,22 @@
                                         <action selector="Login:" destination="z9U-Q8-kst" eventType="touchUpInside" id="z6H-Xv-2OC"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corn" translatesAutoresizingMaskIntoConstraints="NO" id="U6k-5e-8Ky">
+                                    <rect key="frame" x="125" y="53" width="126" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="Hrq-kc-hIf"/>
+                                        <constraint firstAttribute="width" constant="126" id="OKd-WW-hE1"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="P8f-eP-D03" secondAttribute="bottom" constant="8" id="5wY-j9-Z1Z"/>
-                                <constraint firstItem="U6k-5e-8Ky" firstAttribute="top" secondItem="Mg6-hk-e13" secondAttribute="topMargin" id="Muz-pq-3ge"/>
+                                <constraint firstItem="U6k-5e-8Ky" firstAttribute="top" secondItem="Mg6-hk-e13" secondAttribute="topMargin" constant="45" id="Muz-pq-3ge"/>
+                                <constraint firstItem="yjX-qM-cwA" firstAttribute="centerX" secondItem="Mg6-hk-e13" secondAttribute="centerX" id="QbO-At-7dV"/>
                                 <constraint firstItem="U6k-5e-8Ky" firstAttribute="centerX" secondItem="Mg6-hk-e13" secondAttribute="centerX" id="WJF-Bj-XWZ"/>
                                 <constraint firstAttribute="trailing" secondItem="P8f-eP-D03" secondAttribute="trailing" constant="129" id="WUp-52-0iH"/>
                                 <constraint firstItem="P8f-eP-D03" firstAttribute="leading" secondItem="Mg6-hk-e13" secondAttribute="leading" constant="128" id="f9j-YW-eag"/>
-                                <constraint firstItem="yjX-qM-cwA" firstAttribute="leading" secondItem="Mg6-hk-e13" secondAttribute="leading" id="iEE-1u-FaR"/>
-                                <constraint firstItem="yjX-qM-cwA" firstAttribute="centerX" secondItem="U6k-5e-8Ky" secondAttribute="centerX" constant="0.5" id="oCC-Gi-9mm"/>
-                                <constraint firstItem="yjX-qM-cwA" firstAttribute="top" secondItem="U6k-5e-8Ky" secondAttribute="bottom" constant="1" id="pFO-zE-lZE"/>
+                                <constraint firstItem="yjX-qM-cwA" firstAttribute="top" secondItem="U6k-5e-8Ky" secondAttribute="bottom" constant="8" id="vxh-o5-Mqb"/>
                             </constraints>
                         </view>
                         <sections>
@@ -1226,7 +1224,7 @@
                                         <rect key="frame" x="0.0" y="255" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4qO-7N-emE" id="liL-fC-QHE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="u1" translatesAutoresizingMaskIntoConstraints="NO" id="xoe-FF-0sA">
@@ -1249,13 +1247,13 @@
                                                 <constraint firstItem="vbe-Pr-UdX" firstAttribute="top" secondItem="liL-fC-QHE" secondAttribute="top" constant="8" id="fZg-8W-e2I"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.69493792808219179" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eI3-Rt-USi">
                                         <rect key="frame" x="0.0" y="299" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eI3-Rt-USi" id="u3H-XF-RNt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p2" translatesAutoresizingMaskIntoConstraints="NO" id="esq-Wp-tSp">
@@ -1278,13 +1276,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="v3v-fx-DMk" secondAttribute="bottom" constant="8" id="hIy-No-fNv"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.3535423801369863" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="V05-Pl-TIL">
                                         <rect key="frame" x="0.0" y="343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V05-Pl-TIL" id="Axi-k9-kRD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="e-mail" translatesAutoresizingMaskIntoConstraints="NO" id="gVp-ET-oEJ">
@@ -1307,13 +1305,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="gVp-ET-oEJ" secondAttribute="bottom" constant="8" id="wEt-Sz-3iM"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.69493792808219179" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xyi-Fu-gF2">
                                         <rect key="frame" x="0.0" y="387" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xyi-Fu-gF2" id="P95-zw-D6S">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="qUV-L0-ZfK">
@@ -1336,13 +1334,13 @@
                                                 <constraint firstItem="M8h-28-nmV" firstAttribute="top" secondItem="P95-zw-D6S" secondAttribute="top" constant="8" id="zmZ-8r-ZxU"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.3535423801369863" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="USu-tO-jxk">
                                         <rect key="frame" x="0.0" y="431" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USu-tO-jxk" id="b7Z-u1-Qo0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="gtX-Qh-kuy">
@@ -1365,7 +1363,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="WBX-XP-2F7" secondAttribute="bottom" constant="8" id="skM-0i-XEm"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.69493792808219179" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1376,7 +1374,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="User" image="user" id="J0Q-RJ-CmN"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="buttonLogin" destination="P8f-eP-D03" id="4rl-I7-oY2"/>
                         <outlet property="imageUser" destination="U6k-5e-8Ky" id="WcH-Ow-Zr1"/>

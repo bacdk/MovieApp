@@ -21,26 +21,23 @@ class UserVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageUser.setRounded()
+//        imageUser.layer.borderWidth = 1
+//        imageUser.layer.borderColor = UIColor.white.cgColor
         if(Auth.auth().currentUser != nil)
         {
             self.buttonLogin.isHidden = true
         }
         UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "03")!.draw(in: viewTB.frame)
+        UIImage(named: "Unknown")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
-        self.viewTB.backgroundColor = UIColor(patternImage: image!)
-        self.tableView.separatorStyle = .none
-        UIImage(named: "03")!.draw(in: view.frame)
-        let image1 = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image1!)
-        self.tableView.separatorStyle = .none
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+
+        self.tableView.backgroundColor = UIColor(patternImage: image!)
+        self.tableView.tableFooterView = UIView(frame: .zero)
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        tableView.backgroundView = blurEffectView
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,7 +113,6 @@ class UserVC: UITableViewController {
         //        NSLog("You selected cell number: \(indexPath.row)!")
         //        self.performSegue(withIdentifier: "yourIdentifier", sender: self)
     }
-    
     
     
     func selectView(withRowAt row: Int) -> String {
