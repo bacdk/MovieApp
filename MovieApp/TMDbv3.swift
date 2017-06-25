@@ -54,8 +54,8 @@ class TMDb {
                 {
                     tomorrow.append(Schedule(hour: (child as! DataSnapshot).key, seat: (child as! DataSnapshot).value as! String))
                 }
-                movie.today=today
-                movie.tomorrow=tomorrow
+                movie.today = today
+                movie.tomorrow = tomorrow
                 listMovie.append(movie)
                 completionHandler(listMovie, nil)
             }

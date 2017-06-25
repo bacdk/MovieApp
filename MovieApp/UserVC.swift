@@ -58,10 +58,10 @@ class UserVC: UITableViewController {
                     print(error!)
                 } else {
                     self.lb_name.text = user.name
-                    if let profileImageUrl = user.profileImageUrl
-                    {
+//                    if let profileImageUrl = user.profileImageUrl
+//                    {
                         //self.imageUser.loadImageUsingCacheWithUrlString(profileImageUrl)
-                    }
+                    //}
                 }
             })
             self.buttonLogin.isHidden = true
