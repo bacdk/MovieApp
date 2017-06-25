@@ -25,7 +25,7 @@ class History: UITableViewController {
             if(error != nil) {
                 print(error!)
             } else {
-                self.tickets = tickets!
+                self.tickets = tickets!.sorted { $0.day > $1.day }
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

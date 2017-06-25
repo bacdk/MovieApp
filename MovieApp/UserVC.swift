@@ -16,22 +16,22 @@ class UserVC: UITableViewController {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var imageUser: UIImageView!
     var mDatabase: DatabaseReference!
-    var user = UserInfo()
     @IBOutlet weak var viewTB: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         imageUser.setRounded()
-//        imageUser.layer.borderWidth = 1
-//        imageUser.layer.borderColor = UIColor.white.cgColor
+        //        imageUser.layer.borderWidth = 1
+        //        imageUser.layer.borderColor = UIColor.white.cgColor
         if(Auth.auth().currentUser != nil)
         {
-            self.buttonLogin.isHidden = true
+                       //tableView.reloadData()
+            //imageUser.image = Downloader.downloadImageWithURL(userInfo.profileImageUrl!)
         }
         UIGraphicsBeginImageContext(view.frame.size)
         UIImage(named: "Unknown")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
-
+        
         self.tableView.backgroundColor = UIColor(patternImage: image!)
         self.tableView.tableFooterView = UIView(frame: .zero)
         
@@ -52,21 +52,22 @@ class UserVC: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         if(Auth.auth().currentUser != nil)
         {
-            self.buttonLogin.isHidden = true
-            
+            //self.buttonLogin.isHidden = true
             TMDb.fetchUser(completionHandler: { (user, error) in
                 if(error != nil) {
                     print(error!)
                 } else {
-                    self.user = user
                     self.lb_name.text = user.name
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                    if let profileImageUrl = user.profileImageUrl
+                    {
+                        //self.imageUser.loadImageUsingCacheWithUrlString(profileImageUrl)
                     }
-
                 }
             })
-        
+            self.buttonLogin.isHidden = true
+            //print(userInfo.name)
+            
+
             return 1
         }
         else

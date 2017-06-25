@@ -20,7 +20,7 @@ class UserInfo{
         self.name = json["name"] as? String
         self.email = json["email"] as? String
         self.password = json["password"] as? String
-        //self.profileImageUrl = dictionary["profileImageUrl"] as? String
+        self.profileImageUrl = json["profileImageUrl"] as? String ?? ""
     }
     
 }

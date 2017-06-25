@@ -18,10 +18,6 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var seatUser : NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //var map2:String = ""
-        //self.view.addSubview(seats)
-        //print(indexNgay)
         if(indexNgay == 0)
         {
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
@@ -32,8 +28,6 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                     self.draw()
                 }
             })
-            print(self.seatMovieString)
-//            map2 = (movie.today?[indexTime].seat!)!
         }
         else
         {
@@ -45,11 +39,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                     self.draw()
                 }
             })
-//            map2 = (movie.tomorrow?[indexTime].seat)!
         }
-
-        //seatMovieString = map2
-
     }
     
     func draw(){
@@ -82,26 +72,30 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             total += seat.price
         }
         seatUser = seats
-        //print(seats)
-        //print(noi)
         print("----- Total -----\n")
         print("----- \(total) -----\n")
     }
     
     @IBAction func chooseSeat(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Book ticket", message:   "Gửi yêu cầu đặt vé?", preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
-            self.handleBookSeat()
-        })
-        // Create Cancel button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-            //print("Cancel button tapped");
+        if (Int(ticket.sove) == seatUser.count)
+        {
+            let alert = UIAlertController(title: "Book ticket", message:   "Gửi yêu cầu đặt vé?", preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
+                self.handleBookSeat()
+            })
+            // Create Cancel button
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+                //print("Cancel button tapped");
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(OKAction)
+            
+            self.present(alert, animated: true){}
         }
-        alert.addAction(cancelAction)
-        alert.addAction(OKAction)
-        
-        self.present(alert, animated: true){}
+        else{
+            showAlertDialog(message: "Vui lòng chọn đủ \(ticket.sove!) ghế")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -149,4 +143,10 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         self.present(detailTicket, animated: true, completion: nil)
     }
     
+    func showAlertDialog(message: String) {
+        let alertView = UIAlertController(title: "Thông Báo", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertView.addAction(action)
+        self.present(alertView, animated: true, completion: nil)
+    }
 }
