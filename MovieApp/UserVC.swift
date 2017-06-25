@@ -91,6 +91,12 @@ class UserVC: UITableViewController {
         self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0
+        {
+            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! Profile
+            //nextViewController.userName.text = user.name
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
         if indexPath.row == 1
         {
             let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChangePassword") as! ChangePasswordViewController

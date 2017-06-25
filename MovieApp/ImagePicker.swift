@@ -17,11 +17,9 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         picker.allowsEditing = true
         
         present(picker, animated: true, completion: nil)
-        print("sssssssssssssssssssssssssss")
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-         print("sseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeessss")
         var selectedImageFromPicker: UIImage?
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
@@ -32,6 +30,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         }
         
         if let selectedImage = selectedImageFromPicker {
+            profileImageView.setRounded()
             profileImageView.image = selectedImage
         }
         

@@ -55,9 +55,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         //genris?.text = movie.genres?.rawValue
         let img = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movie.poster_path!)")
         posterImage.image = img
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "04")!.draw(in: view.frame)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = Downloader.downloadImageWithURL("\(prefixImage)w780\(self.movie.poster_path!)")
         UIGraphicsGetCurrentContext();
         self.view.backgroundColor = UIColor(patternImage: image!)
         UIGraphicsBeginImageContext(view.frame.size)
@@ -68,6 +66,11 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         self.tableView.separatorStyle = .none
         posterImage.layer.shadowOpacity = 0.4
         posterImage.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        
+        //Set blur effect for table
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        tableView.backgroundView = blurEffectView
     }
     func webViewDidFinishLoad(_ video: UIWebView) // here hide it
     {
@@ -95,6 +98,13 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Futura", size: 11)
+        header.textLabel?.textColor = UIColor.lightText
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

@@ -90,23 +90,48 @@ class LoginController: UIViewController {
                 return
             }
             
-            //successfully authenticated user
-            let ref = Database.database().reference()
-            let usersReference = ref.child("users").child(uid)
-            let values = ["name": name, "email": email]
-            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                
-                if let err = err {
-                    print(err)
-                    self.labelStatus.text = err.localizedDescription
-                    return
-                }
-                
-                self.dismiss(animated: true, completion: nil)
-            })
             
+            
+            //successfully authenticated user
+            let imageName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+            
+            if let uploadData = UIImagePNGRepresentation(self.profileImageView.image!) {
+                
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    
+                    if let error = error {
+                        print(error)
+                        self.labelStatus.text = error.localizedDescription
+                        return
+                    }
+                    
+                    if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                        
+                        let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+                        
+                        self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                    }
+                })
+            }
         })
     }
+    fileprivate func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: AnyObject]) {
+        let ref = Database.database().reference()
+        let usersReference = ref.child("users").child(uid)
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            
+            if let err = err {
+                self.labelStatus.text = err.localizedDescription
+                print(err)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+
     
     let nameTextField: UITextField = {
         let tf = UITextField()
@@ -145,15 +170,14 @@ class LoginController: UIViewController {
         return tf
     }()
     
-    let profileImageView: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "corn")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        //image picker
+        
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         imageView.isUserInteractionEnabled = true
-        imageView.isMultipleTouchEnabled = true
         return imageView
     }()
     
