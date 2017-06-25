@@ -22,9 +22,18 @@ class DetailMainCell: UITableViewCell {
         lblTittle.text = movie.title
         lblRelease.text = movie.release_date
         imageBack.image = #imageLiteral(resourceName: "default")
-        let img1 = Downloader.downloadImageWithURL("\(prefixImage)w780\(movie.backdrop_path!)")
+        if (movie.backdrop_path) != nil
+        {
+            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w780\(movie.backdrop_path!)")
+            imageBack.image = img1
+        }
+        else
+        {
+            let img1 = UIImage(named: "BlueClouds")
+            imageBack.image = img1
+        }
         lblTittle.text = lblTittle.text?.uppercased()
-        imageBack.image = img1
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

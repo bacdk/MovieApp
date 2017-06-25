@@ -52,7 +52,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         video.loadRequest(request)
         video.delegate = self
         time?.text = "\(movie.runtime!) min"
-        //genris?.text = movie.genres?.rawValue
+        genris?.text = movie.genres!
         let img = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movie.poster_path!)")
         posterImage.image = img
         let image = Downloader.downloadImageWithURL("\(prefixImage)w780\(self.movie.poster_path!)")

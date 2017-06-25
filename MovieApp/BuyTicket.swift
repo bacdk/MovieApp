@@ -119,6 +119,16 @@ class BuyTicket: UIViewController {
                 srcSeat.movie = movie
                 srcSeat.indexNgay = indexNgay
                 srcSeat.indexTime = indexTime
+
+                let date = NSDate();
+                let dateFormatter = DateFormatter()
+                //To prevent displaying either date or time, set the desired style to NoStyle.
+                dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+                dateFormatter.dateStyle = DateFormatter.Style.medium  //Set date style
+                dateFormatter.timeZone = NSTimeZone() as TimeZone!
+                let localDate = dateFormatter.string(from: date as Date)
+                
+                ticket.realtime = localDate
                 navigationController?.pushViewController(srcSeat, animated: true)
             }
             else {
