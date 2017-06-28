@@ -695,6 +695,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Oun-bR-Mev" secondAttribute="bottom" id="MaF-w1-db5"/>
                                 <constraint firstItem="Oun-bR-Mev" firstAttribute="top" secondItem="th4-1Y-lIc" secondAttribute="top" id="REg-uJ-KP7"/>
                                 <constraint firstAttribute="trailing" secondItem="Oun-bR-Mev" secondAttribute="trailing" id="RFn-Mp-h0J"/>
+                                <constraint firstAttribute="bottom" secondItem="pD6-8v-CCL" secondAttribute="bottom" constant="8" id="STo-So-OgI"/>
                                 <constraint firstItem="Oun-bR-Mev" firstAttribute="leading" secondItem="th4-1Y-lIc" secondAttribute="leading" id="cUi-bw-wZG"/>
                             </constraints>
                         </view>
