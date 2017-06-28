@@ -9,14 +9,15 @@
 import UIKit
 
 class Profile: UIViewController {
-
-    @IBOutlet weak var photo: UIButton!
     
+    
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var email: UILabel!
+   
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var birthday: UITextField!
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
@@ -41,8 +42,8 @@ class Profile: UIViewController {
         updateUI()
         
         let center = NotificationCenter.default
-//        center.addObserver(self, selector: #selector(ProfileViewController.keyboardShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        center.addObserver(self, selector: #selector(ProfileViewController.keyboardHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //        center.addObserver(self, selector: #selector(ProfileViewController.keyboardShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //        center.addObserver(self, selector: #selector(ProfileViewController.keyboardHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     deinit {
@@ -89,39 +90,13 @@ class Profile: UIViewController {
     }
     
     @IBAction func saveProfile(_ sender: AnyObject) {
-        hideKeyboard()
-//        let hud = MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
-//        hud.mode = .Indeterminate
-//        hud.labelText = NSLocalizedString("Saving…", comment: "Saving Profile message")
-//        let storage = Application.sharedInstance.storage
-//        if let idToken = storage.idToken {
-//            Auth0
-//                .users(idToken)
-//                .update(userMetadata: [
-//                    MetadataKeys.GivenName.rawValue: self.firstName.text!,
-//                    MetadataKeys.FamilyName.rawValue: self.lastName.text!,
-//                    MetadataKeys.Address.rawValue: self.address.text!,
-//                    MetadataKeys.Birthday.rawValue: self.birthday.text!,
-//                    ])
-//                .responseJSON { _, profileJSON in
-//                    if profileJSON != nil {
-//                        let newProfile = A0UserProfile(dictionary: profileJSON!)
-//                        storage.profile = newProfile
-//                        self.profile = newProfile
-//                        let checkImageView = UIImageView(image: UIImage(named: "checkmark"))
-//                        hud.customView = checkImageView
-//                        hud.mode = .CustomView
-//                        hud.labelText = NSLocalizedString("Saved!", comment: "Saved Profile message")
-//                        hud.hide(true, afterDelay: 0.8)
-//                    } else {
-//                        let checkImageView = UIImageView(image: UIImage(named: "cross"))
-//                        hud.customView = checkImageView
-//                        hud.mode = .CustomView
-//                        hud.labelText = NSLocalizedString("Failed!", comment: "Failed Save Profile message")
-//                        hud.hide(true, afterDelay: 0.8)
-//                    }
-//            }
-//        }
+        let user = userInfo
+        user.name = self.lastName.text
+        user.email = self.email.text
+        user.address = self.address.text
+        user.birthday = self.birthday.text
+        user.phone = self.phone.text
+        TMDb.updateInfoUser(_user: user)
     }
     
     fileprivate func hideKeyboard() {
@@ -143,13 +118,16 @@ class Profile: UIViewController {
     }
     
     fileprivate func updateUI() {
-//        self.title = self.profile.name
-//        self.avatar.setImageWithURL(self.profile.picture)
-//        self.firstName.text = self.profile.firstName
-//        self.lastName.text = self.profile.lastName
-//        self.email.text = self.profile.email
-//        self.address.text = self.profile.userMetadata["address"] as? String
-//        self.birthday.text = self.profile.userMetadata["birthday"] as? String
+        TMDb.fetchUser{ (user, error) in
+            if(error != nil) {
+                print(error!)
+            } else {
+                self.lastName.text = user.name
+                self.email.text = user.email
+                self.address.text = user.address
+                self.birthday.text = user.birthday
+                self.phone.text = user.phone
+            }
+        }
     }
-
 }

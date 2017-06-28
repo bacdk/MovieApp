@@ -27,8 +27,8 @@ class Movie {
     var runtime : Int!
     var filmschedule : String!
     var genres:     String?
-    var today: [Schedule]?
-    var tomorrow: [Schedule]?
+    var today = [Schedule]()
+    var tomorrow = [Schedule]()
     init(json: [String:Any]) {
         poster_path             = json["poster_path"]       as? String
         adult                   = json["adult"]             as? Bool
@@ -48,6 +48,19 @@ class Movie {
         trailer                 = json["trailer"]           as? String ?? ""
         filmschedule            = json["tabname"]           as? String ?? ""
         genres                  = json["genres"]            as? String ?? ""
+        if json["Today"] != nil
+        {
+            for i in json["Today"] as! [String:Any]
+            {
+                today.append(Schedule(hour: i.key,seat: i.value as! String))
+            }
+        }
+        if json["Tomorrow"] != nil
+        {
+            for i in json["Tomorrow"] as! [String:Any]
+            {
+                tomorrow.append(Schedule(hour: i.key,seat: i.value as! String))
+            }
+        }
     }
-    
 }

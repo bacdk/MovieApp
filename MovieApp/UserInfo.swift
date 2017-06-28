@@ -13,6 +13,9 @@ class UserInfo{
     var email: String?
     var password: String?
     var profileImageUrl: String?
+    var address : String?
+    var birthday : String?
+    var phone: String?
     init() {
      
     }
@@ -21,6 +24,18 @@ class UserInfo{
         self.email = json["email"] as? String
         self.password = json["password"] as? String
         self.profileImageUrl = json["profileImageUrl"] as? String ?? ""
+        self.address = json["address"] as? String ?? ""
+        self.birthday = json["birthday"] as? String ?? ""
+        self.phone = json["phone"] as? String ?? ""
+
     }
-    
+    var dict:[String:Any] {
+        return [
+            "name" : name ?? "",
+            //"profileImageUrl"
+            "address" : address ?? "",
+            "birthday" : birthday ?? "",
+            "phone" : phone ?? ""
+        ]
+    }
 }

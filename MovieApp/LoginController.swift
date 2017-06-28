@@ -108,7 +108,7 @@ class LoginController: UIViewController {
                     
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         
-                        let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+                        let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl, "address":"", "birthday":"", "phone": ""]
                         
                         self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                     }

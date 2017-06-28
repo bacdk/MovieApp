@@ -32,19 +32,11 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         super.viewDidLoad()
         loadData();
     }
-    func check()->Bool
-    {
-        if movie.today == nil
-        {
-            // return
-        }
-        return false
-    }
     
     func loadData()
     {
-        hourToday = movie.today!
-        hourTomorrow = movie.tomorrow!
+        hourToday = movie.today
+        hourTomorrow = movie.tomorrow
         overview?.text = movie.overview
         nameMovie?.text = movie.title
         rate?.text = "★ \(movie.vote_average!)"
