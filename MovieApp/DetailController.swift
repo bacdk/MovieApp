@@ -63,11 +63,20 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         tableView.backgroundView = blurEffectView
+        
+        //resize poster image when play youtube
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIWindowDidBecomeKey,
+            object: self.view.window,
+            queue: nil
+        ) { notification in
+            print("Video stopped")
+            self.posterImage.frame = CGRect(x: self.posterImage.frame.minX,y: self.video.frame.height ,width: (self.posterImage.image?.size.width)!*0.5, height:(self.posterImage.image?.size.height)!*0.4);
+        }
     }
     func webViewDidFinishLoad(_ video: UIWebView) // here hide it
     {
         spinner.stopAnimating()
-        //spinner.isHidden = true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,15 +122,24 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
         let f = indexPath.section
+        let weight = view.frame.size.width - 60
         if (f == 0)
         {
             let buttonWidth = 60
             let buttonSpace = 5
             for (index,_) in hourToday.enumerated(){
-                
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
+                var xCoord = 0
+                var yCoord = 5
+                if CGFloat(index*buttonWidth) < weight
+                {
+                    xCoord = index*buttonWidth + index*buttonSpace
+                }
+                else
+                {
+                    xCoord = 0
+                    yCoord = 30
+                }
+                let codedButton = codeButton(frame: CGRect(x:xCoord, y: yCoord, width: 50, height: 20))
                 codedButton.indexNgay=0
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
                 codedButton.tag = index
@@ -135,10 +153,18 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
             let buttonWidth = 60
             let buttonSpace = 5
             for (index,_) in hourTomorrow.enumerated(){
-                
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
+                var xCoord = 0
+                var yCoord = 5
+                if CGFloat(index*buttonWidth) < weight
+                {
+                    xCoord = index*buttonWidth + index*buttonSpace
+                }
+                else
+                {
+                    xCoord = 0
+                    yCoord = 30
+                }
+                let codedButton = codeButton(frame: CGRect(x:xCoord, y: yCoord, width: 50, height: 20))
                 
                 codedButton.indexNgay = 1
                 codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
@@ -182,4 +208,24 @@ extension UIButton {
 
 class codeButton: UIButton {
     var indexNgay:            Int     = 0
+}
+
+
+extension UIImage{
+    
+    func resizeImageWith(newSize: CGSize) -> UIImage {
+        
+        let horizontalRatio = newSize.width / size.width
+        let verticalRatio = newSize.height / size.height
+        
+        let ratio = max(horizontalRatio, verticalRatio)
+        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    
 }

@@ -4,7 +4,10 @@
 import UIKit
 import Firebase
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate  {
+    
+    @IBOutlet weak var viewui: UIView!
+    @IBOutlet weak var scroolView: UIScrollView!
     @IBOutlet weak var btnBack: UIButton!
     
     @IBAction func backAction(_ sender: UIButton) {
@@ -161,8 +164,8 @@ class LoginController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    let passwordTextField: UITextField = {
+//0000000000
+    var passwordTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Password"
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -212,17 +215,50 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         passwordTextFieldHeightAnchor?.isActive = true
     }
+    //------------------------NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    func keyboardDidShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            self.scroolView.contentInset = contentInsets
+            self.scroolView.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.scroolView.contentInset = contentInsets
+        self.scroolView.scrollIndicatorInsets = contentInsets
+    }
+   
+    
+    // for tapping
+    func dismissKeyboard() {
+        passwordTextField.resignFirstResponder()
+    }
+    
+    // for hitting return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passwordTextField.resignFirstResponder()
+        return true
+    }
 //------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        //Add selector delegate for keyboardDidShow
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginController.keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginController.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        passwordTextField.delegate = self
         
-        view.addSubview(inputsContainerView)
-        view.addSubview(loginRegisterButton)
-        view.addSubview(profileImageView)
-        view.addSubview(loginRegisterSegmentedControl)
-        view.addSubview(labelStatus)
+        // for tapping
+        self.viewui.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard)))
+        viewui.addSubview(inputsContainerView)
+        viewui.addSubview(loginRegisterButton)
+        viewui.addSubview(profileImageView)
+        viewui.addSubview(loginRegisterSegmentedControl)
+        viewui.addSubview(labelStatus)
+        viewui.addSubview(btnBack)
+        scroolView.addSubview(viewui)
+        
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupProfileImageView()
@@ -230,11 +266,11 @@ class LoginController: UIViewController {
         setupLabelStatus()
         handleLoginRegisterChange()
         
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "Unknown")!.draw(in: view.frame)
+        UIGraphicsBeginImageContext(viewui.frame.size)
+        UIImage(named: "Unknown")!.draw(in: viewui.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image!)
+        self.viewui.backgroundColor = UIColor(patternImage: image!)
 
     }
     func setupLabelStatus() {
@@ -255,7 +291,7 @@ class LoginController: UIViewController {
     
     func setupProfileImageView() {
         //need x, y, width, height constraints
-        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.centerXAnchor.constraint(equalTo: viewui.centerXAnchor).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -268,9 +304,9 @@ class LoginController: UIViewController {
     
     func setupInputsContainerView() {
         //need x, y, width, height constraints
-        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        inputsContainerView.centerXAnchor.constraint(equalTo: viewui.centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: viewui.centerYAnchor).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: viewui.widthAnchor, constant: -24).isActive = true
             inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 150)
         inputsContainerViewHeightAnchor?.isActive = true
         
