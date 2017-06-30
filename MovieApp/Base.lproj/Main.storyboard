@@ -1054,7 +1054,7 @@
         <!--Chi tiết vé-->
         <scene sceneID="fzG-qE-ILD">
             <objects>
-                <viewController storyboardIdentifier="detailTicket" title="Chi tiết vé" wantsFullScreenLayout="YES" id="urd-eX-T1w" customClass="DetailTicketVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailTicket" title="Chi tiết vé" wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" id="urd-eX-T1w" customClass="DetailTicketVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gWe-FA-maK"/>
                         <viewControllerLayoutGuide type="bottom" id="VNa-5l-3Tp"/>
@@ -1064,50 +1064,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-R2-VYu">
-                                <rect key="frame" x="16" y="59" width="93" height="165"/>
+                                <rect key="frame" x="16" y="79" width="93" height="165"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uMD-R2-VYu" secondAttribute="height" multiplier="9:16" id="6P7-mJ-yIh"/>
                                     <constraint firstAttribute="width" constant="93" id="LbB-hN-pp0"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Movie Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUg-LR-tMV">
-                                <rect key="frame" x="130" y="59" width="221" height="24"/>
+                                <rect key="frame" x="130" y="79" width="221" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" verticalCompressionResistancePriority="751" text="Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-Wk-M0W">
-                                <rect key="frame" x="130" y="115" width="44" height="20"/>
+                                <rect key="frame" x="130" y="135" width="44" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Số vé: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paq-ij-2Sy">
-                                <rect key="frame" x="130" y="139" width="48" height="20"/>
+                                <rect key="frame" x="130" y="159" width="48" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tiền: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puP-JI-xYc">
-                                <rect key="frame" x="130" y="163" width="75" height="18"/>
+                                <rect key="frame" x="130" y="183" width="75" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ngày:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McL-A9-9aT">
-                                <rect key="frame" x="130" y="91" width="42" height="20"/>
+                                <rect key="frame" x="130" y="111" width="42" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ghế:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-mB-SaM">
-                                <rect key="frame" x="130" y="185" width="55" height="20"/>
+                                <rect key="frame" x="130" y="205" width="55" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oju-wL-qLE">
-                                <rect key="frame" x="16" y="8" width="25" height="21"/>
+                                <rect key="frame" x="16" y="28" width="25" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="CvH-3n-7nC"/>
                                     <constraint firstAttribute="height" constant="21" id="Ogg-EO-ulr"/>
@@ -1121,13 +1121,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZQ-cD-Xq0">
-                                <rect key="frame" x="193" y="185" width="39" height="20"/>
+                                <rect key="frame" x="193" y="205" width="39" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyu-i2-JZh">
-                                <rect key="frame" x="187.5" y="19" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187.5" y="39" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1168,9 +1168,6 @@
                             <constraint firstItem="kkP-Wk-M0W" firstAttribute="top" secondItem="McL-A9-9aT" secondAttribute="bottom" constant="4" id="z4K-AK-HmQ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="btnBack" destination="Oju-wL-qLE" id="9At-Xz-Tnx"/>
                         <outlet property="imagePoster" destination="uMD-R2-VYu" id="5vv-xF-yf2"/>
