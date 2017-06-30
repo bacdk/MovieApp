@@ -118,9 +118,10 @@
         <!--Tab Bar-->
         <scene sceneID="yFR-rj-opT">
             <objects>
-                <tabBarController extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="InR-OK-1Ep" customClass="TabBar" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="InR-OK-1Ep" customClass="TabBar" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0fu-EY-8E2">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="PPi-NF-aRy">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="CHx-wU-S6n" kind="show" id="iJv-xT-qtr"/>
                             </connections>
@@ -1428,7 +1429,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TDw-NQ-Q4Z" id="816-dn-oZr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Search For ... Maybe..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VqH-iD-UEh">

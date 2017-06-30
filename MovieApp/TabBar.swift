@@ -15,7 +15,10 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
         self.delegate = self
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
