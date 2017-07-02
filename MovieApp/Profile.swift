@@ -32,16 +32,12 @@ class Profile: UIViewController {
         
         self.avatar.layer.cornerRadius = 50
         self.avatar.layer.masksToBounds = true
-        
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "profile")!.draw(in: view.frame)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image!)
+        self.avatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        self.avatar.isUserInteractionEnabled = true
         
         updateUI()
         
-        let center = NotificationCenter.default
+        _ = NotificationCenter.default
         //        center.addObserver(self, selector: #selector(ProfileViewController.keyboardShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         //        center.addObserver(self, selector: #selector(ProfileViewController.keyboardHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -127,7 +123,48 @@ class Profile: UIViewController {
                 self.address.text = user.address
                 self.birthday.text = user.birthday
                 self.phone.text = user.phone
+                if let profileImageUrl = user.profileImageUrl
+                {
+                    self.avatar.loadImageUsingCacheWithUrlString(profileImageUrl)
+                }
             }
         }
     }
+}
+
+
+extension Profile: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func handleSelectProfileImageView() {
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            avatar.setRounded()
+            avatar.image = selectedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("canceled picker")
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

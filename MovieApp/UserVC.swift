@@ -22,11 +22,6 @@ class UserVC: UITableViewController {
         imageUser.setRounded()
         //        imageUser.layer.borderWidth = 1
         //        imageUser.layer.borderColor = UIColor.white.cgColor
-        if(Auth.auth().currentUser != nil)
-        {
-                       //tableView.reloadData()
-            //imageUser.image = Downloader.downloadImageWithURL(userInfo.profileImageUrl!)
-        }
         UIGraphicsBeginImageContext(view.frame.size)
         UIImage(named: "Unknown")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -58,16 +53,13 @@ class UserVC: UITableViewController {
                     print(error!)
                 } else {
                     self.lb_name.text = user.name
-//                    if let profileImageUrl = user.profileImageUrl
-//                    {
-                        //self.imageUser.loadImageUsingCacheWithUrlString(profileImageUrl)
-                    //}
+                    if let profileImageUrl = user.profileImageUrl
+                    {
+                        self.imageUser.loadImageUsingCacheWithUrlString(profileImageUrl)
+                    }
                 }
             })
             self.buttonLogin.isHidden = true
-            //print(userInfo.name)
-            
-
             return 1
         }
         else

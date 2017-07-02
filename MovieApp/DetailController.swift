@@ -50,8 +50,9 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         let image = Downloader.downloadImageWithURL("\(prefixImage)w780\(self.movie.poster_path!)")
         UIGraphicsGetCurrentContext();
         self.view.backgroundColor = UIColor(patternImage: image!)
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "03")!.draw(in: view.frame)
+        
+        UIGraphicsBeginImageContext(viewInTable.frame.size)
+        UIImage(named: "03")!.draw(in: viewInTable.frame)
         let image1 = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
         self.viewInTable.backgroundColor = UIColor(patternImage: image1!)

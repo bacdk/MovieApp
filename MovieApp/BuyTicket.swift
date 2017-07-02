@@ -51,6 +51,7 @@ class BuyTicket: UIViewController {
         imgPoster.image = img1
         imgPoster.layer.cornerRadius = CGFloat.init(05)
         imgPoster.dropShadow()
+        imgPoster.layer.masksToBounds = true
         txtFilmName.text = movie.title
         txtTime.text = time
         txtPrice.text = String(priceFilm)

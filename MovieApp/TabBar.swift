@@ -29,15 +29,15 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if tabBar.items?.index(of: item) == 0 {
             tabName="NowPlaying"
-            print(tabName)
+            //print(tabName)
         }
         if tabBar.items?.index(of: item) == 1 {
             tabName="Popular"
-            print(tabName)
+            //print(tabName)
         }
         if tabBar.items?.index(of: item) == 2 {
             tabName="UpComing"
-            print(tabName)
+            //print(tabName)
         }
     }
     

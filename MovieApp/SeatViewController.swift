@@ -15,9 +15,15 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var indexNgay:Int!
     var indexTime:Int!
     
+    @IBOutlet weak var bookButton: DesignButton!
+    @IBOutlet weak var imageSeat: UIImageView!
     var seatUser : NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+    }
+    func loadData()
+    {
         if(indexNgay == 0)
         {
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
@@ -41,10 +47,17 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             })
         }
     }
-    
     func draw(){
         let seats2 = ZSeatSelector()
-        seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
+        var _y : Int
+        if UIDevice.current.orientation.isLandscape {
+            _y = Int(bookButton.frame.maxY) + 5
+        }
+        else
+        {
+            _y = 250
+        }
+        seats2.frame = CGRect(x: 0, y: _y, width: Int(self.view.frame.size.width), height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
         seats2.setAvailableImage(   UIImage(named: "A")!,
                                     andUnavailableImage:    UIImage(named: "U")!,
@@ -57,6 +70,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         seats2.seatSelectorDelegate = self
         seats2.maximumZoomScale         = 5.0
         seats2.minimumZoomScale         = 0.05
+        seats2.tag = 100
         self.view.addSubview(seats2)
     }
     
@@ -148,5 +162,14 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertView.addAction(action)
         self.present(alertView, animated: true, completion: nil)
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+            loadData()
+        } else {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+            loadData()
+        }
     }
 }

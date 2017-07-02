@@ -10,6 +10,7 @@ import UIKit
 
 class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var imagePoster: UIImageView!
     @IBOutlet weak var lblSoghe: UILabel!
@@ -24,12 +25,16 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     var ticket: Ticket!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "03")!.draw(in: view.frame)
+        draw()
+    }
+    
+    func draw()
+    {
+        UIGraphicsBeginImageContext(scrollView.frame.size)
+        UIImage(named: "03")!.draw(in: scrollView.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image!)
+        self.scrollView.backgroundColor = UIColor(patternImage: image!)
         
         if screen == "History"
         {
@@ -37,7 +42,7 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         }
         else
         {
-                status.text="Success!"
+            status.text="Success!"
         }
         lblName.text = ticket.name
         lblNgay.text = "Ngày: \(ticket.day!)"
@@ -53,9 +58,11 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         imagePoster.image = img1
         imagePoster.layer.cornerRadius = CGFloat.init(05)
         imagePoster.layer.masksToBounds = true
-        let map2:String =   ticket.seat
+        let _y = imagePoster.frame.maxY + 20
+        let map2:String =  ticket.seat
         let seats2 = ZSeatSelector()
-        seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 600)
+        seats2.tag = 100
+        seats2.frame = CGRect(x: 0, y: _y, width: self.scrollView.frame.size.width, height: 600)
         seats2.setSeatSize(CGSize(width: 30, height: 30))
         seats2.setAvailableImage(   UIImage(named: "sT")!,
                                     andUnavailableImage:    UIImage(named: "sE")!,
@@ -68,7 +75,7 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         seats2.seatSelectorDelegate = self
         seats2.maximumZoomScale         = 5.0
         seats2.minimumZoomScale         = 0.05
-        self.view.addSubview(seats2)
+        self.scrollView.addSubview(seats2)
     }
     
     func seatSelected(_ seat: ZSeat) {
@@ -83,9 +90,21 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func backAction(_ sender: UIButton) {
-//        self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
+        //        self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        if UIDevice.current.orientation.isLandscape {
+            print("Láncape")
+            self.scrollView.viewWithTag(100)?.removeFromSuperview()
+            draw()
+        } else {
+            print("cutcape")
+            self.scrollView.viewWithTag(100)?.removeFromSuperview()
+            draw()
         }
+    }
 }
