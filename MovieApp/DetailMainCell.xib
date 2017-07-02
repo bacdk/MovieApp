@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="4vc-eH-pcB">
-                        <rect key="frame" x="0.0" y="-1" width="320" height="181"/>
+                        <rect key="frame" x="0.0" y="-0.5" width="320" height="180.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="4vc-eH-pcB" secondAttribute="height" multiplier="16:9" id="8qQ-Hu-PBf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📅 release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OM9-iE-AyN">
-                        <rect key="frame" x="24" y="91" width="97" height="16"/>
+                        <rect key="frame" x="24" y="94" width="97" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="c03-sz-TQN" secondAttribute="trailing" constant="80" id="9u6-g7-FCJ"/>
                     <constraint firstItem="OM9-iE-AyN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="CuZ-QI-tnz"/>
-                    <constraint firstItem="c03-sz-TQN" firstAttribute="top" secondItem="OM9-iE-AyN" secondAttribute="bottom" constant="8" id="Kps-nB-IH9"/>
+                    <constraint firstItem="c03-sz-TQN" firstAttribute="top" secondItem="OM9-iE-AyN" secondAttribute="bottom" constant="5" id="Kps-nB-IH9"/>
                     <constraint firstAttribute="bottom" secondItem="4vc-eH-pcB" secondAttribute="bottom" id="Mdu-H4-nSo"/>
                     <constraint firstAttribute="bottom" secondItem="4vc-eH-pcB" secondAttribute="bottom" id="Ook-tK-Ez1"/>
                     <constraint firstItem="c03-sz-TQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="aVV-ez-sqX"/>
