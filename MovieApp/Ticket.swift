@@ -1,10 +1,12 @@
 //
-//  File.swift
+//  Ticket.swift
 //  MovieApp-master
 //
-//  Created by Cntt22 on 6/14/17.
+//  Created by Zwart on 7/2/17.
 //  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
+
+import UIKit
 
 import Foundation
 
@@ -20,7 +22,7 @@ class Ticket{
     var soghe :   [Int]!
     //var realtime :String!
     init() {
-
+        
     }
     init(json: [String:Any]) {
         id             = json["id"]       as? Int

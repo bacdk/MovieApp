@@ -19,7 +19,7 @@ class DetailMainCell: UITableViewCell {
         // Initialization code
     }
     func configWithCell(movie: Movie) {
-        lblTittle.text = movie.title
+        lblTittle.text = movie.title.uppercased()
         lblRelease.text = movie.release_date
         imageBack.image = #imageLiteral(resourceName: "default")
         if (movie.backdrop_path) != nil
@@ -32,8 +32,7 @@ class DetailMainCell: UITableViewCell {
             let img1 = UIImage(named: "BlueClouds")
             imageBack.image = img1
         }
-        lblTittle.text = lblTittle.text?.uppercased()
-        
+      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

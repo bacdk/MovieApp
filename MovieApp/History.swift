@@ -60,16 +60,26 @@ class History: UITableViewController {
         return cell
     }
     // MARK: - Segues
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showDetail" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                //data send to detail view
+//                let detailVC = segue.destination as! DetailTicketVC
+//                detailVC.ticket = tickets[indexPath.row]
+//                detailVC.screen = "History"
+//                
+//            }
+//        }
+//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 //data send to detail view
-                let detailVC = segue.destination as! DetailTicketVC
+                let detailVC = segue.destination as! TicketVC
                 detailVC.ticket = tickets[indexPath.row]
                 detailVC.screen = "History"
                 
             }
         }
     }
-    
 }

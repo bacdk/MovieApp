@@ -33,6 +33,24 @@ class DesignImage: UIImageView {
             layer.masksToBounds = true
         }
     }
+    
+    @IBInspectable var shadowOpacity: Float = 0.0 {
+        didSet{
+            layer.shadowOpacity = shadowOpacity
+        }
+    }
+    
+    @IBInspectable var shadowOffset = CGSize(width: 3.0, height: 3.0) {
+        didSet{
+            layer.shadowOffset = shadowOffset
+        }
+    }
+    
+    @IBInspectable var shouldRasterize : Bool = true {
+        didSet{
+            layer.shouldRasterize = shouldRasterize
+        }
+    }
 }
 
 extension UIImageView {
