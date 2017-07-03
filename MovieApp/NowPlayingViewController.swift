@@ -11,17 +11,9 @@ import Firebase
 
 class NowPlayingViewController: UITableViewController{
     
-    
-    @IBOutlet weak var imageBack: UIImageView!
-    @IBOutlet weak var viewIU: UIView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     //
     var movies = [Movie]()
-    var refreshPage = 0
-    //
-    var p = 1
-    var posterImage: [Int:UIImage] = [:]
-    
-    var filteredMovies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +22,15 @@ class NowPlayingViewController: UITableViewController{
         tabName="NowPlaying"
         tableView.register(UINib(nibName: "DetailMainCell", bundle: nil), forCellReuseIdentifier: "NowTVCell")
     }
-    
+    //
+    override func viewDidAppear(_ animated: Bool)
+    {
+        spinner.center = tableView.center
+    }
+    //
+    override func viewDidDisappear(_ animated: Bool) {
+        spinner.stopAnimating()
+    }
     //Load Data
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
@@ -63,9 +63,9 @@ class NowPlayingViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "filmDetail") as! DetailController
         detailVC.movie = movies[indexPath.row]
-
+        
         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
+
 }
 

@@ -11,13 +11,9 @@ import Firebase
 class PopularViewController: UITableViewController{
     
     var movies = [Movie]()
-    var refreshPage = 0
-    
-    var p = 1
-    var posterImage: [Int:UIImage] = [:]
-      var filteredMovies = [Movie]()
-    
+   
     //
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //spinner.isHidden = true
@@ -25,7 +21,15 @@ class PopularViewController: UITableViewController{
         self.tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "DetailMainCell", bundle: nil), forCellReuseIdentifier: "NowTVCell")
     }
-    
+    //
+    override func viewDidAppear(_ animated: Bool)
+    {
+        spinner.center = tableView.center
+    }
+    //
+    override func viewDidDisappear(_ animated: Bool) {
+        spinner.stopAnimating()
+    }
     //
     func loadData()  {
         TMDb.getPopularListFireBase(completionHandler: { (movies, error) in
@@ -40,12 +44,13 @@ class PopularViewController: UITableViewController{
         })
     }
     
-    
+
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
               return movies.count
     }
-    
+    //
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! DetailMainCell
@@ -54,14 +59,7 @@ class PopularViewController: UITableViewController{
         //
         return cell
     }
-    //Load lai data
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == refreshPage - 1 {
-            //spinner.isHidden = false
-            //Users/hntlk/MovieApp/MovieApp/PopularViewController.swift //spinner.startAnimating()
-            loadData()
-        }
-    }
+
     //Handel event click cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "filmDetail") as! DetailController

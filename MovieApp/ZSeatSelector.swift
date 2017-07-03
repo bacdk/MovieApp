@@ -58,14 +58,14 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
                     sttM += 1
                 } else if seat_at_position == "_" {
                     initial_seat_x += 1
-                    sttM += 1
+                    //sttM += 1
                 } else {
                     if initial_seat_x > final_width {
                         final_width = initial_seat_x
                     }
                     initial_seat_x = 0
                     initial_seat_y += 1
-                    sttM += 1
+                    //sttM += 1
                 }
             }
             
