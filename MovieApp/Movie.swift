@@ -18,12 +18,12 @@ class Movie {
     var original_title: String!
     var original_language: String!
     var title: String!
-    var backdrop_path: String!
+    var backdrop_path: String?
     var popularity: Double!
     var vote_count: Int!
     var video: Bool!
     var vote_average: Double!
-    var trailer : String?
+    var trailer : String!
     var runtime : Int!
     var filmschedule : String!
     var genres:     String?

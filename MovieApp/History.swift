@@ -51,8 +51,7 @@ class History: UITableViewController {
         print(tickets.count)
         if(tickets.count != 0)
         {
-            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.tickets[indexPath.row].image!)")
-            cell.poster.image = img1
+            cell.poster.loadImageUsingCacheWithUrlString("\(prefixImage)w185\(self.tickets[indexPath.row].image!)")
             cell.name.text = tickets[indexPath.row].name
             cell.date.text = "📅 \(tickets[indexPath.row].day!)"
             cell.time.text = "⏰ \(tickets[indexPath.row].time!)"

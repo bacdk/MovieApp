@@ -42,7 +42,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     }
     
     // UITabBarControllerDelegate
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected view controller")
     }
     /*

@@ -47,8 +47,7 @@ class BuyTicket: UIViewController {
     }
     
     func loadData() {
-        let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(movie.poster_path!)")
-        imgPoster.image = img1
+        imgPoster.loadImageUsingCacheWithUrlString("\(prefixImage)w185\(movie.poster_path!)")
         imgPoster.layer.cornerRadius = CGFloat.init(05)
         imgPoster.dropShadow()
         imgPoster.layer.masksToBounds = true

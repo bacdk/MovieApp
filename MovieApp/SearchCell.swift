@@ -16,16 +16,15 @@ class SearchCell: UITableViewCell {
             if let unwrappedMovie = movie {
                 titleLabel.text = unwrappedMovie.title
                 descriptionLabel.text = unwrappedMovie.overview
-                if let poster = unwrappedMovie.poster_path{
-                    let img = Downloader.downloadImageWithURL("\(prefixImage)w780\(poster)")
-                    posterImageView.image = img
-                } else {
-                    posterImageView.image = UIImage(named: "default")
-                }
-                //print(unwrappedMovie.filmschedule)
                 if unwrappedMovie.filmschedule != "UC"{
                     ticket.image = UIImage(named: "ticket1")
                 } else {ticket.isHidden = true}
+                if let poster = unwrappedMovie.poster_path{
+                    posterImageView.loadImageUsingCacheWithUrlString("\(prefixImage)w780\(poster)")
+                } else {
+                    posterImageView.image = UIImage(named: "default")
+                }
+
             }
         }
     }

@@ -19,7 +19,8 @@
 		6207DB851F09201D00DB321F /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207DB841F09201D00DB321F /* Ticket.swift */; };
 		6207DB871F09207300DB321F /* TicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207DB861F09207300DB321F /* TicketVC.swift */; };
 		620C2E5F1F0A626600DEDDBB /* NotUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620C2E5E1F0A626600DEDDBB /* NotUse.swift */; };
-		622E81EC1EFFEF8000963436 /* ImageFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622E81EB1EFFEF8000963436 /* ImageFireBase.swift */; };
+		620C2E611F0A6F0C00DEDDBB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620C2E601F0A6F0C00DEDDBB /* Reachability.swift */; };
+		622E81EC1EFFEF8000963436 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622E81EB1EFFEF8000963436 /* ImageDownloader.swift */; };
 		624365131EFF8A3900DF28D9 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365121EFF8A3900DF28D9 /* Profile.swift */; };
 		624B84971EFE726800274A83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B84961EFE726800274A83 /* Constants.swift */; };
 		6254DB231EFD6F0B00585B52 /* DesignImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254DB221EFD6F0B00585B52 /* DesignImage.swift */; };
@@ -91,7 +92,8 @@
 		6207DB841F09201D00DB321F /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		6207DB861F09207300DB321F /* TicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketVC.swift; sourceTree = "<group>"; };
 		620C2E5E1F0A626600DEDDBB /* NotUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotUse.swift; sourceTree = "<group>"; };
-		622E81EB1EFFEF8000963436 /* ImageFireBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFireBase.swift; sourceTree = "<group>"; };
+		620C2E601F0A6F0C00DEDDBB /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		622E81EB1EFFEF8000963436 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		624365121EFF8A3900DF28D9 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		624B84961EFE726800274A83 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6254DB221EFD6F0B00585B52 /* DesignImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignImage.swift; sourceTree = "<group>"; };
@@ -222,8 +224,9 @@
 				624B84961EFE726800274A83 /* Constants.swift */,
 				62B193251EFEECD3004E13C4 /* ImagePicker.swift */,
 				BB51315D1ED986A700457B1B /* Downloader.swift */,
-				622E81EB1EFFEF8000963436 /* ImageFireBase.swift */,
+				622E81EB1EFFEF8000963436 /* ImageDownloader.swift */,
 				620C2E5E1F0A626600DEDDBB /* NotUse.swift */,
+				620C2E601F0A6F0C00DEDDBB /* Reachability.swift */,
 			);
 			name = "Assisting Files";
 			sourceTree = "<group>";
@@ -610,7 +613,7 @@
 				627D78F81EFA661200D91B0E /* DetailTicketVC.swift in Sources */,
 				62720A961EFDD3C8001C85FB /* Search.swift in Sources */,
 				A73E371D1EE8450F0063BBAE /* PopularViewController.swift in Sources */,
-				622E81EC1EFFEF8000963436 /* ImageFireBase.swift in Sources */,
+				622E81EC1EFFEF8000963436 /* ImageDownloader.swift in Sources */,
 				CF1984761EED52D900A29EEE /* Schedule.swift in Sources */,
 				6207DB871F09207300DB321F /* TicketVC.swift in Sources */,
 				A72D290F1EE86FDE00C48C94 /* ZSeatSelector.swift in Sources */,
@@ -619,6 +622,7 @@
 				BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */,
 				A735F04C1EE3F3CD00F399C5 /* UserInfo.swift in Sources */,
 				A75320971EE1B38900E75BE3 /* NowPlayingViewController.swift in Sources */,
+				620C2E611F0A6F0C00DEDDBB /* Reachability.swift in Sources */,
 				BB5131571ED9837900457B1B /* Struct.swift in Sources */,
 				A73E371E1EE8450F0063BBAE /* UpComingViewController.swift in Sources */,
 				62B193261EFEECD3004E13C4 /* ImagePicker.swift in Sources */,

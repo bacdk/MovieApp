@@ -54,8 +54,7 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
             arraySeat = arraySeat + String(seat) + " "
         }
         lblSoghe.text = arraySeat
-        let img1 = Downloader.downloadImageWithURL("\(prefixImage)w185\(ticket.image!)")
-        imagePoster.image = img1
+        imagePoster.loadImageUsingCacheWithUrlString("\(prefixImage)w185\(ticket.image!)")
         imagePoster.layer.cornerRadius = CGFloat.init(05)
         imagePoster.layer.masksToBounds = true
         let _y = imagePoster.frame.maxY + 20

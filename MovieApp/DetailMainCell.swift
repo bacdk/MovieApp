@@ -24,8 +24,7 @@ class DetailMainCell: UITableViewCell {
         imageBack.image = #imageLiteral(resourceName: "default")
         if (movie.backdrop_path) != nil
         {
-            let img1 = Downloader.downloadImageWithURL("\(prefixImage)w780\(movie.backdrop_path!)")
-            imageBack.image = img1
+            imageBack.loadImageUsingCacheWithUrlString("\(prefixImage)w780\(movie.backdrop_path!)")
         }
         else
         {

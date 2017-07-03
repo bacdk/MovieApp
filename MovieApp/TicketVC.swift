@@ -29,14 +29,6 @@ class TicketVC: UIViewController {
     
     func draw()
     {
-//        if screen == "History"
-//        {
-//            btnBack.isHidden = true
-//        }
-//        else
-//        {
-//            status.text="Success!"
-//        }
         lblName.text = ticket.name.uppercased()
         lblNgay.text = ticket.day!
         lblTime.text = ticket.time!
