@@ -24,6 +24,10 @@ class TicketVC: UIViewController {
     var ticket: Ticket!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (screen != "Book")
+        {
+            btnBack.isHidden = true
+        }
         draw()
     }
     

@@ -40,7 +40,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var initial_seat_x: Int = 0
             var initial_seat_y: Int = 0
             var final_width: Int = 0
-            var sttM: Int = 0
+            var sttM: Int = 1
             for i in 0..<map.characters.count {
                 let seat_at_position = map[i]
                 

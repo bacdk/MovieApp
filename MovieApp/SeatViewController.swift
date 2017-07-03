@@ -93,7 +93,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     @IBAction func chooseSeat(_ sender: UIButton) {
         if (Int(ticket.sove) == seatUser.count)
         {
-            let alert = UIAlertController(title: "Book ticket", message:   "Gửi yêu cầu đặt vé?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Book ticket", message:   "View infomation of ticket?", preferredStyle: .alert)
             
             let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
                 self.handleBookSeat()
@@ -108,7 +108,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             self.present(alert, animated: true){}
         }
         else{
-            showAlertDialog(message: "Vui lòng chọn đủ \(ticket.sove!) ghế")
+            showAlertDialog(message: "Please choose enought \(ticket.sove!) seat")
         }
     }
     override func didReceiveMemoryWarning() {
@@ -134,31 +134,22 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let index = seatUserString.index(seatUserString.startIndex, offsetBy: pos)
             seatUserString.replaceSubrange(index...index, with: "U")
         }
-        //print(seats)
-        //print(seatMovieString)
         ticket.soghe = [Int]()
         for seat in seatUser
         {
             ticket.soghe.append((seat as! ZSeat).stt)
         }
-        //print(ticket.)
         ticket.seat=seatUserString;
-        TMDb.bookTicket(ticket: ticket)
-        if(indexNgay==0)
-        {
-            TMDb.updateSeat(id: movie.id, ngay: "Today", gio: ticket.time, seat: seatMovieString)
-        }
-        else{
-            TMDb.updateSeat(id: movie.id, ngay: "Tomorrow", gio: ticket.time, seat: seatMovieString)
-        }
         let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "detailTicket") as! DetailTicketVC
         detailTicket.screen = "bookTicket"
         detailTicket.ticket = ticket
+        detailTicket.indexNgay = indexNgay
+        detailTicket.seatMovieString = seatMovieString
         self.present(detailTicket, animated: true, completion: nil)
     }
     
     func showAlertDialog(message: String) {
-        let alertView = UIAlertController(title: "Thông Báo", message: message, preferredStyle: .alert)
+        let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertView.addAction(action)
         self.present(alertView, animated: true, completion: nil)

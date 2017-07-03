@@ -11,7 +11,6 @@ import UIKit
 class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var imagePoster: UIImageView!
     @IBOutlet weak var lblSoghe: UILabel!
     @IBOutlet weak var lblTongtien: UILabel!
@@ -20,9 +19,11 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     @IBOutlet weak var lblNgay: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnBack: UIButton!
+    var indexNgay:Int!
     var screen : String = ""
     var seatUser : NSMutableArray = []
     var ticket: Ticket!
+    var seatMovieString:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         draw()
@@ -36,14 +37,6 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         UIGraphicsGetCurrentContext();
         self.scrollView.backgroundColor = UIColor(patternImage: image!)
         
-        if screen == "History"
-        {
-            btnBack.isHidden = true
-        }
-        else
-        {
-            status.text="Success!"
-        }
         lblName.text = ticket.name
         lblNgay.text = "Ngày: \(ticket.day!)"
         lblTime.text = "Time: \(ticket.time!)"
@@ -92,8 +85,61 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     
     
     @IBAction func backAction(_ sender: UIButton) {
-        //        self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
+        dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func payButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Comfirm payment!", message:   "By clicking OK, you agree to our MovieApp policy and pay for your Ticket", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
+            do
+            {
+                try self.upload()
+            }
+            catch
+            {
+                let alertView = UIAlertController(title: "Alert", message: "Error!. Try later", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    alertView.addAction(action)
+                    self.present(alertView, animated: true, completion: nil)
+            }
+        })
+        // Create Cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            //print("Cancel button tapped");
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(OKAction)
+        
+        self.present(alert, animated: true){}
+    }
+    func upload()
+    {
+        TMDb.bookTicket(ticket: self.ticket)
+        if(self.indexNgay==0)
+        {
+            TMDb.updateSeat(id: self.ticket.id, ngay: "Today", gio: self.ticket.time, seat: self.seatMovieString)
+        }
+        else{
+            TMDb.updateSeat(id: self.ticket.id, ngay: "Tomorrow", gio: self.ticket.time, seat: self.seatMovieString)
+        }
+        self.success()
+    }
+    func success() {
+        let alert  = UIAlertController(title: "Successful!", message:   "Pay success", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
+            let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "ticketStoryboard") as! TicketVC
+            detailTicket.screen = "Book"
+            detailTicket.ticket = self.ticket
+            self.present(detailTicket, animated: true, completion: nil)
+        })
+        alert.addAction(OKAction)
+        
+        self.present(alert, animated: true){}
+    }
+    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         if UIDevice.current.orientation.isLandscape {
