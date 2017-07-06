@@ -30,3 +30,22 @@ class DesignButton: UIButton {
         }
     }
 }
+<<<<<<< HEAD
+=======
+//Format fir button
+extension UIButton
+{
+    func setUpLayer(sampleButton: UIButton?) {
+        sampleButton?.tintColor =  UIColor.white
+        sampleButton!.frame = CGRect(x:50, y:500, width:170, height:40)
+        sampleButton!.layer.borderWidth = 1.0
+        sampleButton!.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        sampleButton!.layer.cornerRadius = 5.0
+        
+        sampleButton!.layer.shadowRadius =  3.0
+        sampleButton!.layer.shadowColor =  UIColor.white.cgColor
+        sampleButton!.layer.shadowOpacity =  0.3
+    }
+    
+}
+>>>>>>> origin/fbb

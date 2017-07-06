@@ -40,7 +40,11 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var initial_seat_x: Int = 0
             var initial_seat_y: Int = 0
             var final_width: Int = 0
+<<<<<<< HEAD
             var sttM: Int = 0
+=======
+            var sttM: Int = 1
+>>>>>>> origin/fbb
             for i in 0..<map.characters.count {
                 let seat_at_position = map[i]
                 
@@ -58,14 +62,22 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
                     sttM += 1
                 } else if seat_at_position == "_" {
                     initial_seat_x += 1
+<<<<<<< HEAD
                     sttM += 1
+=======
+                    //sttM += 1
+>>>>>>> origin/fbb
                 } else {
                     if initial_seat_x > final_width {
                         final_width = initial_seat_x
                     }
                     initial_seat_x = 0
                     initial_seat_y += 1
+<<<<<<< HEAD
                     sttM += 1
+=======
+                    //sttM += 1
+>>>>>>> origin/fbb
                 }
             }
             
