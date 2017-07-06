@@ -26,6 +26,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     {
         if(indexNgay == 0)
         {
+            // get seat map by date
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -37,6 +38,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         }
         else
         {
+            // get seat map by date
             TMDb.getSeatMap(id: movie.id, ngay: "Tomorrow", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -119,6 +121,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         let range: Range<String.Index> = seatMovieString.range(of: "/")!
         let numberofSeat:Int = seatMovieString.distance(from: seatMovieString.startIndex, to: range.lowerBound)
         //print(numberofSeat)
+        //change character in seat array and upload into Movie data
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
@@ -126,7 +129,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let index = seatMovieString.index(seatMovieString.startIndex, offsetBy: pos)
             seatMovieString.replaceSubrange(index...index, with: "U")
         }
-        //print(numberofSeat)
+        //change character in seat array and upload into user's ticket  data
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
@@ -134,12 +137,14 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let index = seatUserString.index(seatUserString.startIndex, offsetBy: pos)
             seatUserString.replaceSubrange(index...index, with: "U")
         }
+        //get seat numbers
         ticket.soghe = [Int]()
         for seat in seatUser
         {
             ticket.soghe.append((seat as! ZSeat).stt)
         }
         ticket.seat=seatUserString;
+        //pass data to DetailTicket screen
         let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "detailTicket") as! DetailTicketVC
         detailTicket.screen = "bookTicket"
         detailTicket.ticket = ticket
@@ -147,9 +152,9 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         detailTicket.seatMovieString = seatMovieString
         self.present(detailTicket, animated: true, completion: nil)
     }
-
+    //Check orientation is
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation.isLandscape {
+        if UIDevice.current.orientation.isLandscape {        //at lanscape
             self.view.viewWithTag(100)?.removeFromSuperview()
             loadData()
         } else {

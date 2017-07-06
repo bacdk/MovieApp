@@ -40,7 +40,7 @@ class ChangePasswordViewController: UIViewController {
             //print(user?.email)
         }
     }
-
+    //Submit action
     @IBAction func submit(_ sender: Any) {
         if(passNew.text == "" || passOld.text == "" || replacePassNew.text == ""){
             lberror.isHidden = false
