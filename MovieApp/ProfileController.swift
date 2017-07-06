@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class Profile: UIViewController {
     
     
@@ -86,13 +86,53 @@ class Profile: UIViewController {
     }
     
     @IBAction func saveProfile(_ sender: AnyObject) {
-        let user = userInfo
-        user.name = self.lastName.text
-        user.email = self.email.text
-        user.address = self.address.text
-        user.birthday = self.birthday.text
-        user.phone = self.phone.text
-        TMDb.updateInfoUser(_user: user)
+        alertSpinnerStart()
+        let imageName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+        // Delete the file
+        storageRef.delete { error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+            } else {
+                // File deleted successfully
+            }
+        }
+        if let uploadData = UIImagePNGRepresentation(self.avatar.image!) {
+            
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if let error = error {
+                    print(error)
+                    self.dismissAllMessage()
+                    self.alertOK(message: error as! String, title: "Error")
+                    return
+                }
+                
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    let user = userInfo
+                    user.name = self.lastName.text
+                    user.email = self.email.text
+                    user.address = self.address.text
+                    user.birthday = self.birthday.text
+                    user.phone = self.phone.text
+                    user.profileImageUrl = profileImageUrl
+                    TMDb.updateUserInfo(user: user, completionHandler: { (error) in
+                        if let error = error {
+                            self.dismissAllMessage()
+                            self.alertOK(message: error as! String, title: "Error")
+                            print(error)
+                            return
+                        }
+                        self.dismissAllMessage()
+                        return
+                    })
+                }
+                self.dismissAllMessage()
+            })
+        }
+       
+//        let controll = UIAlertController.alertControllerWithTitle(title: "ahoho", message: "some message")
+        //present(controll, animated: true, completion: nil)
     }
     
     fileprivate func hideKeyboard() {
@@ -123,9 +163,9 @@ class Profile: UIViewController {
                 self.address.text = user.address
                 self.birthday.text = user.birthday
                 self.phone.text = user.phone
-                if let profileImageUrl = user.profileImageUrl
+                if let url = user.profileImageUrl
                 {
-                    self.avatar.loadImageUsingCacheWithUrlString(profileImageUrl)
+                    self.avatar.loadImageUsingCacheWithUrlString(url)
                 }
             }
         }
@@ -134,6 +174,7 @@ class Profile: UIViewController {
 
 
 extension Profile: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func handleSelectProfileImageView() {
         let picker = UIImagePickerController()
         

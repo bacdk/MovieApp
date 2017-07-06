@@ -21,6 +21,7 @@ let seatMap:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
     "_AAAAAAAAAAAAAAAAAAAAAAA/" +
     "_AAAAAAAAAAAAAAAAAAAAAAA/" +
 "_AAAAAAAAAAAAAAAAAAAAAAA/"
+let profileDefaultImage = "https://firebasestorage.googleapis.com/v0/b/movieapp-12783.appspot.com/o/default%2Fcorn.png?alt=media&token=7cdbfb10-ffc5-4bb5-909b-eb82c9bfca0b"
 var seatMapFireBase:String =   ""
 var tabName = ""
 var listmovieNP = [Movie]()

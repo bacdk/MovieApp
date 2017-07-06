@@ -108,7 +108,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             self.present(alert, animated: true){}
         }
         else{
-            showAlertDialog(message: "Please choose enought \(ticket.sove!) seat")
+            alertOK(message: "Please choose enough \(ticket.sove!) seat", title: "Message")
         }
     }
     override func didReceiveMemoryWarning() {
@@ -147,13 +147,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         detailTicket.seatMovieString = seatMovieString
         self.present(detailTicket, animated: true, completion: nil)
     }
-    
-    func showAlertDialog(message: String) {
-        let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertView.addAction(action)
-        self.present(alertView, animated: true, completion: nil)
-    }
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             self.view.viewWithTag(100)?.removeFromSuperview()

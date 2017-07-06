@@ -183,7 +183,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     //Button Action is
     func buttonPressed(sender:codeButton!)
     {
-        let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicket
+        let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicketController
         srcBuyTicket.movie = movie
         srcBuyTicket.time = (sender.titleLabel?.text)!
         srcBuyTicket.indexNgay = sender.indexNgay

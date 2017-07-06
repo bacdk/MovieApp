@@ -32,8 +32,8 @@ class UserInfo{
     var dict:[String:Any] {
         return [
             "name" : name ?? "",
-            //"profileImageUrl"
             "address" : address ?? "",
+            "profileImageUrl" : profileImageUrl ?? profileDefaultImage,
             "birthday" : birthday ?? "",
             "phone" : phone ?? ""
         ]

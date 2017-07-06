@@ -103,14 +103,20 @@ class TMDb {
             }
         }, withCancel: nil)
     }
-    //Update info user
-    static func updateInfoUser(_user: UserInfo)
+    //Create User
+    static func updateUserInfo(user: UserInfo, completionHandler: @escaping (_ error: Error?) -> Void)
     {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("users").child((Auth.auth().currentUser?.uid)!)
-            .updateChildValues(_user.dict)
+        let ref = Database.database().reference()
+        let usersReference = ref.child("users").child(getUid())
+        usersReference.updateChildValues(user.dict, withCompletionBlock: { (err, ref) in
+            if let err = err {
+                completionHandler(err)
+                print(err)
+                return
+            }
+        })
     }
+    
     //Get data user
     static func fetchUser(completionHandler: @escaping (_ user: UserInfo, _ error: Error?) -> Void){
         var ref: DatabaseReference!
@@ -125,9 +131,9 @@ class TMDb {
     {
         var ref: DatabaseReference!
         ref = Database.database().reference()
-            let id = "\(String(ticket.id) ) \(ticket.day!) \(ticket.time!)"
-            ref.child("users").child(getUid()).child("Tickets").child(id).setValue(ticket.dict)
-    
+        let id = "\(String(ticket.id) ) \(ticket.day!) \(ticket.time!)"
+        ref.child("users").child(getUid()).child("Tickets").child(id).setValue(ticket.dict)
+        
     }
     static func getUid() -> String {
         return (Auth.auth().currentUser?.uid)!
@@ -161,6 +167,6 @@ class TMDb {
         }, withCancel: nil)
         
     }
-
+    
     
 }

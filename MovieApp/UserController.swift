@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class UserVC: UITableViewController {
+class UserController: UITableViewController {
     @IBOutlet weak var lb_name: UILabel!
     
     
@@ -79,6 +79,7 @@ class UserVC: UITableViewController {
         
         let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard")
         self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
+        
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0

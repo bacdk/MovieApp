@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class PopularViewController: UITableViewController{
+class PopularController: UITableViewController{
     
     var movies = [Movie]()
    

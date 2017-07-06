@@ -147,7 +147,7 @@
         <!--Now Playing-->
         <scene sceneID="x0s-t5-RI3">
             <objects>
-                <tableViewController id="jSm-Jz-azb" customClass="NowPlayingViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jSm-Jz-azb" customClass="NowPlayingController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="28" sectionFooterHeight="28" id="LAm-Jd-RHo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -339,10 +339,10 @@
             </objects>
             <point key="canvasLocation" x="652" y="734"/>
         </scene>
-        <!--Change Password View Controller-->
+        <!--Change password-->
         <scene sceneID="EbW-Ei-Gll">
             <objects>
-                <viewController storyboardIdentifier="ChangePassword" wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" id="y5a-9Z-TRu" customClass="ChangePasswordViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePassword" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="y5a-9Z-TRu" customClass="ChangePasswordViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TXB-sQ-8gy"/>
                         <viewControllerLayoutGuide type="bottom" id="9Uy-we-TJc"/>
@@ -351,8 +351,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJM-TC-c1P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="nJM-TC-c1P">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2g-wD-9vd">
                                         <rect key="frame" x="92" y="294" width="82" height="15"/>
@@ -366,9 +366,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydn-Pr-YEe">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydn-Pr-YEe">
                                         <rect key="frame" x="93" y="318" width="190" height="30"/>
-                                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="1Ul-PR-Lwf"/>
                                             <constraint firstAttribute="width" constant="190" id="lZV-ZU-bFy"/>
@@ -383,9 +383,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5u-Cl-iXt">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5u-Cl-iXt">
                                         <rect key="frame" x="92" y="188" width="190" height="30"/>
-                                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="190" id="adX-hF-cSa"/>
                                             <constraint firstAttribute="height" constant="30" id="msW-5R-QyI"/>
@@ -406,9 +406,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGa-db-DB2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGa-db-DB2">
                                         <rect key="frame" x="92" y="256" width="190" height="30"/>
-                                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="190" id="cqw-9p-3Dl"/>
                                             <constraint firstAttribute="height" constant="30" id="xLr-JJ-0I4"/>
@@ -447,7 +447,7 @@
                                 <constraints>
                                     <constraint firstItem="g5u-Cl-iXt" firstAttribute="leading" secondItem="nJM-TC-c1P" secondAttribute="leading" constant="92" id="1GL-Hr-3Jf"/>
                                     <constraint firstItem="ydn-Pr-YEe" firstAttribute="top" secondItem="x2g-wD-9vd" secondAttribute="bottom" constant="9" id="4g5-ea-ZBk"/>
-                                    <constraint firstAttribute="bottom" secondItem="XC2-sT-Tpl" secondAttribute="bottom" constant="218" id="6QT-yj-cYE"/>
+                                    <constraint firstAttribute="bottom" secondItem="XC2-sT-Tpl" secondAttribute="bottom" constant="154" id="6QT-yj-cYE"/>
                                     <constraint firstItem="x2g-wD-9vd" firstAttribute="leading" secondItem="nJM-TC-c1P" secondAttribute="leading" constant="92" id="905-Nj-maR"/>
                                     <constraint firstItem="g5u-Cl-iXt" firstAttribute="top" secondItem="PIz-MN-r30" secondAttribute="bottom" constant="15" id="Abk-Hc-tcL"/>
                                     <constraint firstItem="LMc-bo-CdJ" firstAttribute="top" secondItem="nJM-TC-c1P" secondAttribute="top" constant="60" id="BYa-gi-bRI"/>
@@ -474,11 +474,11 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nJM-TC-c1P" firstAttribute="top" secondItem="BZE-YV-jeF" secondAttribute="top" id="5UE-3Q-5KM"/>
+                            <constraint firstItem="nJM-TC-c1P" firstAttribute="top" secondItem="BZE-YV-jeF" secondAttribute="top" constant="64" id="5UE-3Q-5KM"/>
                             <constraint firstItem="nJM-TC-c1P" firstAttribute="bottom" secondItem="9Uy-we-TJc" secondAttribute="top" id="Ba3-40-01i"/>
-                            <constraint firstItem="nJM-TC-c1P" firstAttribute="top" secondItem="BZE-YV-jeF" secondAttribute="top" id="CDn-fs-Jko"/>
+                            <constraint firstItem="nJM-TC-c1P" firstAttribute="top" secondItem="BZE-YV-jeF" secondAttribute="top" constant="64" id="CDn-fs-Jko"/>
                             <constraint firstAttribute="trailing" secondItem="nJM-TC-c1P" secondAttribute="trailing" id="P7P-tX-Gb2"/>
                             <constraint firstAttribute="trailing" secondItem="nJM-TC-c1P" secondAttribute="trailing" id="Ui6-1H-hRU"/>
                             <constraint firstItem="nJM-TC-c1P" firstAttribute="leading" secondItem="BZE-YV-jeF" secondAttribute="leading" id="evE-W0-nGs"/>
@@ -486,6 +486,8 @@
                             <constraint firstItem="9Uy-we-TJc" firstAttribute="top" secondItem="nJM-TC-c1P" secondAttribute="bottom" id="yAz-xk-qu1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Change password" id="WEx-IV-8Pd"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="lberror" destination="PIz-MN-r30" id="Vwv-9U-wEn"/>
                         <outlet property="passNew" destination="PGa-db-DB2" id="KcH-ay-RQ8"/>
@@ -669,7 +671,7 @@
         <!--Popular-->
         <scene sceneID="CVA-Cf-4mB">
             <objects>
-                <tableViewController id="jLh-Ay-Thr" customClass="PopularViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jLh-Ay-Thr" customClass="PopularController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="191" sectionHeaderHeight="28" sectionFooterHeight="28" id="Po2-Oc-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -706,7 +708,7 @@
         <!--Upcoming-->
         <scene sceneID="Q5C-FO-Y26">
             <objects>
-                <tableViewController id="Wqk-p1-oyV" customClass="UpComingViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Wqk-p1-oyV" customClass="UpComingController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="191" sectionHeaderHeight="28" sectionFooterHeight="28" id="eec-9w-g1q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -740,10 +742,10 @@
             </objects>
             <point key="canvasLocation" x="156" y="-27"/>
         </scene>
-        <!--Buy Ticket-->
+        <!--Buy Ticket Controller-->
         <scene sceneID="04B-fp-UAf">
             <objects>
-                <viewController storyboardIdentifier="buyTicket" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hAl-ds-2X2" customClass="BuyTicket" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="buyTicket" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hAl-ds-2X2" customClass="BuyTicketController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZU5-QM-RS9"/>
                         <viewControllerLayoutGuide type="bottom" id="wfI-Eg-H3b"/>
@@ -1106,7 +1108,7 @@
         <!--User-->
         <scene sceneID="jsR-yg-SdT">
             <objects>
-                <tableViewController id="z9U-Q8-kst" customClass="UserVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="z9U-Q8-kst" customClass="UserController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZW4-a2-0we">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
