@@ -35,6 +35,7 @@ class NowPlayingController: UITableViewController{
     func loadData()  {
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
             if(error != nil) {
+                self.alertOK(message: error!, title: "Error")
                 print(error!)
             } else {
                 self.movies = movies!

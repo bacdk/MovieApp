@@ -46,7 +46,6 @@
 		BB51314F1ED980DF00457B1B /* TMDbv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51314E1ED980DF00457B1B /* TMDbv3.swift */; };
 		BB5131521ED980EA00457B1B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131501ED980EA00457B1B /* Movie.swift */; };
 		BB5131571ED9837900457B1B /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5131561ED9837900457B1B /* Struct.swift */; };
-		BB51315E1ED986A700457B1B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51315D1ED986A700457B1B /* Downloader.swift */; };
 		BB8C64CC1EF10F510056B945 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB8C64CB1EF10F510056B945 /* GoogleService-Info.plist */; };
 		BB8C64CE1EF114330056B945 /* BuyTicketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C64CD1EF114330056B945 /* BuyTicketController.swift */; };
 		CF1984761EED52D900A29EEE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1984751EED52D900A29EEE /* Schedule.swift */; };
@@ -121,7 +120,6 @@
 		BB51314E1ED980DF00457B1B /* TMDbv3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbv3.swift; sourceTree = "<group>"; };
 		BB5131501ED980EA00457B1B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BB5131561ED9837900457B1B /* Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
-		BB51315D1ED986A700457B1B /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		BB8C64CB1EF10F510056B945 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB8C64CD1EF114330056B945 /* BuyTicketController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyTicketController.swift; sourceTree = "<group>"; };
 		CBFE154A94C88944B717EA7E /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				624B84961EFE726800274A83 /* Constants.swift */,
 				62B193251EFEECD3004E13C4 /* ImagePicker.swift */,
-				BB51315D1ED986A700457B1B /* Downloader.swift */,
 				622E81EB1EFFEF8000963436 /* ImageDownloader.swift */,
 				620C2E5E1F0A626600DEDDBB /* NotUse.swift */,
 				620C2E601F0A6F0C00DEDDBB /* Reachability.swift */,
@@ -604,7 +601,6 @@
 				62F9F01D1EFC3A47008195BE /* DetailMainCell.swift in Sources */,
 				BB8C64CE1EF114330056B945 /* BuyTicketController.swift in Sources */,
 				624B84971EFE726800274A83 /* Constants.swift in Sources */,
-				BB51315E1ED986A700457B1B /* Downloader.swift in Sources */,
 				3A66F8EC1EE7DB1A00FF3EFE /* ChangePasswordController.swift in Sources */,
 				624365131EFF8A3900DF28D9 /* ProfileController.swift in Sources */,
 				CF209D6F1EEC438000EE0098 /* DesignButton.swift in Sources */,

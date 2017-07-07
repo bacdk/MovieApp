@@ -24,6 +24,7 @@ class History: UITableViewController {
         TMDb.getTicket(completionHandler: { (tickets, error) in
             if(error != nil) {
                 print(error!)
+                self.alertOK(message: error!, title: "Error")
             } else {
                 self.tickets = tickets!.sorted { $0.day > $1.day }
                 
@@ -59,17 +60,6 @@ class History: UITableViewController {
         return cell
     }
     // MARK: - Segues
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                //data send to detail view
-//                let detailVC = segue.destination as! DetailTicketVC
-//                detailVC.ticket = tickets[indexPath.row]
-//                detailVC.screen = "History"
-//                
-//            }
-//        }
-//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {

@@ -24,6 +24,7 @@ class UpComingController: UITableViewController {
         TMDb.getUpcomingListFireBase(completionHandler: { (movies, error) in
             if(error != nil) {
                 print(error!)
+                self.alertOK(message: error!, title: "Error")
             } else {
                 self.movies = movies!
                 DispatchQueue.main.async {

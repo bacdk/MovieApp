@@ -43,11 +43,8 @@ class TicketVC: UIViewController {
             arraySeat = arraySeat + String(seat) + " "
         }
         lblSoghe.text = arraySeat
-        let img1 = Downloader.downloadImageWithURL("\(prefixImage)w780\(ticket.image!)")
-        imagePoster.image = img1
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: img1!)
+        imagePoster.loadImageUsingCacheWithUrlString("\(prefixImage)w780\(ticket.image!)")
+        self.view.loadImageBackground("\(prefixImage)w780\(ticket.image!)")
     }
     
     func seatSelected(_ seat: ZSeat) {

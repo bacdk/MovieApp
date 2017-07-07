@@ -20,8 +20,6 @@ class UserController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageUser.setRounded()
-        //        imageUser.layer.borderWidth = 1
-        //        imageUser.layer.borderColor = UIColor.white.cgColor
         UIGraphicsBeginImageContext(view.frame.size)
         UIImage(named: "Unknown")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -42,15 +40,16 @@ class UserController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if(Auth.auth().currentUser != nil)
         {
-            //self.buttonLogin.isHidden = true
+            //Get user's information
             TMDb.fetchUser(completionHandler: { (user, error) in
                 if(error != nil) {
+                    self.alertOK(message: error!, title: "Error")
                     print(error!)
+                    return
                 } else {
                     self.lb_name.text = user.name
                     if let profileImageUrl = user.profileImageUrl
@@ -65,7 +64,7 @@ class UserController: UITableViewController {
         else
         {
             self.buttonLogin.isHidden = false
-            lb_name.text = "Vui lòng đăng nhập"
+            lb_name.text = "Please login"
             return 0
         }
     }
@@ -76,57 +75,37 @@ class UserController: UITableViewController {
     }
     
     @IBAction func Login(_ sender: Any) {
-        
         let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard")
         self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //User Profile
         if indexPath.row == 0
         {
             let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! Profile
-            //nextViewController.userName.text = user.name
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
+        //Change passwword
         if indexPath.row == 1
         {
             let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChangePassword") as! ChangePasswordViewController
-            //nextViewController.userName.text = user.name
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
-        if indexPath.row == 4
-        {
-            handleLogout()
-        }
+        //Book ticket History
         if indexPath.row == 3
         {
             let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "History") as! History
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
-        print("You selected cell number: \(indexPath.row)!")
-        //        NSLog("You selected cell number: \(indexPath.row)!")
-        //        self.performSegue(withIdentifier: "yourIdentifier", sender: self)
-    }
-    
-    
-    func selectView(withRowAt row: Int) -> String {
-        switch row {
-            //        case 0:
-            //            return mainMenu
-            //        case 1:
-            //            return poinView
-            //        case 2:
-            //            return friendView
-            //        case 3:
-            //            return alarmView
-            //        case 4:
-        //            return historyView
-        default:
-            return "đ"
+        //Logout event
+        if indexPath.row == 4
+        {
+            handleLogout()
         }
     }
+    //Log out handle
     func handleLogout() {
-        
         do {
             try Auth.auth().signOut()
         } catch let logoutError {
@@ -134,12 +113,6 @@ class UserController: UITableViewController {
         }
         viewDidLoad()
         tableView.reloadData()
-        //        let loginController = UserVC()
-        //        present(loginController, animated: true, completion: nil)
-        //dismiss(animated: true, completion: nil)
-        //        let loginController = LoginController()
-        //        present(loginController, animated: true, completion: nil)
-        
     }
 }
 

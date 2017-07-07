@@ -45,11 +45,9 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         video.delegate = self
         time?.text = "\(movie.runtime!) min"
         genris?.text = movie.genres!
-        let img = Downloader.downloadImageWithURL("\(prefixImage)w185\(self.movie.poster_path!)")
-        posterImage.image = img
-        let image = Downloader.downloadImageWithURL("\(prefixImage)w780\(self.movie.poster_path!)")
-        UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image!)
+        
+        posterImage.loadImageUsingCacheWithUrlString("\(prefixImage)w780\(self.movie.poster_path!)")
+        self.view.loadImageBackground("\(prefixImage)w780\(self.movie.poster_path!)")
         
         UIGraphicsBeginImageContext(viewInTable.frame.size)
         UIImage(named: "03")!.draw(in: viewInTable.frame)
@@ -57,8 +55,6 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         UIGraphicsGetCurrentContext();
         self.viewInTable.backgroundColor = UIColor(patternImage: image1!)
         self.tableView.separatorStyle = .none
-        posterImage.layer.shadowOpacity = 0.4
-        posterImage.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         
         //Set blur effect for table
         let blurEffect = UIBlurEffect(style: .light)

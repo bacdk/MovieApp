@@ -43,6 +43,20 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         return button
     }()
     
+    lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot password?", for: UIControlState())
+        button.tintColor =  UIColor.white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    func handleForgotPassword() {
+        
+    }
+    
     func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             alertSpinnerStart()
@@ -292,6 +306,7 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         viewui.addSubview(loginRegisterSegmentedControl)
         viewui.addSubview(labelStatus)
         viewui.addSubview(btnBack)
+        viewui.addSubview(forgotPasswordButton)
         scroolView.addSubview(viewui)
         
         setupInputsContainerView()
@@ -412,6 +427,9 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 12).isActive = true
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

@@ -99,9 +99,9 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
             catch
             {
                 let alertView = UIAlertController(title: "Alert", message: "Error!. Try later", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                    alertView.addAction(action)
-                    self.present(alertView, animated: true, completion: nil)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertView.addAction(action)
+                self.present(alertView, animated: true, completion: nil)
             }
         })
         // Create Cancel button
@@ -115,13 +115,31 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     }
     func upload()
     {
-        TMDb.bookTicket(ticket: self.ticket)
+        TMDb.bookTicket(ticket: self.ticket, completionHandler: {(error) in
+            if(error != nil) {
+                self.alertOK(message: error! as! String, title: "Error")
+                print(error!)
+                return
+            }
+        })
         if(self.indexNgay==0)
         {
-            TMDb.updateSeat(id: self.ticket.id, ngay: "Today", gio: self.ticket.time, seat: self.seatMovieString)
+            TMDb.updateSeat(id: self.ticket.id, ngay: "Today", gio: self.ticket.time, seat: self.seatMovieString, completionHandler: {(error) in
+                if(error != nil) {
+                    self.alertOK(message: error! as! String, title: "Error")
+                    print(error!)
+                    return
+                }
+            })
         }
         else{
-            TMDb.updateSeat(id: self.ticket.id, ngay: "Tomorrow", gio: self.ticket.time, seat: self.seatMovieString)
+            TMDb.updateSeat(id: self.ticket.id, ngay: "Tomorrow", gio: self.ticket.time, seat: self.seatMovieString, completionHandler: {(error) in
+                if(error != nil) {
+                    self.alertOK(message: error! as! String, title: "Error")
+                    print(error!)
+                    return
+                }
+            })
         }
         self.success()
     }
@@ -139,7 +157,7 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         self.present(alert, animated: true){}
     }
     
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         if UIDevice.current.orientation.isLandscape {

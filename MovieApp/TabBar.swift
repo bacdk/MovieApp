@@ -13,6 +13,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkInternet()
         self.tabBarController?.delegate = self
         self.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -45,7 +46,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected view controller")
     }
-    /*
+        /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

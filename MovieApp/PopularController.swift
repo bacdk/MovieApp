@@ -35,6 +35,7 @@ class PopularController: UITableViewController{
         TMDb.getPopularListFireBase(completionHandler: { (movies, error) in
             if(error != nil) {
                 print(error!)
+                self.alertOK(message: error!, title: "Error")
             } else {
                 self.movies = movies!
                 DispatchQueue.main.async {

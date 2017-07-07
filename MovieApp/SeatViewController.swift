@@ -30,6 +30,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
+                    self.alertOK(message: error!, title: "Error")
                 } else {
                     self.seatMovieString = seat!
                     self.draw()
@@ -42,6 +43,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             TMDb.getSeatMap(id: movie.id, ngay: "Tomorrow", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
+                    self.alertOK(message: error!, title: "Error")
                 } else {
                     self.seatMovieString = seat!
                     self.draw()
