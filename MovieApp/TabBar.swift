@@ -15,14 +15,10 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
         self.delegate = self
-<<<<<<< HEAD
-        // Do any additional setup after loading the view.
-=======
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear        // Do any additional setup after loading the view.
->>>>>>> origin/fbb
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,17 +29,6 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if tabBar.items?.index(of: item) == 0 {
             tabName="NowPlaying"
-<<<<<<< HEAD
-            print(tabName)
-        }
-        if tabBar.items?.index(of: item) == 1 {
-            tabName="Popular"
-            print(tabName)
-        }
-        if tabBar.items?.index(of: item) == 2 {
-            tabName="UpComing"
-            print(tabName)
-=======
             //print(tabName)
         }
         if tabBar.items?.index(of: item) == 1 {
@@ -53,16 +38,11 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         if tabBar.items?.index(of: item) == 2 {
             tabName="UpComing"
             //print(tabName)
->>>>>>> origin/fbb
         }
     }
     
     // UITabBarControllerDelegate
-<<<<<<< HEAD
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-=======
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
->>>>>>> origin/fbb
         print("Selected view controller")
     }
     /*

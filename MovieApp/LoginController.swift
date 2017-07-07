@@ -4,18 +4,12 @@
 import UIKit
 import Firebase
 
-<<<<<<< HEAD
-class LoginController: UIViewController {
-    @IBOutlet weak var btnBack: UIButton!
-    
-=======
 class LoginController: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var viewui: UIView!
     @IBOutlet weak var scroolView: UIScrollView!
     @IBOutlet weak var btnBack: UIButton!
     
->>>>>>> origin/fbb
     @IBAction func backAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -228,11 +222,7 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         sc.selectedSegmentIndex = 0
         
-<<<<<<< HEAD
-       return sc
-=======
         return sc
->>>>>>> origin/fbb
     }()
     
     func handleLoginRegisterChange() {
@@ -311,21 +301,12 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         setupLabelStatus()
         handleLoginRegisterChange()
         
-<<<<<<< HEAD
-        UIGraphicsBeginImageContext(view.frame.size)
-        UIImage(named: "Unknown")!.draw(in: view.frame)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsGetCurrentContext();
-        self.view.backgroundColor = UIColor(patternImage: image!)
-
-=======
         UIGraphicsBeginImageContext(viewui.frame.size)
         UIImage(named: "Unknown")!.draw(in: viewui.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
         self.viewui.backgroundColor = UIColor(patternImage: image!)
         
->>>>>>> origin/fbb
     }
     func setupLabelStatus() {
         //need x, y, width, height constraints
@@ -445,22 +426,7 @@ extension UIColor {
     }
     
 }
-//Format fir button
-extension UIButton
-{
-    func setUpLayer(sampleButton: UIButton?) {
-        sampleButton?.tintColor =  UIColor.white
-        sampleButton!.frame = CGRect(x:50, y:500, width:170, height:40)
-        sampleButton!.layer.borderWidth = 1.0
-        sampleButton!.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
-        sampleButton!.layer.cornerRadius = 5.0
-        
-        sampleButton!.layer.shadowRadius =  3.0
-        sampleButton!.layer.shadowColor =  UIColor.white.cgColor
-        sampleButton!.layer.shadowOpacity =  0.3
-    }
-    
-}
+
 
 
 

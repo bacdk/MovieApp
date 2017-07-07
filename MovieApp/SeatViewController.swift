@@ -15,17 +15,6 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
     var indexNgay:Int!
     var indexTime:Int!
     
-<<<<<<< HEAD
-    var seatUser : NSMutableArray = []
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //var map2:String = ""
-        //self.view.addSubview(seats)
-        //print(indexNgay)
-        if(indexNgay == 0)
-        {
-=======
     @IBOutlet weak var bookButton: DesignButton!
     @IBOutlet weak var imageSeat: UIImageView!
     var seatUser : NSMutableArray = []
@@ -38,7 +27,6 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         if(indexNgay == 0)
         {
             // get seat map by date
->>>>>>> origin/fbb
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -47,18 +35,10 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                     self.draw()
                 }
             })
-<<<<<<< HEAD
-            print(self.seatMovieString)
-//            map2 = (movie.today?[indexTime].seat!)!
-        }
-        else
-        {
-=======
         }
         else
         {
             // get seat map by date
->>>>>>> origin/fbb
             TMDb.getSeatMap(id: movie.id, ngay: "Tomorrow", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -67,18 +47,8 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
                     self.draw()
                 }
             })
-<<<<<<< HEAD
-//            map2 = (movie.tomorrow?[indexTime].seat)!
-        }
-
-        //seatMovieString = map2
-
-    }
-    
-=======
         }
     }
->>>>>>> origin/fbb
     func draw(){
         let seats2 = ZSeatSelector()
         var _y : Int
@@ -118,19 +88,11 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             total += seat.price
         }
         seatUser = seats
-<<<<<<< HEAD
-        //print(seats)
-        //print(noi)
-=======
->>>>>>> origin/fbb
         print("----- Total -----\n")
         print("----- \(total) -----\n")
     }
     
     @IBAction func chooseSeat(_ sender: UIButton) {
-<<<<<<< HEAD
-        handleBookSeat()
-=======
         if (Int(ticket.sove) == seatUser.count)
         {
             let alert = UIAlertController(title: "Book ticket", message:   "View infomation of ticket?", preferredStyle: .alert)
@@ -150,7 +112,6 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         else{
             alertOK(message: "Please choose enough \(ticket.sove!) seat", title: "Message")
         }
->>>>>>> origin/fbb
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -160,10 +121,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         let range: Range<String.Index> = seatMovieString.range(of: "/")!
         let numberofSeat:Int = seatMovieString.distance(from: seatMovieString.startIndex, to: range.lowerBound)
         //print(numberofSeat)
-<<<<<<< HEAD
-=======
         //change character in seat array and upload into Movie data
->>>>>>> origin/fbb
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
@@ -171,11 +129,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let index = seatMovieString.index(seatMovieString.startIndex, offsetBy: pos)
             seatMovieString.replaceSubrange(index...index, with: "U")
         }
-<<<<<<< HEAD
-        //print(numberofSeat)
-=======
         //change character in seat array and upload into user's ticket  data
->>>>>>> origin/fbb
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
             print("Seat at row: \(seat.row) and column: \(seat.column)\n")
@@ -183,35 +137,12 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             let index = seatUserString.index(seatUserString.startIndex, offsetBy: pos)
             seatUserString.replaceSubrange(index...index, with: "U")
         }
-<<<<<<< HEAD
-        //print(seats)
-        //print(seatMovieString)
-=======
         //get seat numbers
->>>>>>> origin/fbb
         ticket.soghe = [Int]()
         for seat in seatUser
         {
             ticket.soghe.append((seat as! ZSeat).stt)
         }
-<<<<<<< HEAD
-        //print(ticket.)
-        ticket.seat=seatUserString;
-        TMDb.bookTicket(ticket: ticket)
-        if(indexNgay==0)
-        {
-            TMDb.updateSeat(id: movie.id, ngay: "Today", gio: ticket.time, seat: seatMovieString)
-        }
-        else{
-            TMDb.updateSeat(id: movie.id, ngay: "Tomorrow", gio: ticket.time, seat: seatMovieString)
-        }
-        let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "detailTicket") as! DetailTicketVC
-        detailTicket.screen = "bookTicket"
-        detailTicket.ticket = ticket
-        self.present(detailTicket, animated: true, completion: nil)
-    }
-    
-=======
         ticket.seat=seatUserString;
         //pass data to DetailTicket screen
         let detailTicket = self.storyboard?.instantiateViewController(withIdentifier: "detailTicket") as! DetailTicketVC
@@ -231,5 +162,4 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             loadData()
         }
     }
->>>>>>> origin/fbb
 }

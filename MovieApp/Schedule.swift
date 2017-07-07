@@ -13,12 +13,7 @@ class Schedule {
     var seat: String?
     
     init(hour: String, seat: String) {
-<<<<<<< HEAD
-        self.hour            = hour as String?
-        self.seat            = seat as String?
-=======
         self.hour            = hour as String? ?? ""
         self.seat            = seat as String? ?? ""
->>>>>>> origin/fbb
     }
 }

@@ -23,17 +23,12 @@ class Movie {
     var vote_count: Int!
     var video: Bool!
     var vote_average: Double!
-<<<<<<< HEAD
-    var today: [Schedule]?
-    var tomorrow: [Schedule]?
-=======
     var trailer : String!
     var runtime : Int!
     var filmschedule : String!
     var genres:     String?
     var today = [Schedule]()
     var tomorrow = [Schedule]()
->>>>>>> origin/fbb
     init(json: [String:Any]) {
         poster_path             = json["poster_path"]       as? String
         adult                   = json["adult"]             as? Bool
@@ -49,9 +44,6 @@ class Movie {
         vote_count              = json["vote_count"]        as? Int
         video                   = json["video"]             as? Bool
         vote_average            = json["vote_average"]      as? Double
-<<<<<<< HEAD
-
-=======
         runtime                 = json["runtime"]           as? Int ?? 0
         trailer                 = json["trailer"]           as? String ?? ""
         filmschedule            = json["tabname"]           as? String ?? ""
@@ -70,7 +62,5 @@ class Movie {
                 tomorrow.append(Schedule(hour: i.key,seat: i.value as! String))
             }
         }
->>>>>>> origin/fbb
     }
-    
 }

@@ -30,8 +30,6 @@ class DesignButton: UIButton {
         }
     }
 }
-<<<<<<< HEAD
-=======
 //Format fir button
 extension UIButton
 {
@@ -48,4 +46,3 @@ extension UIButton
     }
     
 }
->>>>>>> origin/fbb

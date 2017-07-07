@@ -8,18 +8,6 @@
 
 import UIKit
 
-<<<<<<< HEAD
-class DetailController: UITableViewController {
-    
-    @IBOutlet weak var video: UIWebView!
-    @IBOutlet weak var nameMovie: UILabel!
-    @IBOutlet weak var overview: UITextView!
-    var movieId: Int!
-    var movie: Movie!
-    var listVideos = [Trailer]()
-    
-    
-=======
 class DetailController: UITableViewController,UIWebViewDelegate  {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -34,37 +22,10 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     @IBOutlet weak var overview: UITextView!
     
     var movie: Movie!
->>>>>>> origin/fbb
     var hourToday = [Schedule]()
     var hourTomorrow = [Schedule]()
     var Ngay=["Today", "Tomorrow"]
     
-<<<<<<< HEAD
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        overview?.text = movie.overview
-        nameMovie?.text = movie.title
-        hourToday = movie.today!
-        hourTomorrow = movie.tomorrow!
-        
-        if listVideos.count != 0
-        {
-            let vide = listVideos[0]
-            let request = URLRequest(url: URL(string: "\(prefixYoutube)\(vide.key!)")!)
-            video.loadRequest(request)
-        }
-        loadData();
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    func loadData()
-    {
-        
-=======
     
     override func viewDidLoad() {
         
@@ -117,37 +78,17 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     func webViewDidFinishLoad(_ video: UIWebView) // here hide it
     {
         spinner.stopAnimating()
->>>>>>> origin/fbb
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     // Dispose of any resources that can be recreated.
     
-<<<<<<< HEAD
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-=======
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
->>>>>>> origin/fbb
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
-<<<<<<< HEAD
-    override  func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-//    func tableView (tableView: UITableView, number indexPath: NSIndexPath) -> CGFloat
-//    {
-//        return 80
-//    }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-//    {
-//        return 80
-//    }
-=======
     override  func numberOfSections(in tableView: UITableView) -> Int
     {
         if(hourToday.count == 0 && hourTomorrow.count==0)
@@ -167,7 +108,6 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         header.textLabel?.font = UIFont(name: "Futura", size: 11)
         header.textLabel?.textColor = UIColor.lightText
     }
->>>>>>> origin/fbb
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -178,31 +118,16 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         let day = Ngay[section]
         return day
     }
-<<<<<<< HEAD
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
-        var f = indexPath.section
-=======
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
         let f = indexPath.section
         let weight = view.frame.size.width - 60
->>>>>>> origin/fbb
         if (f == 0)
         {
             let buttonWidth = 60
             let buttonSpace = 5
-<<<<<<< HEAD
-            for (index,ButtonText) in hourToday.enumerated(){
-                
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20)) 
-=======
             for (index,_) in hourToday.enumerated(){
                 var xCoord = 0
                 var yCoord = 5
@@ -216,16 +141,11 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
                     yCoord = 30
                 }
                 let codedButton = codeButton(frame: CGRect(x:xCoord, y: yCoord, width: 50, height: 20))
->>>>>>> origin/fbb
                 codedButton.indexNgay=0
                 codedButton.setTitle(hourToday[index].hour, for: UIControlState.normal)
                 codedButton.tag = index
                 codedButton.addTarget(self, action:#selector(self.buttonPressed), for: .touchUpInside)
                 codedButton.setFormat()
-<<<<<<< HEAD
-                
-=======
->>>>>>> origin/fbb
                 cell.contentView.addSubview(codedButton)
             }
         }
@@ -233,13 +153,6 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         {
             let buttonWidth = 60
             let buttonSpace = 5
-<<<<<<< HEAD
-            for (index,ButtonText) in hourTomorrow.enumerated(){
-                
-                let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-                
-                let codedButton = codeButton(frame: CGRect(x:xCoord, y: 5, width: 50, height: 20))
-=======
             for (index,_) in hourTomorrow.enumerated(){
                 var xCoord = 0
                 var yCoord = 5
@@ -253,7 +166,6 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
                     yCoord = 30
                 }
                 let codedButton = codeButton(frame: CGRect(x:xCoord, y: yCoord, width: 50, height: 20))
->>>>>>> origin/fbb
                 
                 codedButton.indexNgay = 1
                 codedButton.setTitle(hourTomorrow[index].hour, for: UIControlState.normal)
@@ -263,11 +175,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
                 
                 cell.contentView.addSubview(codedButton)
             }
-<<<<<<< HEAD
-
-=======
             
->>>>>>> origin/fbb
         }
         return cell
     }
@@ -275,11 +183,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     //Button Action is
     func buttonPressed(sender:codeButton!)
     {
-<<<<<<< HEAD
-        let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicket
-=======
         let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicketController
->>>>>>> origin/fbb
         srcBuyTicket.movie = movie
         srcBuyTicket.time = (sender.titleLabel?.text)!
         srcBuyTicket.indexNgay = sender.indexNgay
@@ -290,67 +194,14 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         print("Clicked Button Row is",buttonRow)
     }
     
-<<<<<<< HEAD
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-=======
->>>>>>> origin/fbb
 }
 extension UIButton {
     
     func setFormat() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = CGFloat.init(10)
-<<<<<<< HEAD
-        self.layer.borderColor = UIColor.clear.cgColor
-        self.backgroundColor = UIColor.black
-=======
         //self.layer.borderColor = UIColor.white as! CGColor
         self.backgroundColor = UIColor.clear
->>>>>>> origin/fbb
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
     }
 }
@@ -359,8 +210,6 @@ extension UIButton {
 class codeButton: UIButton {
     var indexNgay:            Int     = 0
 }
-<<<<<<< HEAD
-=======
 
 
 extension UIImage{
@@ -381,4 +230,3 @@ extension UIImage{
     
     
 }
->>>>>>> origin/fbb

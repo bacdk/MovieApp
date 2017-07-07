@@ -10,14 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieApp/UserVC.swift"
-<<<<<<< HEAD
-            timestampString = "519759919.600684"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-=======
             timestampString = "520968520.004492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -56,7 +48,6 @@
             startingLineNumber = "288"
             endingLineNumber = "288"
             landmarkName = "viewDidLoad()"
->>>>>>> origin/fbb
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

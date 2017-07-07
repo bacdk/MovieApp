@@ -13,12 +13,9 @@ class UserInfo{
     var email: String?
     var password: String?
     var profileImageUrl: String?
-<<<<<<< HEAD
-=======
     var address : String?
     var birthday : String?
     var phone: String?
->>>>>>> origin/fbb
     init() {
      
     }
@@ -26,9 +23,6 @@ class UserInfo{
         self.name = json["name"] as? String
         self.email = json["email"] as? String
         self.password = json["password"] as? String
-<<<<<<< HEAD
-        //self.profileImageUrl = dictionary["profileImageUrl"] as? String
-=======
         self.profileImageUrl = json["profileImageUrl"] as? String ?? ""
         self.address = json["address"] as? String ?? ""
         self.birthday = json["birthday"] as? String ?? ""
@@ -43,6 +37,5 @@ class UserInfo{
             "birthday" : birthday ?? "",
             "phone" : phone ?? ""
         ]
->>>>>>> origin/fbb
     }
 }
