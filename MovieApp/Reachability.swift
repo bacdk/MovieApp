@@ -57,9 +57,6 @@ extension UIViewController
 {
     func checkInternet() {
         var flag: Bool = false
-        
-        var times = 0
-        
         while !flag {
             
             let status = Reachability().connectionStatus()
@@ -74,12 +71,7 @@ extension UIViewController
                 flag = true
                 break
             }
-            
-            times += 1
-            
-            if (times == 50) {
-                break
-            }
+            break
         }
         
         if !flag {
