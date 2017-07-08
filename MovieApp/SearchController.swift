@@ -23,7 +23,9 @@ class Search: UITableViewController, UITextFieldDelegate{
         tableView.backgroundColor = Constants.tintColor
         searchTextField.becomeFirstResponder()
         searchTextField.delegate = self
+        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchTextField.resignFirstResponder()
@@ -96,7 +98,12 @@ class Search: UITableViewController, UITextFieldDelegate{
         {
             if (i.title.lowercased().range(of:_key) != nil )
             {
-                moviesSort.append(i)
+                if (!listmovieNP.contains(where: { (i) -> Bool in
+                    return true
+                }))
+                {
+                    moviesSort.append(i)
+                }
             }
         }
         for i in listmovieUC

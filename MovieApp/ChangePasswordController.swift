@@ -10,17 +10,25 @@ import UIKit
 import Firebase
 
 
-class ChangePasswordViewController: UIViewController {
+class ChangePasswordViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var passOld: UITextField!
     @IBOutlet weak var replacePassNew: UITextField!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var passNew: UITextField!
     @IBOutlet weak var lberror: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         lberror.isHidden = true
         userCurrent()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(Profile.keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(Profile.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // for tapping
+        self.scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(Profile.dismissKeyboard)))
         // Do any additional setup after loading the view.
     }
 

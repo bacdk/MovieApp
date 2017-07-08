@@ -54,7 +54,8 @@ class LoginController: UIViewController, UITextFieldDelegate  {
     }()
     
     func handleForgotPassword() {
-        
+        let src = self.storyboard?.instantiateViewController(withIdentifier: "ResetPassword") as! ResetPasswordController
+        self.present(src, animated: true, completion: nil)
     }
     
     func handleLoginRegister() {
@@ -265,38 +266,22 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         passwordcomfirmTextFieldHeightAnchor?.isActive = true
     }
     //------------------------NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-    func keyboardDidShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-            self.scroolView.contentInset = contentInsets
-            self.scroolView.scrollIndicatorInsets = contentInsets
-        }
-    }
-    
-    func keyboardWillBeHidden(notification: NSNotification) {
-        let contentInsets = UIEdgeInsets.zero
-        self.scroolView.contentInset = contentInsets
-        self.scroolView.scrollIndicatorInsets = contentInsets
-    }
-    
-    
+
     // for tapping
-    func dismissKeyboard() {
+    override func dismissKeyboard() {
         passwordTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordcomfirmTextField.resignFirstResponder()
     }
-    
-    // for hitting return
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        passwordTextField.resignFirstResponder()
-        return true
-    }
+
     //------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         //Add selector delegate for keyboardDidShow
         NotificationCenter.default.addObserver(self, selector: #selector(LoginController.keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginController.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        passwordTextField.delegate = self
+        //passwordTextField.delegate = self
         
         // for tapping
         self.viewui.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard)))

@@ -182,7 +182,7 @@ class TMDb {
         return (Auth.auth().currentUser?.uid)!
     }
     //reset password
-    func resetPassword(email: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func resetPassword(email: String, completionHandler: @escaping (_ error: Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
             completionHandler(error)
         })
