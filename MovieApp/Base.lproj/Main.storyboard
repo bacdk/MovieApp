@@ -261,8 +261,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-uS-46b" customClass="DesignButton" customModule="MovieApp" customModuleProvider="target">
-                                <rect key="frame" x="135" y="20" width="105" height="30"/>
-                                <state key="normal" title="   Book Ticket   "/>
+                                <rect key="frame" x="135.5" y="20" width="104" height="30"/>
+                                <state key="normal" title="   View Ticket   "/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -1580,9 +1580,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corn" translatesAutoresizingMaskIntoConstraints="NO" id="SWJ-gj-M6g">
+                                    <imageView userInteractionEnabled="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corn" translatesAutoresizingMaskIntoConstraints="NO" id="SWJ-gj-M6g">
                                         <rect key="frame" x="137" y="52" width="100" height="100"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="SWJ-gj-M6g" secondAttribute="height" multiplier="1:1" id="ADR-yk-bPv"/>
                                             <constraint firstAttribute="height" constant="100" id="cFt-VV-0mW"/>
                                         </constraints>
                                     </imageView>
@@ -1649,7 +1650,6 @@
                                     <constraint firstItem="SWJ-gj-M6g" firstAttribute="centerX" secondItem="XrE-iQ-mX2" secondAttribute="centerX" id="nRG-Ad-u6V"/>
                                     <constraint firstItem="0w5-y3-qae" firstAttribute="centerY" secondItem="6E5-RQ-jPR" secondAttribute="centerY" id="pib-OP-ZxC"/>
                                     <constraint firstItem="NgV-1o-m5g" firstAttribute="top" secondItem="6E5-RQ-jPR" secondAttribute="bottom" constant="26" id="qRj-ZT-JPL"/>
-                                    <constraint firstItem="SWJ-gj-M6g" firstAttribute="leading" secondItem="XrE-iQ-mX2" secondAttribute="leading" constant="137" id="rJd-os-8Sy"/>
                                     <constraint firstItem="NgV-1o-m5g" firstAttribute="leading" secondItem="XrE-iQ-mX2" secondAttribute="leading" constant="19" id="sWu-22-PlL"/>
                                     <constraint firstAttribute="trailing" secondItem="0w5-y3-qae" secondAttribute="trailing" constant="16" id="xSw-iq-5kQ"/>
                                 </constraints>
