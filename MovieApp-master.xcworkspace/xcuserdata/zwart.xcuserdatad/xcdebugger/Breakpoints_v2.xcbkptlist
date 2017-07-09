@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieApp/LoginController.swift"
-            timestampString = "521222283.669831"
+            timestampString = "521230399.911061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

@@ -19,6 +19,8 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         status.translatesAutoresizingMaskIntoConstraints = false
         status.font = status.font.withSize(11)
         status.textColor=UIColor(r: 255, g: 255, b: 255)
+        status.numberOfLines = 2
+        status.textAlignment = .center
         return status
     }()
     
@@ -227,6 +229,7 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         imageView.isUserInteractionEnabled = true
+        imageView.tag = 300
         return imageView
     }()
     
@@ -404,6 +407,10 @@ class LoginController: UIViewController, UITextFieldDelegate  {
         passwordcomfirmTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         passwordcomfirmTextFieldHeightAnchor = passwordcomfirmTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4)
         passwordcomfirmTextFieldHeightAnchor?.isActive = true
+        
+        //extra setup status
+        labelStatus.leftAnchor.constraint(equalTo: self.viewui.leftAnchor, constant: 8).isActive = true
+        labelStatus.leftAnchor.constraint(equalTo: self.viewui.rightAnchor, constant: 8).isActive = true
     }
     
     func setupLoginRegisterButton() {
