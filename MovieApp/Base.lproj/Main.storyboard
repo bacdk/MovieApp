@@ -31,7 +31,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvA-hP-bJd">
                                             <rect key="frame" x="8" y="8" width="359" height="74"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="oy9-an-ykK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="oy9-an-ykK" customClass="DesignImage" customModule="MovieApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="53" height="74"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="oy9-an-ykK" secondAttribute="height" multiplier="9:16" constant="11.5" id="qAN-2F-jl6"/>
@@ -40,34 +40,35 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-Ag-bjo">
-                                                    <rect key="frame" x="75" y="8" width="276" height="16"/>
+                                                    <rect key="frame" x="75" y="6" width="276" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏰ Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jby-el-j6Z">
                                                     <rect key="frame" x="75" y="51" width="51" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📅 Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0J-Pf-wV2">
-                                                    <rect key="frame" x="75" y="32" width="44" height="14"/>
+                                                    <rect key="frame" x="75" y="33" width="44" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Jby-el-j6Z" secondAttribute="bottom" constant="8.5" id="Bhu-lp-RzH"/>
                                                 <constraint firstItem="Q0J-Pf-wV2" firstAttribute="leading" secondItem="oy9-an-ykK" secondAttribute="trailing" constant="22.5" id="Dkl-3c-ALH"/>
                                                 <constraint firstAttribute="bottom" secondItem="oy9-an-ykK" secondAttribute="bottom" id="GGx-6k-Sz1"/>
                                                 <constraint firstItem="hz3-Ag-bjo" firstAttribute="leading" secondItem="oy9-an-ykK" secondAttribute="trailing" constant="22.5" id="Q4h-tA-Wsr"/>
-                                                <constraint firstItem="Jby-el-j6Z" firstAttribute="top" secondItem="Q0J-Pf-wV2" secondAttribute="bottom" constant="5.5" id="V84-jI-XCz"/>
-                                                <constraint firstItem="hz3-Ag-bjo" firstAttribute="top" secondItem="VvA-hP-bJd" secondAttribute="top" constant="8" id="W4t-nq-TIN"/>
+                                                <constraint firstItem="Jby-el-j6Z" firstAttribute="top" secondItem="Q0J-Pf-wV2" secondAttribute="bottom" constant="4" id="V84-jI-XCz"/>
+                                                <constraint firstItem="hz3-Ag-bjo" firstAttribute="top" secondItem="VvA-hP-bJd" secondAttribute="top" constant="6" id="W4t-nq-TIN"/>
                                                 <constraint firstItem="oy9-an-ykK" firstAttribute="leading" secondItem="VvA-hP-bJd" secondAttribute="leading" id="g1p-jR-PPK"/>
                                                 <constraint firstItem="oy9-an-ykK" firstAttribute="top" secondItem="VvA-hP-bJd" secondAttribute="top" id="iEc-1Z-TQc"/>
                                                 <constraint firstItem="Jby-el-j6Z" firstAttribute="leading" secondItem="oy9-an-ykK" secondAttribute="trailing" constant="22.5" id="qou-ZL-FzR"/>
@@ -1552,7 +1553,7 @@
         <!--Profile-->
         <scene sceneID="779-Nb-LUv">
             <objects>
-                <viewController storyboardIdentifier="Profile" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Ocu-IC-1lR" customClass="Profile" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" automaticallyAdjustsScrollViewInsets="NO" id="Ocu-IC-1lR" customClass="Profile" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L6v-us-HJk"/>
                         <viewControllerLayoutGuide type="bottom" id="aNg-hL-pdJ"/>
@@ -1562,7 +1563,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="200" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="XrE-iQ-mX2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5V-uE-n5r">
                                         <rect key="frame" x="19" y="298" width="65" height="21"/>
@@ -1672,6 +1673,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="address" destination="oc1-RE-ETl" id="Cdw-XM-3Bv"/>
                         <outlet property="avatar" destination="SWJ-gj-M6g" id="wZ0-dL-BsO"/>
