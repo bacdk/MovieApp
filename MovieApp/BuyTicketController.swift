@@ -16,14 +16,11 @@ class BuyTicketController: UIViewController {
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var txtFilmName: UILabel!
     @IBOutlet weak var txtActor: UILabel!
-    
     @IBOutlet weak var lblNgay: UILabel!
     @IBOutlet weak var lblMoney: UILabel!
     @IBOutlet weak var txtTime: UILabel!
-    
     @IBOutlet weak var viewAbove: UIView!
     @IBOutlet weak var lblnumberTicket: UILabel!
-    
     @IBOutlet weak var txtPrice: UILabel!
     var mDatabase: DatabaseReference!
     
@@ -45,6 +42,7 @@ class BuyTicketController: UIViewController {
         loadData()
     }
     
+    //
     func loadData() {
         //Pass data to View
         imgPoster.loadImageUsingCacheWithUrlString("\(prefixImage)w185\(movie.poster_path!)")
@@ -54,7 +52,6 @@ class BuyTicketController: UIViewController {
         txtFilmName.text = movie.title
         txtTime.text = time
         txtPrice.text = String(priceFilm)
-        
         //Get current date
         let date = Date()
         let calendar = Calendar.current
@@ -79,6 +76,7 @@ class BuyTicketController: UIViewController {
         self.viewAbove.backgroundColor = UIColor(patternImage: image!)
     }
     
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,6 +100,7 @@ class BuyTicketController: UIViewController {
         lblMoney.text = String(money) + " VND"
     }
     
+    //Next
     @IBAction func btnNext(_ sender: Any) {
         if (ticketNumber > 0) {
             if Auth.auth().currentUser != nil { //Check user exist
@@ -143,19 +142,8 @@ class BuyTicketController: UIViewController {
         }
     }
     
+    //Get current id user
     func getUid() -> String {
         return (Auth.auth().currentUser?.uid)!
     }
-    
 }
-
-
-//let alert = UIAlertController(title: "Success", message: "Logged In", preferredStyle: .Alert)
-//let action = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
-//    let viewControllerYouWantToPresent = self.storyboard?.instantiateViewControllerWithIdentifier("SomeViewControllerIdentifier")
-//    self.presentViewController(viewControllerYouWantToPresent!, animated: true, completion: nil)
-//}
-//alert.addAction(action)
-//self.presentViewController(alert, animated: true, completion: nil)
-//                    let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard") as! LoginController
-//                    self.navigationController?.pushViewController(nextViewController, animated: true)

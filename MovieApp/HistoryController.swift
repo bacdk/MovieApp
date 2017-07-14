@@ -2,24 +2,23 @@
 //  History.swift
 //  MovieApp-master
 //
-//  Created by Zwart on 6/21/17.
+//  Created by Dau Khac Bac on 6/21/17.
 //  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
 import UIKit
 
 class History: UITableViewController {
+    
     var tickets = [Ticket]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         self.tableView.separatorStyle = .none
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //
     func loadData()  {
         TMDb.getTicket(completionHandler: { (tickets, error) in
             if(error != nil) {
@@ -27,7 +26,6 @@ class History: UITableViewController {
                 self.alertOK(message: error!, title: "Error")
             } else {
                 self.tickets = tickets!.sorted { $0.day > $1.day }
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -35,6 +33,7 @@ class History: UITableViewController {
         })
     }
     
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,6 +45,8 @@ class History: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return tickets.count
     }
+    
+    //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCell
         cell.poster.image = #imageLiteral(resourceName: "default")
@@ -59,6 +60,7 @@ class History: UITableViewController {
         }
         return cell
     }
+    
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
@@ -67,7 +69,6 @@ class History: UITableViewController {
                 let detailVC = segue.destination as! TicketVC
                 detailVC.ticket = tickets[indexPath.row]
                 detailVC.screen = "History"
-                
             }
         }
     }

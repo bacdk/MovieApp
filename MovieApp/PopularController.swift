@@ -11,9 +11,9 @@ import Firebase
 class PopularController: UITableViewController{
     
     var movies = [Movie]()
-   
-    //
+    //Activity indicator
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //spinner.isHidden = true
@@ -21,15 +21,18 @@ class PopularController: UITableViewController{
         self.tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "DetailMainCell", bundle: nil), forCellReuseIdentifier: "NowTVCell")
     }
+    
     //
     override func viewDidAppear(_ animated: Bool)
     {
         spinner.center = tableView.center
     }
+    
     //
     override func viewDidDisappear(_ animated: Bool) {
         spinner.stopAnimating()
     }
+    
     //
     func loadData()  {
         TMDb.getPopularListFireBase(completionHandler: { (movies, error) in
@@ -45,14 +48,13 @@ class PopularController: UITableViewController{
         })
     }
     
-
-
+    //
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-              return movies.count
+        return movies.count
     }
-    //
     
+    //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NowTVCell", for: indexPath) as! DetailMainCell
         let movie = self.movies[indexPath.row]
@@ -60,13 +62,11 @@ class PopularController: UITableViewController{
         //
         return cell
     }
-
+    
     //Handel event click cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "filmDetail") as! DetailController
         detailVC.movie = movies[indexPath.row]
-        
         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
 }

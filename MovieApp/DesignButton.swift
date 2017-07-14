@@ -39,7 +39,6 @@ extension UIButton
         sampleButton!.layer.borderWidth = 1.0
         sampleButton!.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         sampleButton!.layer.cornerRadius = 5.0
-        
         sampleButton!.layer.shadowRadius =  3.0
         sampleButton!.layer.shadowColor =  UIColor.white.cgColor
         sampleButton!.layer.shadowOpacity =  0.3

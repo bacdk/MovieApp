@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 
 class UserController: UITableViewController {
+    
     @IBOutlet weak var lb_name: UILabel!
-    
-    
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var imageUser: UIImageView!
-    var mDatabase: DatabaseReference!
     @IBOutlet weak var viewTB: UIView!
+    var mDatabase: DatabaseReference!
+    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         imageUser.setRounded()
@@ -24,18 +25,16 @@ class UserController: UITableViewController {
         UIImage(named: "Unknown")!.draw(in: view.frame)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
-        
         self.tableView.backgroundColor = UIColor(patternImage: image!)
         self.tableView.tableFooterView = UIView(frame: .zero)
-        
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         tableView.backgroundView = blurEffectView
     }
     
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
         // Dispose of any resources that can be recreated.
     }
     
@@ -59,26 +58,31 @@ class UserController: UITableViewController {
                 }
             })
             self.buttonLogin.isHidden = true
+            // 1 session
             return 1
         }
         else
         {
             self.buttonLogin.isHidden = false
             lb_name.text = "Please login"
+            // 0 session
             return 0
         }
     }
     
+    //
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 5
     }
     
+    //
     @IBAction func Login(_ sender: Any) {
         let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginStoryboard")
         self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
-        
     }
+    
+    //
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //User Profile
         if indexPath.row == 0
@@ -104,6 +108,7 @@ class UserController: UITableViewController {
             handleLogout()
         }
     }
+    
     //Log out handle
     func handleLogout() {
         do {

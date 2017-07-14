@@ -25,6 +25,7 @@ class HistoryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     @IBOutlet weak var viewCell: UIView!{
         didSet {
             viewCell.layer.shadowOpacity = 0.4

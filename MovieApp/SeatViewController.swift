@@ -22,11 +22,19 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         super.viewDidLoad()
         loadData()
     }
+    
+    //
+    override func viewWillAppear(_ animated: Bool) {
+        self.view.viewWithTag(100)?.removeFromSuperview()
+        loadData()
+    }
+    
+    //
     func loadData()
     {
         if(indexNgay == 0)
         {
-            // get seat map by date
+            // get seat map by date today
             TMDb.getSeatMap(id: movie.id, ngay: "Today", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -39,7 +47,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         }
         else
         {
-            // get seat map by date
+            // get seat map by date tomorrow
             TMDb.getSeatMap(id: movie.id, ngay: "Tomorrow", gio: ticket.time, completionHandler: { (seat, error) in
                 if(error != nil) {
                     print(error!)
@@ -51,7 +59,10 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
             })
         }
     }
+    
+    //draw seat map
     func draw(){
+        self.view.viewWithTag(100)?.removeFromSuperview()
         let seats2 = ZSeatSelector()
         var _y : Int
         if UIDevice.current.orientation.isLandscape {
@@ -78,10 +89,7 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         self.view.addSubview(seats2)
     }
     
-    func seatSelected(_ seat: ZSeat) {
-        //print("Seat at row: \(seat.row) and column: \(seat.column)\n")
-    }
-    
+    //
     func getSelectedSeats(_ seats: NSMutableArray) {
         var total:Float = 0.0;
         for i in 0..<seats.count {
@@ -94,35 +102,40 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         print("----- \(total) -----\n")
     }
     
+    //
+    func seatSelected(_ seat: ZSeat) {
+    }
+    
+    //Click seat button
     @IBAction func chooseSeat(_ sender: UIButton) {
         if (Int(ticket.sove) == seatUser.count)
         {
             let alert = UIAlertController(title: "Book ticket", message:   "View infomation of ticket?", preferredStyle: .alert)
-            
             let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
                 self.handleBookSeat()
             })
             // Create Cancel button
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-                //print("Cancel button tapped");
             }
             alert.addAction(cancelAction)
             alert.addAction(OKAction)
-            
-            self.present(alert, animated: true){}
+            self.present(alert, animated: true) {}
         }
-        else{
+        else {
             alertOK(message: "Please choose enough \(ticket.sove!) seat", title: "Message")
         }
     }
+    
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //
     func handleBookSeat() {
         let range: Range<String.Index> = seatMovieString.range(of: "/")!
         let numberofSeat:Int = seatMovieString.distance(from: seatMovieString.startIndex, to: range.lowerBound)
-        //print(numberofSeat)
         //change character in seat array and upload into Movie data
         for i in 0..<seatUser.count {
             let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
@@ -152,8 +165,10 @@ class SeatViewController: UIViewController, ZSeatSelectorDelegate {
         detailTicket.ticket = ticket
         detailTicket.indexNgay = indexNgay
         detailTicket.seatMovieString = seatMovieString
+        detailTicket.seatUser = self.seatUser
         self.present(detailTicket, animated: true, completion: nil)
     }
+    
     //Check orientation is
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {        //at lanscape

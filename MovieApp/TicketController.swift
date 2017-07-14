@@ -22,6 +22,7 @@ class TicketVC: UIViewController {
     var screen : String = ""
     var seatUser : NSMutableArray = []
     var ticket: Ticket!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (screen != "Book")
@@ -31,6 +32,7 @@ class TicketVC: UIViewController {
         draw()
     }
     
+    //
     func draw()
     {
         lblName.text = ticket.name.uppercased()
@@ -47,27 +49,13 @@ class TicketVC: UIViewController {
         self.view.loadImageBackground("\(prefixImage)w780\(ticket.image!)")
     }
     
-    func seatSelected(_ seat: ZSeat) {
-        //print("Seat at row: \(seat.row) and column: \(seat.column)\n")
-    }
-    
-    func getSelectedSeats(_ seats: NSMutableArray) {
-        
-    }
-    
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //
     @IBAction func backAction(_ sender: UIButton) {
-        //        self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
     }
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
-    {
-       
-    }
-
-
 }

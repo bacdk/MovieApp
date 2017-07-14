@@ -24,11 +24,14 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     var seatUser : NSMutableArray = []
     var ticket: Ticket!
     var seatMovieString:String = ""
+    var realtimeSseatMovieString:String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         draw()
     }
     
+    //
     func draw()
     {
         UIGraphicsBeginImageContext(scrollView.frame.size)
@@ -36,16 +39,18 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsGetCurrentContext();
         self.scrollView.backgroundColor = UIColor(patternImage: image!)
-        
+        //
         lblName.text = ticket.name
         lblNgay.text = "Ngày: \(ticket.day!)"
         lblTime.text = "Time: \(ticket.time!)"
         lblSove.text = "Số vé: \(ticket.sove!)"
         lblTongtien.text = "Tổng tiền: \(ticket.tongtien!)"
+        //
         var arraySeat = ""
         for seat in ticket.soghe{
             arraySeat = arraySeat + String(seat) + " "
         }
+        //
         lblSoghe.text = arraySeat
         imagePoster.loadImageUsingCacheWithUrlString("\(prefixImage)w185\(ticket.image!)")
         imagePoster.layer.cornerRadius = CGFloat.init(05)
@@ -70,20 +75,22 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         self.scrollView.addSubview(seats2)
     }
     
+    //
     func seatSelected(_ seat: ZSeat) {
-        //print("Seat at row: \(seat.row) and column: \(seat.column)\n")
     }
     
+    //
     func getSelectedSeats(_ seats: NSMutableArray) {
         
     }
     
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //
     @IBAction func backAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -94,7 +101,53 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: { _ -> Void in
             do
             {
-                try self.upload()
+                if(self.indexNgay == 0)
+                {
+                    // get seat map by date
+                    TMDb.getSeatMap(id: self.ticket.id, ngay: "Today", gio: self.ticket.time, completionHandler: { (seat, error) in
+                        if(error != nil) {
+                            print(error!)
+                            self.alertOK(message: error!, title: "Error")
+                            return
+                        } else {
+                            self.realtimeSseatMovieString = seat!
+                            if (!self.checkAtTheSameTime(_new: self.realtimeSseatMovieString, _old: self.seatMovieString))
+                            {
+                                self.upload()
+                            }
+                            else
+                            {
+                                self.alertOK(message: "Error occurred, please try later!", title: "Error")
+                                self.switchToMainStoryboard()
+                                return
+                            }
+                        }
+                    })
+                }
+                else
+                {
+                    // get seat map by date
+                    TMDb.getSeatMap(id: self.ticket.id, ngay: "Today", gio: self.ticket.time, completionHandler: { (seat, error) in
+                        if(error != nil) {
+                            print(error!)
+                            self.alertOK(message: error!, title: "Error")
+                            return
+                        } else {
+                            self.realtimeSseatMovieString = seat!
+                            if (!self.checkAtTheSameTime(_new: self.realtimeSseatMovieString, _old: self.seatMovieString))
+                            {
+                                self.upload()
+                            }
+                            else
+                            {
+                                self.alertOK(message: "Error occurred, please try later!", title: "Error")
+                                self.switchToMainStoryboard()
+                                return
+                            }
+                        }
+                    })
+                }
+                
             }
             catch
             {
@@ -143,6 +196,8 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         }
         self.success()
     }
+    
+    //
     func success() {
         let alert  = UIAlertController(title: "Successful!", message:   "Pay success", preferredStyle: .alert)
         
@@ -157,17 +212,36 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
         self.present(alert, animated: true){}
     }
     
-    
+    //
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         if UIDevice.current.orientation.isLandscape {
-            print("Láncape")
+            print("Lanscape")
             self.scrollView.viewWithTag(100)?.removeFromSuperview()
             draw()
         } else {
-            print("cutcape")
+            print("Portscape")
             self.scrollView.viewWithTag(100)?.removeFromSuperview()
             draw()
         }
+    }
+    
+    //Check Booking ticket at the same time
+    func checkAtTheSameTime(_new : String, _old : String) -> Bool
+    {
+        let range: Range<String.Index> = seatMovieString.range(of: "/")!
+        let numberofSeat:Int = seatMovieString.distance(from: seatMovieString.startIndex, to: range.lowerBound)
+        for i in 0..<seatUser.count
+        {
+            let seat:ZSeat  = seatUser.object(at: i) as! ZSeat
+            print("Seat at row: \(seat.row) and column: \(seat.column)\n")
+            let pos = (seat.row-1)*(numberofSeat+1)+seat.column-1
+            let index = seatMovieString.index(seatMovieString.startIndex, offsetBy: pos)
+            if (_new[index] == _old[index])
+            {
+                return true
+            }
+        }
+        return false
     }
 }
