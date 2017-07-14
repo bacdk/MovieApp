@@ -2,7 +2,7 @@
 //  Search.swift
 //  MovieApp-master
 //
-//  Created by Zwart on 6/23/17.
+//  Created by Dau Khac Bac on 6/23/17.
 //  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ class Search: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var posterImage: UIImageView!
     
     var moviesSort = [Movie]()
+    var elements = [AnyObject]()
     
     @IBOutlet weak var searchTextField: UITextField!
     override func viewDidLoad() {
@@ -23,22 +24,20 @@ class Search: UITableViewController, UITextFieldDelegate{
         tableView.backgroundColor = Constants.tintColor
         searchTextField.becomeFirstResponder()
         searchTextField.delegate = self
-        
     }
     
+    //
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchTextField.resignFirstResponder()
     }
-    var elements = [AnyObject]()
+    
+    //
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         moviesSort = []
         //If the change isn't meaningless make a search
-        
         if string != " " {
-            
             //Check what the change means
-            
             let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if  replaced != "" {
                 //Search for our new query!!!
@@ -52,11 +51,13 @@ class Search: UITableViewController, UITextFieldDelegate{
         return true
     }
     
+    //
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    //
     func loadData() {
         // movies = testMovie
         TMDb.getNowPlayListFireBase(completionHandler: { (movies, error) in
@@ -77,11 +78,9 @@ class Search: UITableViewController, UITextFieldDelegate{
             if(error != nil) {
                 print(error!)
             } else {
-                
                 listmovieUC = movies!
             }
         })
-        
     }
     
     //
@@ -114,6 +113,7 @@ class Search: UITableViewController, UITextFieldDelegate{
             }
         }
     }
+    
     //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,6 +128,7 @@ class Search: UITableViewController, UITextFieldDelegate{
         
     }
     
+    //
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the nvar kumber of rows
         if(moviesSort.count == 0)
@@ -137,9 +138,8 @@ class Search: UITableViewController, UITextFieldDelegate{
         return moviesSort.count
     }
     
-    
+    //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if moviesSort.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "suggestion") ?? UITableViewCell()
             cell.textLabel?.numberOfLines = 0
@@ -155,10 +155,9 @@ class Search: UITableViewController, UITextFieldDelegate{
             cell.backgroundColor = UIColor.clear
             cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.textAlignment = NSTextAlignment.center
-            
             return cell
         }
-        else{
+        else {
             if let movie = moviesSort[indexPath.row] as? Movie {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "movie") as? SearchCell ?? SearchCell()
                 cell.movie = movie

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D1B304CCF0290599D031AC9ABEA33E26422D5D7A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D1B304CCF0290599D031AC9ABEA33E26422D5D7A" : 9223372036854775807,
+    "F3281EE3CDF8F6959353E94C7ED2DB331F4D7F14" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FB46A18D-283D-443A-9989-EBA41BAC3729",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D1B304CCF0290599D031AC9ABEA33E26422D5D7A" : "AppMovie\/",
+    "F3281EE3CDF8F6959353E94C7ED2DB331F4D7F14" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MovieApp-master",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MovieApp-master.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bacdk\/MovieApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D1B304CCF0290599D031AC9ABEA33E26422D5D7A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/iosgroup10fpt\/Animation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F3281EE3CDF8F6959353E94C7ED2DB331F4D7F14"
+    }
+  ]
+}

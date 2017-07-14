@@ -11,7 +11,6 @@ import UIKit
 class DetailController: UITableViewController,UIWebViewDelegate  {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
     @IBOutlet weak var viewInTable: UIView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var genris: UILabel!
@@ -20,12 +19,11 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
     @IBOutlet weak var video: UIWebView!
     @IBOutlet weak var nameMovie: UILabel!
     @IBOutlet weak var overview: UITextView!
-    
+    //
     var movie: Movie!
     var hourToday = [Schedule]()
     var hourTomorrow = [Schedule]()
     var Ngay=["Today", "Tomorrow"]
-    
     
     override func viewDidLoad() {
         
@@ -33,6 +31,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         loadData();
     }
     
+    //
     func loadData()
     {
         hourToday = movie.today
@@ -71,20 +70,24 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
             self.posterImage.frame = CGRect(x: self.posterImage.frame.minX,y: self.video.frame.height ,width: (self.posterImage.image?.size.width)!*0.5, height:(self.posterImage.image?.size.height)!*0.4);
         }
     }
-    func webViewDidFinishLoad(_ video: UIWebView) // here hide it
-    {
+    
+    // here hide it
+    func webViewDidFinishLoad(_ video: UIWebView) {
         spinner.stopAnimating()
     }
+    
+    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    // Dispose of any resources that can be recreated.
     
+    // Dispose of any resources that can be recreated.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
+    //
     override  func numberOfSections(in tableView: UITableView) -> Int
     {
         if(hourToday.count == 0 && hourTomorrow.count==0)
@@ -94,27 +97,30 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         return 2
     }
     
+    //
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-    {
+    //
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: "Futura", size: 11)
         header.textLabel?.textColor = UIColor.lightText
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    //
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    //
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let day = Ngay[section]
         return day
     }
     
+    //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "XuatChieu", for: indexPath) as UITableViewCell
@@ -171,14 +177,12 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
                 
                 cell.contentView.addSubview(codedButton)
             }
-            
         }
         return cell
     }
     
     //Button Action is
-    func buttonPressed(sender:codeButton!)
-    {
+    func buttonPressed(sender:codeButton!) {
         let srcBuyTicket = self.storyboard?.instantiateViewController(withIdentifier: "buyTicket") as! BuyTicketController
         srcBuyTicket.movie = movie
         srcBuyTicket.time = (sender.titleLabel?.text)!
@@ -189,40 +193,19 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
         print("button is Pressed")
         print("Clicked Button Row is",buttonRow)
     }
-    
 }
+
+//Set format button for time button
 extension UIButton {
-    
     func setFormat() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = CGFloat.init(10)
-        //self.layer.borderColor = UIColor.white as! CGColor
         self.backgroundColor = UIColor.clear
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
     }
 }
 
-
+//
 class codeButton: UIButton {
     var indexNgay:            Int     = 0
-}
-
-
-extension UIImage{
-    
-    func resizeImageWith(newSize: CGSize) -> UIImage {
-        
-        let horizontalRatio = newSize.width / size.width
-        let verticalRatio = newSize.height / size.height
-        
-        let ratio = max(horizontalRatio, verticalRatio)
-        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
-        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-    
-    
 }

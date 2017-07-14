@@ -35,6 +35,8 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         seat_width  = size.width
         seat_height = size.height
     }
+    
+    //
     func setMap(_ map: String) {
         if (layout_type == "Normal"){
             var initial_seat_x: Int = 0
@@ -43,7 +45,6 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var sttM: Int = 1
             for i in 0..<map.characters.count {
                 let seat_at_position = map[i]
-                
                 if seat_at_position == "A" {
                     createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: false, stt: sttM)
                     initial_seat_x += 1
@@ -68,27 +69,23 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
                     //sttM += 1
                 }
             }
-            
             zoomable_view.frame = CGRect(x: 0, y: 0, width: CGFloat(final_width) * seat_width, height: CGFloat(initial_seat_y) * seat_height)
             self.contentSize = zoomable_view.frame.size
             let newContentOffsetX: CGFloat = (self.contentSize.width - self.frame.size.width) / 2
             self.contentOffset = CGPoint(x: newContentOffsetX, y: 0)
             selected_seats = NSMutableArray()
-            
             self.delegate = self
             self.addSubview(zoomable_view)
-        } else {
-           
         }
-        
     }
-    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool, stt:Int) {
     
+    //
+    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool, stt:Int) {
         let seatButton = ZSeat(frame: CGRect(
-                x: CGFloat(initial_seat_x) * seat_width,
-                y: CGFloat(initial_seat_y) * seat_height,
-                width: CGFloat(seat_width),
-                height: CGFloat(seat_height)))
+            x: CGFloat(initial_seat_x) * seat_width,
+            y: CGFloat(initial_seat_y) * seat_height,
+            width: CGFloat(seat_width),
+            height: CGFloat(seat_height)))
         seatButton.stt = stt
         if available && disabled {
             self.setSeatAsDisabled(seatButton)
@@ -106,7 +103,6 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         seatButton.row = initial_seat_y + 1
         seatButton.column = initial_seat_x + 1
         seatButton.price = seat_price
-        //seatButton.titleLabel?.text=String(stt)
         seatButton.addTarget(self, action: #selector(ZSeatSelector.seatSelected(_:)), for: .touchDown)
         zoomable_view.addSubview(seatButton)
     }
@@ -134,10 +130,11 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
                 }
             }
         }
-        
         seatSelectorDelegate?.seatSelected(sender)
         seatSelectorDelegate?.getSelectedSeats(selected_seats)
     }
+    
+    //
     func checkSeatLimitWithSeat(_ sender: ZSeat) {
         if selected_seats.count < selected_seat_limit {
             setSeatAsSelected(sender)
@@ -202,32 +199,29 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         print(scale)
     }
     
-    
+    //
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
-        
         let textColor = UIColor.black
         let textFont = UIFont(name: "Helvetica Bold", size: 12)!
-        
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
-        
+        //
         let textFontAttributes = [
             NSFontAttributeName: textFont,
             NSForegroundColorAttributeName: textColor,
             ] as [String : Any]
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-        
+        //
         let rect = CGRect(origin: point, size: image.size)
         text.draw(in: rect, withAttributes: textFontAttributes)
-        
+        //
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
-        
-        }
+    }
 }
 
-
+//
 class ZSeat: UIButton {
     var row:            Int     = 0
     var column:         Int     = 0
@@ -238,6 +232,7 @@ class ZSeat: UIButton {
     var stt :           Int     = 0;
 }
 
+//
 extension String {
     subscript (i: Int) -> Character {
         return self[self.characters.index(self.startIndex, offsetBy: i)]

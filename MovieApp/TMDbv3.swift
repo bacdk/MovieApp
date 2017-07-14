@@ -21,14 +21,13 @@ class TMDb {
                 listMovie.append(movie)
                 completionHandler(listMovie, nil)
             }
-            else
-            {
+            else {
                 let error = "Movie list empty or problem when get data from firebase!"
                 completionHandler(nil, error)
             }
         }, withCancel: nil)
-        
     }
+    
     //Get list upcoming movie
     static func getPopularListFireBase(completionHandler: @escaping (_ movies: [Movie]?, _ error: String?) -> Void){
         var listMovie = [Movie]()
@@ -40,11 +39,9 @@ class TMDb {
                 listMovie.append(movie)
                 completionHandler(listMovie, nil)
             }
-            else
-            {
+            else {
                 completionHandler(nil, "Error retrieving data from server")
             }
-            
         }, withCancel: nil)
     }
     
@@ -59,15 +56,14 @@ class TMDb {
                 listMovie.append(movie)
                 completionHandler(listMovie, nil)
             }
-            else
-            {
+            else {
                 completionHandler(nil, "Error retrieving data from server")
             }
         }, withCancel: nil)
-        
     }
+    
     //Get ticket information
-    static func getTicket(completionHandler: @escaping (_ tickets: [Ticket]?, _ error: String?) -> Void){
+    static func getTicket(completionHandler: @escaping (_ tickets: [Ticket]?, _ error: String?) -> Void) {
         var listTicket = [Ticket]()
         var ref: DatabaseReference!
         ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Tickets")
@@ -78,12 +74,10 @@ class TMDb {
                 listTicket.append(ticket)
                 completionHandler(listTicket, nil)
             }
-            else
-            {
+            else {
                 completionHandler(nil, "Error retrieving data from server")
             }
         }, withCancel: nil)
-        
     }
     //Get seat by real time
     static func getSeatMap(id: Int, ngay: String, gio: String, completionHandler: @escaping (_ seat: String?, _ error: String?) -> Void)
@@ -95,7 +89,6 @@ class TMDb {
             if let seatJson = snapshot.value as? [String: Any] {
                 //print(seat[gio])
                 let seat = seatJson[gio] as! String
-                //print(seat)
                 completionHandler(seat, nil)
             }
             else
