@@ -19,6 +19,7 @@ class DetailTicketVC: UIViewController, ZSeatSelectorDelegate {
     @IBOutlet weak var lblNgay: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnBack: UIButton!
+    
     var indexNgay:Int!
     var screen : String = ""
     var seatUser : NSMutableArray = []

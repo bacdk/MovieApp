@@ -16,7 +16,6 @@
 		3AF7D2E21ED96BF8001DF490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7D2E11ED96BF8001DF490 /* Assets.xcassets */; };
 		6207DB851F09201D00DB321F /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207DB841F09201D00DB321F /* Ticket.swift */; };
 		6207DB871F09207300DB321F /* TicketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207DB861F09207300DB321F /* TicketController.swift */; };
-		620C2E5F1F0A626600DEDDBB /* NotUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620C2E5E1F0A626600DEDDBB /* NotUse.swift */; };
 		620C2E611F0A6F0C00DEDDBB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620C2E601F0A6F0C00DEDDBB /* Reachability.swift */; };
 		621741571F0AAC8900F419B5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621741561F0AAC8900F419B5 /* Message.swift */; };
 		622E81EC1EFFEF8000963436 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622E81EB1EFFEF8000963436 /* ImageDownloader.swift */; };
@@ -87,7 +86,6 @@
 		588859E2B570D7070B722CC5 /* Pods_MovieAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6207DB841F09201D00DB321F /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		6207DB861F09207300DB321F /* TicketController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketController.swift; sourceTree = "<group>"; };
-		620C2E5E1F0A626600DEDDBB /* NotUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotUse.swift; sourceTree = "<group>"; };
 		620C2E601F0A6F0C00DEDDBB /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		621741561F0AAC8900F419B5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		622E81EB1EFFEF8000963436 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				624B84961EFE726800274A83 /* Constants.swift */,
 				62B193251EFEECD3004E13C4 /* ImagePicker.swift */,
 				622E81EB1EFFEF8000963436 /* ImageDownloader.swift */,
-				620C2E5E1F0A626600DEDDBB /* NotUse.swift */,
 				620C2E601F0A6F0C00DEDDBB /* Reachability.swift */,
 				621741561F0AAC8900F419B5 /* Message.swift */,
 				625DE2231F1132B500E91ADF /* KeyboardPresent.swift */,
@@ -608,7 +605,6 @@
 				BB5131571ED9837900457B1B /* Struct.swift in Sources */,
 				A73E371E1EE8450F0063BBAE /* UpComingController.swift in Sources */,
 				62B193261EFEECD3004E13C4 /* ImagePicker.swift in Sources */,
-				620C2E5F1F0A626600DEDDBB /* NotUse.swift in Sources */,
 				6254DB231EFD6F0B00585B52 /* DesignImage.swift in Sources */,
 				BB5131521ED980EA00457B1B /* Movie.swift in Sources */,
 			);

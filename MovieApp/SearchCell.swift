@@ -11,6 +11,7 @@ import UIKit
 class SearchCell: UITableViewCell {
 
     @IBOutlet weak var ticket: UIImageView!
+    
     var movie: Movie? {
         didSet {
             if let unwrappedMovie = movie {
@@ -28,7 +29,6 @@ class SearchCell: UITableViewCell {
             }
         }
     }
-    
     
     @IBOutlet weak var posterImageView: UIImageView! {
         didSet {

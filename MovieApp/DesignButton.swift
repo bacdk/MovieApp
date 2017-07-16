@@ -6,7 +6,6 @@
 //  Copyright © 2017 Dau Khac Bac. All rights reserved.
 //
 
-
 import UIKit
 
 @IBDesignable
@@ -30,6 +29,7 @@ class DesignButton: UIButton {
         }
     }
 }
+
 //Format fir button
 extension UIButton
 {

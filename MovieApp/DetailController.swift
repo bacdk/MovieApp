@@ -67,7 +67,7 @@ class DetailController: UITableViewController,UIWebViewDelegate  {
             queue: nil
         ) { notification in
             print("Video stopped")
-            self.posterImage.frame = CGRect(x: self.posterImage.frame.minX,y: self.video.frame.height ,width: (self.posterImage.image?.size.width)!*0.5, height:(self.posterImage.image?.size.height)!*0.4);
+            self.posterImage.frame = CGRect(x: self.posterImage.frame.minX,y: self.video.frame.height ,width: (self.posterImage.image?.size.width)!*0.1, height:(self.posterImage.image?.size.height)!*0.1);
         }
     }
     

@@ -18,6 +18,7 @@ class DetailMainCell: UITableViewCell {
        
         // Initialization code
     }
+    
     func configWithCell(movie: Movie) {
         lblTittle.text = movie.title.uppercased()
         lblRelease.text = movie.release_date
